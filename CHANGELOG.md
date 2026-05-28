@@ -2,6 +2,29 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.5 — Typography + reader-respect promotion + schema-diff enforcement
+
+**Released:** 2026-05-28
+
+- **`corpus/typography-rules.json`** (Asset E from Kimi-style lens): 9 typography-hygiene rules promoted from `arabic-ai-text-humanizer/references/15-typography-hygiene.md` (Markdown narrative → machine-readable JSON). Includes the 13-source authority log (Al Jazeera Learning, Drasah, Loghate, Mawdoo3, Mobt3ath, KSU, Itwadi, Shoair, Albuthi, Alukah, proof-reading-service, Kaplan, King Fahd Complex). Schema v1.0.0.
+- **`corpus/reader-respect-patterns.json`** (Asset F): 6 anti-patterns from the humanizer's Dim 14 (inverse-scored cognitive-restraint dimension) promoted to JSON. Each pattern carries `examples_to_delete`, `humanizer_lex_function` reference, `severity`. Schema v1.0.0.
+- **`scripts/diff_schema.py`** (deferred from v0.3 per Kimi-style + Codex-style review): JSON-Schema diff tool that classifies changes as PATCH / MINOR / MAJOR per the per-asset SemVer policy. Refuses MAJOR breaks without `--allow-break` flag. Walks `properties`, `items`, `definitions`, and `required` fields. Detects type changes, enum additions/removals, newly-required fields.
+- **Second consumer live**: `arabic-corpus-translator` v0.1 ships concurrently, consuming the calque dictionary for its Stage A terminology lookup. Two real consumers now stress-test the toolkit's API surface.
+
+### Asset version state at end of v0.5
+
+| Asset | Schema version | Notes |
+|---|---|---|
+| `corpus/calque-dictionary.json` | **v1.2.0** | unchanged from v0.4 |
+| `corpus/empirical-patterns.json` | **v1.0.0** | unchanged from v0.4 |
+| `corpus/typography-rules.json` | **v1.0.0** | **NEW** in v0.5 |
+| `corpus/reader-respect-patterns.json` | **v1.0.0** | **NEW** in v0.5 |
+| `scripts/dictionary.py` | n/a | unchanged |
+| `scripts/corpus_stats.py` | n/a | unchanged |
+| `scripts/register.py` | n/a | unchanged |
+| `scripts/validate.py` | n/a | unchanged |
+| `scripts/diff_schema.py` | n/a | **NEW** in v0.5 |
+
 ## v0.4 — Empirical-patterns API + formal schema + first live consumer
 
 **Released:** 2026-05-28

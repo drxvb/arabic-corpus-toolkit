@@ -1,0 +1,116 @@
+{
+  "$schema_version": "1.0.0",
+  "asset_id": "typography-rules",
+  "title": "Arabic Typography Hygiene Rules",
+  "description": "5 mechanical typography rules + 13-source authority log. Extracted from arabic-ai-text-humanizer references/15-typography-hygiene.md (v2.4.1 through v2.4.5). These rules are register-INDEPENDENT — they apply to all Arabic prose regardless of classical / news / opinion / technical register.",
+  "provenance": {
+    "source_skill": "arabic-ai-text-humanizer",
+    "source_versions": ["v2.4.1", "v2.4.2", "v2.4.3", "v2.4.4", "v2.4.5"],
+    "research_sources_count": 13,
+    "promoted_to_toolkit_in": "v0.5"
+  },
+  "authority_sources": [
+    {"name": "Al Jazeera Learning / تعلم الجزيرة", "url_hint": "learning.aljazeera.net"},
+    {"name": "Drasah / دراسة", "url_hint": "drasah.com"},
+    {"name": "Loghate / لغتي", "url_hint": "loghate.com"},
+    {"name": "Mawdoo3 / موضوع", "url_hint": "mawdoo3.com"},
+    {"name": "Mobt3ath / مبتعث", "url_hint": "mobt3ath.com"},
+    {"name": "KSU College of Humanities", "url_hint": "ksu.edu.sa"},
+    {"name": "Itwadi", "url_hint": "itwadi.com"},
+    {"name": "Shoair School / مدرسة شعير", "url_hint": "shoair.com"},
+    {"name": "Albuthi", "url_hint": "albuthi.com"},
+    {"name": "Alukah Academic / الألوكة الأكاديمية", "url_hint": "alukah.net"},
+    {"name": "Proof-reading-service.com", "url_hint": "proof-reading-service.com"},
+    {"name": "Kaplan International", "url_hint": "kaplaninternational.com"},
+    {"name": "King Fahd Complex for the Printing of the Holy Qur'an", "url_hint": "qurancomplex.gov.sa"}
+  ],
+  "rules": [
+    {
+      "id": "ar-en-spacing",
+      "title": "Arabic-English token spacing",
+      "category": "spacing",
+      "description": "Insert a single space between Arabic and Latin tokens that abut. e.g., 'الذكاء الاصطناعيAI' -> 'الذكاء الاصطناعي AI'. Helps BIDI rendering.",
+      "registers": ["classical", "news", "opinion", "technical"],
+      "severity": "high",
+      "implementation_hint": "regex: replace ([\\u0621-\\u064A])([A-Za-z]) with $1 $2 and ([A-Za-z])([\\u0621-\\u064A]) with $1 $2"
+    },
+    {
+      "id": "ascii-to-arabic-punctuation",
+      "title": "ASCII to Arabic punctuation conversion",
+      "category": "punctuation",
+      "description": "Convert ASCII punctuation in Arabic-context to native Arabic equivalents.",
+      "registers": ["classical", "news", "opinion", "technical"],
+      "severity": "high",
+      "mappings": {
+        ",": "،",
+        ";": "؛",
+        "?": "؟",
+        "%": "٪"
+      },
+      "implementation_hint": "Only convert when preceding char is Arabic-block (\\u0600-\\u06FF). Do not convert inside English-context spans."
+    },
+    {
+      "id": "no-space-before-arabic-punctuation",
+      "title": "No space before Arabic punctuation",
+      "category": "spacing",
+      "description": "Arabic punctuation (،; ؛, ؟, :, !, .) must be adjacent to the preceding word — no leading space. Universal rule from all 13 style guides.",
+      "registers": ["classical", "news", "opinion", "technical"],
+      "severity": "high",
+      "implementation_hint": "regex: replace \\s+([،؛؟:!.]) with $1"
+    },
+    {
+      "id": "paren-interior-spacing",
+      "title": "No space inside parentheses",
+      "category": "spacing",
+      "description": "No space between parenthesis and content; no space between closing paren and following punctuation. Source: Kaplan + proof-reading-service.",
+      "registers": ["classical", "news", "opinion", "technical"],
+      "severity": "medium",
+      "implementation_hint": "(1) strip space immediately after ( when followed by Arabic letter; (2) strip space before ) when preceded by Arabic letter; (3) strip space between ) and following punctuation"
+    },
+    {
+      "id": "kashida-removal",
+      "title": "Kashida (tatweel U+0640) removal",
+      "category": "character",
+      "description": "Strip the Arabic kashida (ـ, U+0640) from encoded body text. Kashida is for display typography (logos, posters, justified-text rendering), NEVER for encoded body text. AI translators sometimes inject it to 'look more Arabic' which is the opposite of professional Arabic typography.",
+      "registers": ["classical", "news", "opinion", "technical"],
+      "severity": "high",
+      "implementation_hint": "Strip all U+0640 from input. UNIVERSAL (all registers)."
+    },
+    {
+      "id": "em-dash-to-arabic-comma",
+      "title": "Em-dash to Arabic comma in Arabic context",
+      "category": "punctuation",
+      "description": "Em-dash (—, U+2014) is a Latin import; convert to Arabic comma (،) when surrounded by Arabic letters. Preserve in English-context (e.g., 'OpenAI — مؤسسة' keeps em-dash because I is Latin).",
+      "registers": ["classical", "news", "opinion", "technical"],
+      "severity": "medium",
+      "implementation_hint": "Only convert when both flanks are Arabic-block characters."
+    },
+    {
+      "id": "comma-to-semicolon-before-causal",
+      "title": "Comma to semicolon before unambiguous causal connectors",
+      "category": "punctuation",
+      "description": "Semicolon is the correct mark before causal clauses per multiple sources. Convert , -> ؛ before لأن / لأنّ / لذلك / لذا / ومن ثَمَّ. Skip ambiguous connectors (إذ / حيث — 'when' vs 'because').",
+      "registers": ["news", "opinion"],
+      "severity": "low",
+      "implementation_hint": "regex: replace (،\\s*)(لأن|لأنّ|لذلك|لذا|ومن\\s+ثَمَّ) with ؛ $2"
+    },
+    {
+      "id": "list-waw-insertion",
+      "title": "List-و insertion (Itwadi rule)",
+      "category": "structure",
+      "description": "In Arabic lists with 3+ items, insert و before items 2..n (opposite of English's 'and before last item only'). Detection conservative: only when 3+ comma-separated tokens are each a single Arabic word.",
+      "registers": ["classical", "news", "opinion", "technical"],
+      "severity": "medium",
+      "implementation_hint": "Detect lists of 3+ tokens; insert و before items 2..n; do NOT treat short-clause commas as lists."
+    },
+    {
+      "id": "guillemets-classical-only",
+      "title": "ASCII quotes to Arabic guillemets (classical register only)",
+      "category": "punctuation",
+      "description": "Convert \"...\" to «...» in classical register; preserve ASCII in news/opinion/technical. Sources split between formal (guillemets) and modern (ASCII).",
+      "registers": ["classical"],
+      "severity": "low",
+      "implementation_hint": "Register-gated. classical only."
+    }
+  ]
+}

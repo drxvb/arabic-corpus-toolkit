@@ -1,0 +1,97 @@
+{
+  "$schema_version": "1.0.0",
+  "asset_id": "reader-respect-patterns",
+  "title": "Reader-Respect (Cognitive Restraint) Anti-Patterns",
+  "description": "6 anti-patterns the humanizer's Dim 14 (inverse-scored) catches. INVERSE-SCORED dimension: the score measures ABSENCE of these patterns. High score = more cognitive restraint = more respect for the reader's intelligence. Source: arabic-ai-text-humanizer references/14-reader-respect.md.",
+  "provenance": {
+    "source_skill": "arabic-ai-text-humanizer",
+    "source_versions": ["v2.0.0", "v2.4.x"],
+    "scoring_mode": "inverse",
+    "promoted_to_toolkit_in": "v0.5"
+  },
+  "patterns": [
+    {
+      "id": "anti-tautology",
+      "title": "Tautological affirmation",
+      "category": "redundancy",
+      "description": "AI piles synonyms or near-synonyms onto a single concept (مؤكَّد وحقيقي وثابت). Native Arabic prose picks one.",
+      "examples_to_delete": [
+        "مؤكَّد وحقيقي وثابت",
+        "صحيح ودقيق ومضبوط",
+        "واضح وجليّ وبيّن"
+      ],
+      "humanizer_lex_function": "lex_dim14_anti_tautology",
+      "severity": "high"
+    },
+    {
+      "id": "anti-re-explanation",
+      "title": "Re-explanation hedges",
+      "category": "padding",
+      "description": "AI re-states the same point with 'i.e., in other words, that is to say'. Native Arabic prose trusts the reader.",
+      "examples_to_delete": [
+        "أي بمعنى آخر",
+        "أي بعبارة أخرى",
+        "وبعبارة أكثر دقة",
+        "بعبارة أوضح"
+      ],
+      "humanizer_lex_function": "lex_dim14_anti_re_explanation",
+      "severity": "medium"
+    },
+    {
+      "id": "anti-forced-conclusion",
+      "title": "AI-inserted deductive markers",
+      "category": "padding",
+      "description": "AI announces its conclusion before stating it ('We can deduce from this that...'). Native prose lets the conclusion stand.",
+      "examples_to_delete": [
+        "نَستنتج من هذا",
+        "يمكن أن نَستنتج",
+        "وعليه نستنتج",
+        "ومن ثَمَّ يمكن القول"
+      ],
+      "humanizer_lex_function": "lex_dim14_anti_forced_conclusion",
+      "severity": "high"
+    },
+    {
+      "id": "anti-known-definitions",
+      "title": "Definition of known terms",
+      "category": "condescension",
+      "description": "AI defines terms the reader is presumed to know ('We mean by X that it is...'). Erodes reader trust.",
+      "examples_to_delete": [
+        "ونعني بـ",
+        "ويُقصد بـ",
+        "ومعنى ذلك"
+      ],
+      "humanizer_lex_function": "lex_dim14_anti_known_definitions",
+      "severity": "medium"
+    },
+    {
+      "id": "expectation-conformity",
+      "title": "Expectation conformity / surprise suppression",
+      "category": "blandness",
+      "description": "AI announces that something is 'as expected' or 'unsurprising' (كما هو متوقع، بطبيعة الحال). Native prose lets surprise or non-surprise emerge from the content.",
+      "examples_to_delete": [
+        "كما هو متوقع",
+        "بطبيعة الحال",
+        "كما يُتوقع",
+        "وكما لا يخفى"
+      ],
+      "humanizer_lex_function": "lex_dim14_expectation_conformity",
+      "severity": "medium"
+    },
+    {
+      "id": "closed-conclusions",
+      "title": "Closed / tied-up conclusions",
+      "category": "pat-endings",
+      "description": "AI ends paragraphs with neat summaries ('In short, we have seen that...'). Native essays let the argument breathe.",
+      "examples_to_delete": [
+        "وفي الختام",
+        "وخلاصة القول",
+        "وملخص ما سبق",
+        "وكما رأينا"
+      ],
+      "humanizer_lex_function": "lex_dim14_closed_conclusions",
+      "severity": "medium"
+    }
+  ],
+  "scoring_notes": "Dim 14 score = 15 - min(15, total_pattern_hits * 2). High score (12-15) = good cognitive restraint. Low score (0-5) = heavy AI fingerprint. Inverse-scored because the dimension measures ABSENCE of patterns, not presence of features."
+}
