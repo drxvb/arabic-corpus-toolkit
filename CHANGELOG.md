@@ -2,6 +2,39 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.5.0 — Unicode normalization contract (Gap G1, foundational architecture)
+
+**Released:** 2026-05-28
+
+The most-flagged architectural gap from both swarm runs (roadmap-proposer in round 1, 3-evaluator audit in round 2): no shared Arabic Unicode normalization across the family. Asset C's lex pass stripped tashkeel one way, the translator's Stage D tokenized another way, score_text counted Arabic characters a third way — silently producing inconsistencies that bite at scale.
+
+`scripts/arabic_normalize.py` is now THE canonical source.
+
+### Three levels
+
+- **`light`**: tashkeel + tatweel only. Meaning-preserving, safe for output. Use this for the lex pass or any user-facing transformation.
+- **`medium`**: light + alif variants (آ، أ، إ → ا) + alif maqsura (ى → ي). For matching/search where you want recall.
+- **`aggressive`**: medium + ta marbuta (ة → ه) + hamza-on-letter (ؤ، ئ → bare). Max recall for fuzzy retrieval. NOT for user-facing output (collapses real morphology).
+
+### Contract properties (verified)
+
+- **Idempotent**: `normalize(normalize(x, L), L) == normalize(x, L)` at every level.
+- **Monotone**: light ⊆ medium ⊆ aggressive. Collisions at light propagate up.
+- **Pure**: no I/O, no randomness, stdlib only.
+
+### Language utilities
+
+- `arabic_char_ratio(text)`: fraction of letters that are Arabic. Used by language-mismatch detection in translator Stage E + authoring humanizer_gate.
+- `is_arabic_dominant(text, threshold=0.5)`: shorthand `>= threshold`.
+
+### Self-test
+
+`python scripts/arabic_normalize.py` runs 14 edge-case assertions + idempotence + monotonicity + char-ratio checks. All pass. Golden e2e expanded from 21 to **28 assertions** with the normalization contract embedded.
+
+### Migration
+
+Consumers (humanizer score_text Arabic-char counting, translator Stage D tokenization, Aho-Corasick over corpus) should route through `normalize()` at the appropriate level. This release ships the contract; consumer migrations follow in subsequent releases.
+
 ## v1.4.2 — Documentation reconciliation (3-evaluator audit response)
 
 **Released:** 2026-05-28

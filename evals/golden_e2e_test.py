@@ -68,6 +68,37 @@ def golden_canon_sloppy_ar() -> str:
     )
 
 
+def test_arabic_normalize() -> int:
+    """v1.5.0: assert the canonical Arabic normalization contract."""
+    failures = 0
+    print("\n━━━ Toolkit arabic_normalize (v1.5.0+) ━━━")
+    from arabic_normalize import normalize, arabic_char_ratio, is_arabic_dominant  # type: ignore
+    cases = [
+        ("strip tashkeel",        "الذكاءِ",   "light",      "الذكاء"),
+        ("alif → bare (medium)",  "أحمد",       "medium",     "احمد"),
+        ("alif preserved (light)","أحمد",       "light",      "أحمد"),
+        ("ta marbuta (aggressive)","الحوسبة",  "aggressive", "الحوسبه"),
+    ]
+    for desc, src, level, expected in cases:
+        got = normalize(src, level=level)
+        if not _assert(got == expected, f"{level}: {desc} — {src!r} → {expected!r} (got {got!r})"):
+            failures += 1
+    # Idempotence
+    sample = "الحوسبةُ السحابيّة لــأحمدَ"
+    once = normalize(sample, level="medium")
+    if not _assert(normalize(once, level="medium") == once,
+                   "Idempotence: normalize(normalize(x)) == normalize(x)"):
+        failures += 1
+    # Language detection
+    if not _assert(is_arabic_dominant("مرحبا بكم"),
+                   "is_arabic_dominant detects pure Arabic"):
+        failures += 1
+    if not _assert(not is_arabic_dominant("Hello World"),
+                   "is_arabic_dominant rejects pure English"):
+        failures += 1
+    return failures
+
+
 def test_toolkit() -> int:
     failures = 0
     print("\n━━━ Toolkit asset shape ━━━")
@@ -207,6 +238,7 @@ def main() -> int:
     print("  arabic-* family GOLDEN E2E regression  v1.4.1")
     print("═" * 68)
     total = 0
+    total += test_arabic_normalize()
     total += test_toolkit()
     total += test_translator()
     total += test_humanizer()
