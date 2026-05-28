@@ -2,6 +2,55 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.12 — Bulk-pair expansion to 422 pairs (third portal-native release)
+
+**Released:** 2026-05-28
+
+**Coverage scale-up.** v0.10 had 162 paired terms covering the highest-frequency tech terms. v0.12 pairs the remaining bigram+trigram candidates [300:666] from v0.8's terminology-candidates-technology.json (366 new candidates) via minimax-proxy. Result: **+260 new pairs (71% acceptance), final 422 pairs**. Third portal-native release: TaskID=12, PlanID=12.
+
+### Highlights of newly-added terminology
+
+| AR | EN | Corpus freq |
+|---|---|---|
+| القابل للطي | foldable | 987 |
+| بطاقات الذاكرة | memory cards | 987 |
+| فتحة عدسة | lens aperture | 976 |
+| الشاشة الرئيسية | home screen | 964 |
+| منصات التواصل | social media platforms | 978 |
+| الأسواق العالمية | global markets | 964 |
+| التقاط الصور | photo capture | 985 |
+| الصور ومقاطع الفيديو | photos and videos | 956 |
+| نشرة الأخبار | newsletter | 975 |
+
+### Why 71% acceptance on mid-tier vs 56% on top-tier
+
+Counterintuitive but explainable. Top candidates include the most generic terms (الشركة = company, الإنترنت = internet) and geographic noise (الإمارات, السعودية) that get filtered as not-terminology. Mid-frequency candidates are MORE likely to be specific terminology: foldable phones, memory cards, lens apertures. The long tail of corpus frequency has higher terminology density than the head.
+
+### Merge behavior
+
+- **Zero overlap** between v0.10 (candidates [0:300]) and v0.12 (candidates [300:666]) — disjoint slices by design
+- Existing pairs preserved: v0.10's cross_llm_agreement / three_way_verdict / needs_manual_review fields intact for the top 50 + 16
+- New pairs are single-vendor (minimax) at confidence high/medium — future v0.13 could cross-validate with codex+gemini
+
+### Schema bump 1.2.0 → 1.3.0 (MINOR additive — more rows, same shape)
+
+No new fields, no schema changes. v1.0.0/1.1.0/1.2.0 readers see 422 pairs where they used to see fewer; nothing else differs. The translator's `pairs_for_en_text()` finds more hits on the same input automatically (mtime cache picks up the new asset).
+
+### Portal trace
+
+Audit timeline rows #26-#30:
+- #26 task_started
+- #27 plan_created (PlanID=12)
+- #28 plan_approved (via portal actions API)
+- #29 plan_executed
+- #30 task_completed
+
+### Asset version state at end of v0.12
+
+| Asset | Schema | Notes |
+|---|---|---|
+| `corpus/domain-terminology.json` | **v1.3.0** | **422 pairs** (162 from v0.10 + 260 new from minimax). Translator picks up the expansion automatically via mtime cache. |
+
 ## v0.10 — Three-way LLM tiebreaker (gemini-proxy resolves v0.9.1 disagreements)
 
 **Released:** 2026-05-28

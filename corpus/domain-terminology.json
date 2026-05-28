@@ -1,5 +1,5 @@
 {
-  "$schema_version": "1.2.0",
+  "$schema_version": "1.3.0",
   "asset_name": "domain-terminology",
   "domain": "technology",
   "provenance": {
@@ -20,14 +20,19 @@
     "tiebreaker_count": 16,
     "tiebreaker_timestamp": "2026-05-28T21:43:42",
     "n_dropped_v0.10": 6,
-    "n_switched_v0.10": 5
+    "n_switched_v0.10": 5,
+    "v0.12_bulk_pair_added": 260,
+    "v0.12_bulk_pair_overlap_kept": 0,
+    "v0.12_total_after_merge": 422,
+    "v0.12_timestamp": "2026-05-28T21:52:31"
   },
   "notes": [
     "Phase 2 output: LLM-paired EN translations for Phase-1 AR candidates.",
     "Each pair carries corpus_freq (Phase-1 frequency) + LLM proposer + confidence.",
     "When --confirm-with is used, pairs also carry cross_llm_agreement and confirmed_by fields.",
     "v0.9.1: cross-LLM confirmation pass with codex-proxy on top 50 pairs. 34/50 agreement. Schema 1.0.0 -> 1.1.0 (MINOR additive).",
-    "v0.10: gemini-2.5-flash tiebreaker on 16 v0.9.1 disagreements. 6 dropped (2+ LLMs agreed not-terminology), 5 switched to codex+gemini consensus EN."
+    "v0.10: gemini-2.5-flash tiebreaker on 16 v0.9.1 disagreements. 6 dropped (2+ LLMs agreed not-terminology), 5 switched to codex+gemini consensus EN.",
+    "v0.12: bulk-paired v0.8 candidates [300:666] via minimax-proxy. 260 new pairs added, 0 overlapped with v0.10 (kept v0.10 entries to preserve cross-LLM history). Final: 422 pairs."
   ],
   "pairs": [
     {
@@ -1610,6 +1615,2346 @@
       "domain": "technology",
       "corpus_freq": 1073,
       "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "القابل للطي",
+      "en": "foldable",
+      "domain": "technology",
+      "corpus_freq": 987,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بطاقات الذاكرة",
+      "en": "memory cards",
+      "domain": "technology",
+      "corpus_freq": 987,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التقاط الصور",
+      "en": "photo capture",
+      "domain": "technology",
+      "corpus_freq": 985,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منصات التواصل",
+      "en": "social media platforms",
+      "domain": "technology",
+      "corpus_freq": 978,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "فتحة عدسة",
+      "en": "lens aperture",
+      "domain": "technology",
+      "corpus_freq": 976,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نشرة الأخبار",
+      "en": "newsletter",
+      "domain": "technology",
+      "corpus_freq": 975,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بطارية بسعة ميلي",
+      "en": "battery with milliamp-hour capacity",
+      "domain": "technology",
+      "corpus_freq": 969,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأسواق العالمية",
+      "en": "global markets",
+      "domain": "technology",
+      "corpus_freq": 964,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشاشة الرئيسية",
+      "en": "home screen",
+      "domain": "technology",
+      "corpus_freq": 964,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الصور ومقاطع الفيديو",
+      "en": "photos and videos",
+      "domain": "technology",
+      "corpus_freq": 956,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التعليمات البرمجية",
+      "en": "code",
+      "domain": "technology",
+      "corpus_freq": 950,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تعمل باللمس",
+      "en": "touchscreen",
+      "domain": "technology",
+      "corpus_freq": 942,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لنظام ويندوز",
+      "en": "for Windows",
+      "domain": "technology",
+      "corpus_freq": 941,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأخبار الصوتية",
+      "en": "audio news",
+      "domain": "technology",
+      "corpus_freq": 931,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نشرة الأخبار الصوتية",
+      "en": "audio news bulletin",
+      "domain": "technology",
+      "corpus_freq": 928,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الإلكترونيات الاستهلاكية",
+      "en": "consumer electronics",
+      "domain": "technology",
+      "corpus_freq": 922,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الهجمات الإلكترونية",
+      "en": "cyber attacks",
+      "domain": "technology",
+      "corpus_freq": 919,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العاملة بنظام أندرويد",
+      "en": "Android-based",
+      "domain": "technology",
+      "corpus_freq": 919,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "براءة اختراع",
+      "en": "patent",
+      "domain": "technology",
+      "corpus_freq": 918,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البرامج الضارة",
+      "en": "malware",
+      "domain": "technology",
+      "corpus_freq": 914,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جوجل درايف",
+      "en": "Google Drive",
+      "domain": "technology",
+      "corpus_freq": 914,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عشوائي رام",
+      "en": "RAM",
+      "domain": "technology",
+      "corpus_freq": 912,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تكنولوجيا المعلومات والاتصالات",
+      "en": "Information and Communications Technology",
+      "domain": "technology",
+      "corpus_freq": 911,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مكالمات الفيديو",
+      "en": "video calls",
+      "domain": "technology",
+      "corpus_freq": 909,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وصول عشوائي رام",
+      "en": "RAM",
+      "domain": "technology",
+      "corpus_freq": 909,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بحث جوجل",
+      "en": "Google Search",
+      "domain": "technology",
+      "corpus_freq": 907,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كلمة مرور",
+      "en": "password",
+      "domain": "technology",
+      "corpus_freq": 899,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتصال بالإنترنت",
+      "en": "internet connection",
+      "domain": "technology",
+      "corpus_freq": 894,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التقاط صور",
+      "en": "taking photos",
+      "domain": "technology",
+      "corpus_freq": 887,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشحن اللاسلكي",
+      "en": "wireless charging",
+      "domain": "technology",
+      "corpus_freq": 882,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحاسب الشخصي",
+      "en": "personal computer",
+      "domain": "technology",
+      "corpus_freq": 882,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الربع الرابع",
+      "en": "fourth quarter",
+      "domain": "technology",
+      "corpus_freq": 879,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "براءات الاختراع",
+      "en": "patents",
+      "domain": "technology",
+      "corpus_freq": 879,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتصالات المتنقلة",
+      "en": "mobile communications",
+      "domain": "technology",
+      "corpus_freq": 878,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجلس التعاون الخليجي",
+      "en": "Gulf Cooperation Council",
+      "domain": "technology",
+      "corpus_freq": 848,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تقنية المعلومات والاتصالات",
+      "en": "Information and Communication Technology",
+      "domain": "technology",
+      "corpus_freq": 838,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأوسط وشمال إفريقيا",
+      "en": "Middle East and North Africa",
+      "domain": "technology",
+      "corpus_freq": 832,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منصات التواصل الاجتماعي",
+      "en": "social media platforms",
+      "domain": "technology",
+      "corpus_freq": 815,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكة التواصل الاجتماعي",
+      "en": "social network",
+      "domain": "technology",
+      "corpus_freq": 737,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دول مجلس التعاون",
+      "en": "Gulf Cooperation Council countries",
+      "domain": "technology",
+      "corpus_freq": 733,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر البريد الإلكتروني",
+      "en": "via email",
+      "domain": "technology",
+      "corpus_freq": 727,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ماك بوك برو",
+      "en": "MacBook Pro",
+      "domain": "technology",
+      "corpus_freq": 724,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "صحيفة وول ستريت",
+      "en": "Wall Street Journal",
+      "domain": "technology",
+      "corpus_freq": 723,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دبي التجاري العالمي",
+      "en": "Dubai World Trade Center",
+      "domain": "technology",
+      "corpus_freq": 720,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تقنيات الذكاء الاصطناعي",
+      "en": "artificial intelligence technologies",
+      "domain": "technology",
+      "corpus_freq": 706,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكات التواصل الاجتماعي",
+      "en": "social networking sites",
+      "domain": "technology",
+      "corpus_freq": 701,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التواصل الاجتماعي فيسبوك",
+      "en": "Facebook social media",
+      "domain": "technology",
+      "corpus_freq": 691,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجال تكنولوجيا المعلومات",
+      "en": "information technology sector",
+      "domain": "technology",
+      "corpus_freq": 683,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشرق الأوسط وإفريقيا",
+      "en": "Middle East and Africa",
+      "domain": "technology",
+      "corpus_freq": 676,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس مجلس إدارة",
+      "en": "Chairman of the Board",
+      "domain": "technology",
+      "corpus_freq": 673,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شاشة بقياس بوصات",
+      "en": "inch display",
+      "domain": "technology",
+      "corpus_freq": 647,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يعمل بنظام التشغيل",
+      "en": "runs on operating system",
+      "domain": "technology",
+      "corpus_freq": 645,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مستخدم نشط شهريا",
+      "en": "monthly active user",
+      "domain": "technology",
+      "corpus_freq": 643,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتصالات وتكنولوجيا المعلومات",
+      "en": "telecommunications and information technology",
+      "domain": "technology",
+      "corpus_freq": 642,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرخصة الدولية لقيادة",
+      "en": "International Driver's License",
+      "domain": "technology",
+      "corpus_freq": 635,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكات الجيل الرابع",
+      "en": "fourth generation networks",
+      "domain": "technology",
+      "corpus_freq": 631,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ميجابكسل فتحة عدسة",
+      "en": "megapixel aperture",
+      "domain": "technology",
+      "corpus_freq": 608,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وذاكرة وصول عشوائي",
+      "en": "random access memory",
+      "domain": "technology",
+      "corpus_freq": 597,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وكالة الأمن القومي",
+      "en": "National Security Agency",
+      "domain": "technology",
+      "corpus_freq": 587,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حكومة دبي الإلكترونية",
+      "en": "Dubai e-Government",
+      "domain": "technology",
+      "corpus_freq": 582,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرسائل النصية القصيرة",
+      "en": "SMS",
+      "domain": "technology",
+      "corpus_freq": 580,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جيجابايت وذاكرة تخزين",
+      "en": "gigabyte and storage memory",
+      "domain": "technology",
+      "corpus_freq": 578,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لنظام التشغيل ويندوز",
+      "en": "Windows operating system",
+      "domain": "technology",
+      "corpus_freq": 574,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "خلفية بدقة ميجابكسل",
+      "en": "megapixel resolution",
+      "domain": "technology",
+      "corpus_freq": 572,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرئيس التنفيذي للشركة",
+      "en": "CEO",
+      "domain": "technology",
+      "corpus_freq": 571,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المدير التنفيذي لشركة",
+      "en": "Executive Director",
+      "domain": "technology",
+      "corpus_freq": 570,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تعمل بنظام التشغيل",
+      "en": "operating system",
+      "domain": "technology",
+      "corpus_freq": 564,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر أيلول سبتمبر",
+      "en": "September",
+      "domain": "technology",
+      "corpus_freq": 562,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نوفمبر تشرين الثاني",
+      "en": "November",
+      "domain": "technology",
+      "corpus_freq": 560,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "قطاع تكنولوجيا المعلومات",
+      "en": "Information Technology sector",
+      "domain": "technology",
+      "corpus_freq": 557,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رام بحجم جيجابايت",
+      "en": "gigabyte RAM",
+      "domain": "technology",
+      "corpus_freq": 556,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر آذار مارس",
+      "en": "March",
+      "domain": "technology",
+      "corpus_freq": 554,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الوصول العشوائي جيجابايت",
+      "en": "random access memory gigabytes",
+      "domain": "technology",
+      "corpus_freq": 554,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لشبكات الجيل الخامس",
+      "en": "for fifth-generation networks",
+      "domain": "technology",
+      "corpus_freq": 552,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جوجل بلاي ولمستخدمي",
+      "en": "Google Play and users",
+      "domain": "technology",
+      "corpus_freq": 551,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لمنطقة الشرق الأوسط",
+      "en": "for the Middle East region",
+      "domain": "technology",
+      "corpus_freq": 550,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التدوين المصغر تويتر",
+      "en": "Twitter microblogging",
+      "domain": "technology",
+      "corpus_freq": 549,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بدقة ميجابكسل فتحة",
+      "en": "megapixel resolution aperture",
+      "domain": "technology",
+      "corpus_freq": 548,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وذاكرة تخزين داخلية",
+      "en": "and internal storage memory",
+      "domain": "technology",
+      "corpus_freq": 545,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "هيئة تنظيم الاتصالات",
+      "en": "telecommunications regulatory authority",
+      "domain": "technology",
+      "corpus_freq": 544,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أمامية بدقة ميجابكسل",
+      "en": "front-facing megapixel resolution",
+      "domain": "technology",
+      "corpus_freq": 542,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "داخلية بسعة جيجابايت",
+      "en": "internal capacity in gigabytes",
+      "domain": "technology",
+      "corpus_freq": 536,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أسواق الشرق الأوسط",
+      "en": "Middle East markets",
+      "domain": "technology",
+      "corpus_freq": 535,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تخزين داخلية بسعة",
+      "en": "internal storage capacity",
+      "domain": "technology",
+      "corpus_freq": 530,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "محرك بحث جوجل",
+      "en": "Google search engine",
+      "domain": "technology",
+      "corpus_freq": 519,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شاشة بقياس بوصة",
+      "en": "screen measured in inches",
+      "domain": "technology",
+      "corpus_freq": 515,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منذ فترة طويلة",
+      "en": "for a long time",
+      "domain": "technology",
+      "corpus_freq": 511,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر نيسان أبريل",
+      "en": "in the month of April",
+      "domain": "technology",
+      "corpus_freq": 507,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر بروتوكول الإنترنت",
+      "en": "via Internet Protocol",
+      "domain": "technology",
+      "corpus_freq": 507,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جيجابايت مساحة التخزين",
+      "en": "gigabytes of storage space",
+      "domain": "technology",
+      "corpus_freq": 496,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مكتب التحقيقات الفيدرالي",
+      "en": "Federal Bureau of Investigation",
+      "domain": "technology",
+      "corpus_freq": 493,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بطاقات الذاكرة الخارجية",
+      "en": "external memory cards",
+      "domain": "technology",
+      "corpus_freq": 488,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تعمل بنظام أندرويد",
+      "en": "runs on Android",
+      "domain": "technology",
+      "corpus_freq": 469,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يعمل بنظام أندرويد",
+      "en": "runs on Android",
+      "domain": "technology",
+      "corpus_freq": 469,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "معرض الإلكترونيات الاستهلاكية",
+      "en": "Consumer Electronics Show",
+      "domain": "technology",
+      "corpus_freq": 467,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التابع لشركة جوجل",
+      "en": "owned by Google",
+      "domain": "technology",
+      "corpus_freq": 459,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجال تقنية المعلومات",
+      "en": "information technology",
+      "domain": "technology",
+      "corpus_freq": 453,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وحدة المعالجة المركزية",
+      "en": "central processing unit",
+      "domain": "technology",
+      "corpus_freq": 447,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر شباط فبراير",
+      "en": "February",
+      "domain": "technology",
+      "corpus_freq": 442,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "قطاع تقنية المعلومات",
+      "en": "IT sector",
+      "domain": "technology",
+      "corpus_freq": 440,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بسعر ريالا سعوديا",
+      "en": "at a Saudi riyal price",
+      "domain": "technology",
+      "corpus_freq": 439,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لجنة التجارة الفيدرالية",
+      "en": "Federal Trade Commission",
+      "domain": "technology",
+      "corpus_freq": 438,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تقنية الشحن السريع",
+      "en": "fast charging technology",
+      "domain": "technology",
+      "corpus_freq": 434,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منطقة الشرق الأوسء",
+      "en": "Middle East region",
+      "domain": "technology",
+      "corpus_freq": 434,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كاميرا أمامية بدقة",
+      "en": "front camera with resolution",
+      "domain": "technology",
+      "corpus_freq": 433,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "هيئة الاتصالات وتقنية",
+      "en": "Communications and Information Technology Commission",
+      "domain": "technology",
+      "corpus_freq": 428,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "محركات الأقراص الصلبة",
+      "en": "hard drives",
+      "domain": "technology",
+      "corpus_freq": 427,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر متجر جوجل",
+      "en": "via Google Play",
+      "domain": "technology",
+      "corpus_freq": 425,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حقوق الملكية الفكرية",
+      "en": "intellectual property rights",
+      "domain": "technology",
+      "corpus_freq": 424,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أمامية بدقة ميجابيكسل",
+      "en": "front camera with megapixels",
+      "domain": "technology",
+      "corpus_freq": 423,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر حزيران يونيو",
+      "en": "June",
+      "domain": "technology",
+      "corpus_freq": 422,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بسعر يعادل دولارا",
+      "en": "at a price equivalent to dollars",
+      "domain": "technology",
+      "corpus_freq": 422,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وعلى سبيل المثال",
+      "en": "and for example",
+      "domain": "technology",
+      "corpus_freq": 418,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ومن ناحية أخرى",
+      "en": "on the other hand",
+      "domain": "technology",
+      "corpus_freq": 417,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التراسل الفوري واتساب",
+      "en": "WhatsApp instant messaging",
+      "domain": "technology",
+      "corpus_freq": 416,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سعتها ميلي أمبير",
+      "en": "capacity in mAh",
+      "domain": "technology",
+      "corpus_freq": 413,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أندرويد متجر جوجل",
+      "en": "Android Google Play",
+      "domain": "technology",
+      "corpus_freq": 412,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكات واي فاي",
+      "en": "WiFi networks",
+      "domain": "technology",
+      "corpus_freq": 411,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "فيروس كورونا المستجد",
+      "en": "novel coronavirus",
+      "domain": "technology",
+      "corpus_freq": 409,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "خلفية بدقة ميجابيكسل",
+      "en": "megapixel resolution wallpaper",
+      "domain": "technology",
+      "corpus_freq": 409,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المؤتمر العالمي للجوال",
+      "en": "Mobile World Congress",
+      "domain": "technology",
+      "corpus_freq": 408,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الذكاء الاصطناعي التوليدي",
+      "en": "generative AI",
+      "domain": "technology",
+      "corpus_freq": 398,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نائب الرئيس التنفيذي",
+      "en": "vice president",
+      "domain": "technology",
+      "corpus_freq": 397,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العاملة بنظام ويندوز",
+      "en": "running Windows",
+      "domain": "technology",
+      "corpus_freq": 396,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التخزين الداخلية القابلة",
+      "en": "internal expandable storage",
+      "domain": "technology",
+      "corpus_freq": 389,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "والرئيس التنفيذي لشركة",
+      "en": "and CEO of",
+      "domain": "technology",
+      "corpus_freq": 388,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأمن القومي الأمريكية",
+      "en": "American national security",
+      "domain": "technology",
+      "corpus_freq": 387,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سعة ميلي أمبير",
+      "en": "milliampere-hour capacity",
+      "domain": "technology",
+      "corpus_freq": 387,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المصنعة لهواتف آيفون",
+      "en": "Apple",
+      "domain": "technology",
+      "corpus_freq": 386,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر تشرين الثاني",
+      "en": "November",
+      "domain": "technology",
+      "corpus_freq": 386,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الطائرات بدون طيار",
+      "en": "drones",
+      "domain": "technology",
+      "corpus_freq": 386,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متاح مجانا لمستخدمي",
+      "en": "available free for",
+      "domain": "technology",
+      "corpus_freq": 384,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ملفات تعريف الارتباط",
+      "en": "cookies",
+      "domain": "technology",
+      "corpus_freq": 379,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بوصات وبدقة بكسل",
+      "en": "inches and pixel resolution",
+      "domain": "technology",
+      "corpus_freq": 379,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر متجر ستور",
+      "en": "App Store",
+      "domain": "technology",
+      "corpus_freq": 371,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بنظام ويندوز فون",
+      "en": "Windows Phone",
+      "domain": "technology",
+      "corpus_freq": 369,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر شبكة الإنترنت",
+      "en": "Internet",
+      "domain": "technology",
+      "corpus_freq": 366,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "صحيفة نيويورك تايمز",
+      "en": "The New York Times",
+      "domain": "technology",
+      "corpus_freq": 365,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المؤسس والرئيس التنفيذي",
+      "en": "founder and CEO",
+      "domain": "technology",
+      "corpus_freq": 365,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الداخلية القابلة للتوسعة",
+      "en": "expandable internal storage",
+      "domain": "technology",
+      "corpus_freq": 361,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وكاميرا خلفية بدقة",
+      "en": "rear camera with resolution",
+      "domain": "technology",
+      "corpus_freq": 359,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تقنية الذكاء الاصطناعي",
+      "en": "artificial intelligence",
+      "domain": "technology",
+      "corpus_freq": 358,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "معدل ضربات القلب",
+      "en": "heart rate",
+      "domain": "technology",
+      "corpus_freq": 356,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرائدة عالميا مجال",
+      "en": "global leader in",
+      "domain": "technology",
+      "corpus_freq": 356,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سعة التخزين الداخلية",
+      "en": "internal storage capacity",
+      "domain": "technology",
+      "corpus_freq": 351,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وصول عشوائي بسعة",
+      "en": "RAM",
+      "domain": "technology",
+      "corpus_freq": 350,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "آيفون وآيباد عبر",
+      "en": "iPhone and iPad",
+      "domain": "technology",
+      "corpus_freq": 347,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وكاميرا أمامية بدقة",
+      "en": "front camera",
+      "domain": "technology",
+      "corpus_freq": 347,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لجنة الاتصالات الفيدرالية",
+      "en": "FCC",
+      "domain": "technology",
+      "corpus_freq": 344,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تأتي بدقة ميجابكسل",
+      "en": "megapixel",
+      "domain": "technology",
+      "corpus_freq": 344,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بحجم جيجابايت وذاكرة",
+      "en": "gigabyte",
+      "domain": "technology",
+      "corpus_freq": 340,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لنظام التشغيل أندرويد",
+      "en": "Android operating system",
+      "domain": "technology",
+      "corpus_freq": 338,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بذاكرة وصول عشوائي",
+      "en": "RAM",
+      "domain": "technology",
+      "corpus_freq": 336,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الذكية والأجهزة اللوحية",
+      "en": "smartphones and tablets",
+      "domain": "technology",
+      "corpus_freq": 335,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نظامي أندرويد وآي",
+      "en": "Android and iOS",
+      "domain": "technology",
+      "corpus_freq": 334,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تقنية الجيل الخامس",
+      "en": "5G",
+      "domain": "technology",
+      "corpus_freq": 333,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جائحة فيروس كورونا",
+      "en": "coronavirus pandemic",
+      "domain": "technology",
+      "corpus_freq": 327,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يدعم شبكات الجيل",
+      "en": "supports cellular networks",
+      "domain": "technology",
+      "corpus_freq": 326,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أندرويد جوجل بلاي",
+      "en": "Android Google Play",
+      "domain": "technology",
+      "corpus_freq": 325,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وبطارية بسعة ميلي",
+      "en": "and battery capacity in mAh",
+      "domain": "technology",
+      "corpus_freq": 324,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التشغيل ويندوز فون",
+      "en": "Windows Phone operating system",
+      "domain": "technology",
+      "corpus_freq": 318,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تفشي فيروس كورونا",
+      "en": "coronavirus outbreak",
+      "domain": "technology",
+      "corpus_freq": 317,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عملاقة التقنية الأمريكية",
+      "en": "American tech giant",
+      "domain": "technology",
+      "corpus_freq": 316,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جمهورية مصر العربية",
+      "en": "Arab Republic of Egypt",
+      "domain": "technology",
+      "corpus_freq": 316,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "والشرق الأوسط وإفريقيا",
+      "en": "Middle East and Africa",
+      "domain": "technology",
+      "corpus_freq": 316,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "معالجا ثماني النوى",
+      "en": "octa-core processor",
+      "domain": "technology",
+      "corpus_freq": 315,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر تموز يوليو",
+      "en": "July",
+      "domain": "technology",
+      "corpus_freq": 311,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "انتشار فيروس كورونا",
+      "en": "coronavirus spread",
+      "domain": "technology",
+      "corpus_freq": 311,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تحديثا جديدا لتطبيق",
+      "en": "new update for the app",
+      "domain": "technology",
+      "corpus_freq": 310,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "طريق بطاقات الذاكرة",
+      "en": "via memory cards",
+      "domain": "technology",
+      "corpus_freq": 309,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جمعية منتجي برامج",
+      "en": "software producers association",
+      "domain": "technology",
+      "corpus_freq": 308,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر يونيو حزيران",
+      "en": "June",
+      "domain": "technology",
+      "corpus_freq": 307,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منتجي برامج الكمبيوتر",
+      "en": "computer software producers",
+      "domain": "technology",
+      "corpus_freq": 305,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "إنش بدقة بيكسل",
+      "en": "inch with pixel resolution",
+      "domain": "technology",
+      "corpus_freq": 304,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ثماني النوى نوع",
+      "en": "octa-core type",
+      "domain": "technology",
+      "corpus_freq": 304,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشرق الأوسط وتركيا",
+      "en": "Middle East and Turkey",
+      "domain": "technology",
+      "corpus_freq": 303,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التواصل الاجتماعي تويتر",
+      "en": "Twitter social media",
+      "domain": "technology",
+      "corpus_freq": 302,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التشغيل أندرويد التابع",
+      "en": "Android operating system",
+      "domain": "technology",
+      "corpus_freq": 302,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "آيفون وآيباد ستور",
+      "en": "iPhone and iPad Store",
+      "domain": "technology",
+      "corpus_freq": 300,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التنفيذي لشركة آبل",
+      "en": "Apple executive",
+      "domain": "technology",
+      "corpus_freq": 299,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يحمل الاسم الرمزي",
+      "en": "carries the codename",
+      "domain": "technology",
+      "corpus_freq": 298,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التنفيذي لشركة فيسبوك",
+      "en": "Facebook executive",
+      "domain": "technology",
+      "corpus_freq": 298,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حلول تكنولوجيا المعلومات",
+      "en": "information technology solutions",
+      "domain": "technology",
+      "corpus_freq": 296,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أندرويد التابع لشركة",
+      "en": "Android by company",
+      "domain": "technology",
+      "corpus_freq": 295,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "برامج الكمبيوتر التجارية",
+      "en": "commercial computer programs",
+      "domain": "technology",
+      "corpus_freq": 293,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رسالة بريد إلكتروني",
+      "en": "email message",
+      "domain": "technology",
+      "corpus_freq": 292,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نوع كوالكوم سنابدراجون",
+      "en": "Qualcomm Snapdragon type",
+      "domain": "technology",
+      "corpus_freq": 291,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البريد الإلكتروني جيميل",
+      "en": "Gmail email",
+      "domain": "technology",
+      "corpus_freq": 290,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجال الذكاء الاصطناعي",
+      "en": "field of artificial intelligence",
+      "domain": "technology",
+      "corpus_freq": 289,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الألعاب إكس بوكس",
+      "en": "Xbox games",
+      "domain": "technology",
+      "corpus_freq": 288,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مقاطع الفيديو القصيرة",
+      "en": "short video clips",
+      "domain": "technology",
+      "corpus_freq": 285,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نظارة الواقع الافتراضي",
+      "en": "virtual reality goggles",
+      "domain": "technology",
+      "corpus_freq": 283,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كلمات المرور الخاصة",
+      "en": "private passwords",
+      "domain": "technology",
+      "corpus_freq": 283,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المملوكة لشركة فيسبوك",
+      "en": "owned by Facebook",
+      "domain": "technology",
+      "corpus_freq": 282,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "فوجيتسو سيمنز كمبيوترز",
+      "en": "Fujitsu Siemens Computers",
+      "domain": "technology",
+      "corpus_freq": 282,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سماعات الأذن اللاسلكية",
+      "en": "wireless earphones",
+      "domain": "technology",
+      "corpus_freq": 279,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بدقة ميجابكسل وبفتحة",
+      "en": "megapixel and aperture",
+      "domain": "technology",
+      "corpus_freq": 279,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ميجابكسل وبفتحة عدسة",
+      "en": "megapixel and lens aperture",
+      "domain": "technology",
+      "corpus_freq": 279,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العملات الرقمية المشفرة",
+      "en": "cryptocurrencies",
+      "domain": "technology",
+      "corpus_freq": 277,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشحن السريع باستطاعة",
+      "en": "fast charging with power",
+      "domain": "technology",
+      "corpus_freq": 276,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وآيباد عبر متجر",
+      "en": "and iPad via store",
+      "domain": "technology",
+      "corpus_freq": 272,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جيجابايتا مساحة التخزين",
+      "en": "gigabytes of storage",
+      "domain": "technology",
+      "corpus_freq": 271,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تعمل بنظام ويندوز",
+      "en": "runs on Windows",
+      "domain": "technology",
+      "corpus_freq": 271,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متصفح مايكروسوفت إيدج",
+      "en": "Microsoft Edge browser",
+      "domain": "technology",
+      "corpus_freq": 270,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بقياس بوصة وبدقة",
+      "en": "measuring inch and resolution",
+      "domain": "technology",
+      "corpus_freq": 268,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مؤسسة الإمارات للاتصالات",
+      "en": "Emirates Telecommunications Corporation",
+      "domain": "technology",
+      "corpus_freq": 268,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر متجر آيتيونز",
+      "en": "via iTunes store",
+      "domain": "technology",
+      "corpus_freq": 268,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لخيار جيجابايت جيجابايت",
+      "en": "for gigabyte option",
+      "domain": "technology",
+      "corpus_freq": 267,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ذاكرة التخزين الداخلية",
+      "en": "internal storage",
+      "domain": "technology",
+      "corpus_freq": 265,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "آيفون وآيفون بلس",
+      "en": "iPhone and iPhone Plus",
+      "domain": "technology",
+      "corpus_freq": 264,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عناوين البريد الإلكتروني",
+      "en": "email addresses",
+      "domain": "technology",
+      "corpus_freq": 264,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس مجلس الإدارة",
+      "en": "Chairman of the Board",
+      "domain": "technology",
+      "corpus_freq": 262,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الطباعة ثلاثية الأبعاد",
+      "en": "3D printing",
+      "domain": "technology",
+      "corpus_freq": 262,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وزارة العدل الأمريكية",
+      "en": "U.S. Department of Justice",
+      "domain": "technology",
+      "corpus_freq": 261,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يعمل بنظام ويندوز",
+      "en": "runs on Windows",
+      "domain": "technology",
+      "corpus_freq": 261,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مدينة دبي للإنترنت",
+      "en": "Dubai Internet City",
+      "domain": "technology",
+      "corpus_freq": 261,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منصة بلاي ستيشن",
+      "en": "PlayStation platform",
+      "domain": "technology",
+      "corpus_freq": 261,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مشاركة الصور إنستاجرام",
+      "en": "Instagram photo sharing",
+      "domain": "technology",
+      "corpus_freq": 260,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الإمارات للاتصالات اتصالات",
+      "en": "Etisalat",
+      "domain": "technology",
+      "corpus_freq": 260,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس مجلس الوزراء",
+      "en": "Prime Minister",
+      "domain": "technology",
+      "corpus_freq": 260,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "محطة الفضاء الدولية",
+      "en": "International Space Station",
+      "domain": "technology",
+      "corpus_freq": 258,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مشاهدة مقاطع الفيديو",
+      "en": "video viewing",
+      "domain": "technology",
+      "corpus_freq": 257,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نظارات الواقع الافتراضي",
+      "en": "virtual reality headsets",
+      "domain": "technology",
+      "corpus_freq": 254,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شاشات الكريستال السائل",
+      "en": "LCD screens",
+      "domain": "technology",
+      "corpus_freq": 254,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بنظام تشغيل ويندوز",
+      "en": "running Windows",
+      "domain": "technology",
+      "corpus_freq": 254,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كانون الشرق الأوسط",
+      "en": "Canon Middle East",
+      "domain": "technology",
+      "corpus_freq": 254,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مؤتمرها السنوي للمطورين",
+      "en": "annual developers conference",
+      "domain": "technology",
+      "corpus_freq": 252,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكة الواي فاي",
+      "en": "WiFi network",
+      "domain": "technology",
+      "corpus_freq": 252,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المصنعة للهواتف الذكية",
+      "en": "smartphone manufacturers",
+      "domain": "technology",
+      "corpus_freq": 251,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الألعاب بلاي ستيشن",
+      "en": "PlayStation games",
+      "domain": "technology",
+      "corpus_freq": 251,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التسوق عبر الإنترنت",
+      "en": "online shopping",
+      "domain": "technology",
+      "corpus_freq": 247,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جيجابايت سعة التخزين",
+      "en": "gigabytes of storage",
+      "domain": "technology",
+      "corpus_freq": 247,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مساحة تخزين داخلية",
+      "en": "internal storage",
+      "domain": "technology",
+      "corpus_freq": 247,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مركز دبي الدولي",
+      "en": "Dubai International Convention Centre",
+      "domain": "technology",
+      "corpus_freq": 247,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منصة إكس بوكس",
+      "en": "Xbox platform",
+      "domain": "technology",
+      "corpus_freq": 247,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مدينة سان فرانسيسكو",
+      "en": "San Francisco",
+      "domain": "technology",
+      "corpus_freq": 246,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ظروف الإضاءة المنخفضة",
+      "en": "low light conditions",
+      "domain": "technology",
+      "corpus_freq": 246,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تتبع اللياقة البدنية",
+      "en": "fitness tracking",
+      "domain": "technology",
+      "corpus_freq": 246,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر الشبكات الاجتماعية",
+      "en": "via social media",
+      "domain": "technology",
+      "corpus_freq": 246,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بنظام تشغيل أندرويد",
+      "en": "Android operating system",
+      "domain": "technology",
+      "corpus_freq": 245,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "اتحاد اتصالات موبايلي",
+      "en": "Mobily",
+      "domain": "technology",
+      "corpus_freq": 243,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر يوليو تموز",
+      "en": "July",
+      "domain": "technology",
+      "corpus_freq": 242,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "راشد مكتوم نائب",
+      "en": "Rashid Al Maktoum Vice President",
+      "domain": "technology",
+      "corpus_freq": 242,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر سبتمبر أيلول",
+      "en": "September",
+      "domain": "technology",
+      "corpus_freq": 241,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الذكية والحواسب اللوحية",
+      "en": "smartphones and tablets",
+      "domain": "technology",
+      "corpus_freq": 240,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عملاقة التواصل الاجتماعي",
+      "en": "social media giant",
+      "domain": "technology",
+      "corpus_freq": 240,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "إدارة تقنية المعلومات",
+      "en": "IT management",
+      "domain": "technology",
+      "corpus_freq": 240,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وضع عدم الاتصال",
+      "en": "offline mode",
+      "domain": "technology",
+      "corpus_freq": 238,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكة الجيل الخامس",
+      "en": "5G network",
+      "domain": "technology",
+      "corpus_freq": 238,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "والإمارات العربية المتحدة",
+      "en": "United Arab Emirates",
+      "domain": "technology",
+      "corpus_freq": 238,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وصول عشوائي سعة",
+      "en": "RAM",
+      "domain": "technology",
+      "corpus_freq": 237,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السيارات ذاتية القيادة",
+      "en": "self-driving cars",
+      "domain": "technology",
+      "corpus_freq": 235,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "زوكربيرج الرئيس التنفيذي",
+      "en": "Zuckerberg CEO",
+      "domain": "technology",
+      "corpus_freq": 235,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حواسيب ماك بوك",
+      "en": "MacBook computers",
+      "domain": "technology",
+      "corpus_freq": 234,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الولايات المتحدة وكندا",
+      "en": "United States and Canada",
+      "domain": "technology",
+      "corpus_freq": 234,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رام بحجم جيجابايتات",
+      "en": "gigabytes of RAM",
+      "domain": "technology",
+      "corpus_freq": 232,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الإصدار وما فوق",
+      "en": "version and above",
+      "domain": "technology",
+      "corpus_freq": 232,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حواسيب كروم بوك",
+      "en": "Chromebooks",
+      "domain": "technology",
+      "corpus_freq": 232,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عمل متابعة لحساب",
+      "en": "follow an account",
+      "domain": "technology",
+      "corpus_freq": 232,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متابعة لحساب نشرة",
+      "en": "subscribe to a newsletter",
+      "domain": "technology",
+      "corpus_freq": 232,
+      "ngram_size": "trigram",
       "confidence": "high",
       "proposer": "minimax"
     }
