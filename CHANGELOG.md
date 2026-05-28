@@ -2,6 +2,36 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.9 — Asset G (paired EN↔AR terminology) — Phase 2 of the terminology pipeline
+
+**Released:** 2026-05-28
+
+**The Phase 2 ship.** v0.8 mined 999 AR-side candidates from AITNews. v0.9 executes the LLM-pairing step the user asked for ("let kimi CLI or whatever extract and create dictionaries"). Made possible by reading `M:\Main\DevTools\AI\config\.ai-instructions.md` which documents four LAN-local OpenAI-compatible LLM proxies (`192.168.80.107:11435-11438` — kimi/codex/gemini/minimax, free, no signup). The proxies aren't external API calls — they're free-at-runtime LAN services explicitly intended for AI sessions to use.
+
+- **`scripts/pair_terminology.py`** — Phase-2 pairing script. Loads Phase-1 candidates, batches them, sends to a chosen proxy with a strict system prompt ("output only valid JSON array, no markdown, never invent"), parses the response with tolerant regex fallback, accumulates validated pairs. Configurable: `--proxy` (kimi/codex/gemini/minimax), `--batch-size`, `--ngram-filter` (skip noisy unigrams), `--top` / `--sample`, `--confirm-with` (multi-vendor agreement). Uses `urllib.request` only — no `pip install openai` needed (matches the toolkit's stdlib-only discipline).
+- **`corpus/domain-terminology.json`** — Phase-2 output. Top 300 bigram+trigram candidates from technology domain paired by minimax-proxy. Each pair: `{ar, en, domain, corpus_freq, ngram_size, confidence, proposer}`. Pairs with cross-vendor agreement also carry `cross_llm_agreement: bool` + `confirmed_by`. Schema v1.0.0.
+- **`corpus/domain-terminology.schema.json`** — JSON Schema for paired terms. Tracks proposer + confidence taxonomy + optional cross-vendor fields.
+- **`scripts/domain_terminology.py`** — 9-function read API: `load_pairs`, `pair_count`, `iter_pairs`, `find_by_en` (case-insensitive), `find_by_ar`, `pairs_for_en_text` (whole-word scan for translator Stage A injection), `top_pairs`, `soft_validate`, `stats`.
+- **`scripts/test_domain_terminology.py`** — 10-assertion release gate.
+
+### Why proxies instead of external APIs
+
+The .ai-instructions.md routes AI sessions to LAN proxies because they're free at runtime, sub-second latency on flash models, and bound to subscriptions Basil already pays for. For terminology pairing this matters because:
+1. **Cost:** ~300 batched LLM calls = real money on external APIs. Free here.
+2. **Latency:** Pairing 300 candidates takes ~17 minutes; on external APIs the latency would be similar but with real-dollar cost per token.
+3. **Multi-vendor:** Kimi + Codex + Gemini + MiniMax all available as drop-in OpenAI endpoints, enabling the cross-LLM-agreement filter the original v2.6.0 multi-agent review architecture depends on.
+
+### Stdlib-only LLM client
+
+`pair_terminology.py` uses `urllib.request` rather than the `openai` SDK because the toolkit's discipline is Python stdlib only — `pip install openai` would violate the "no pip install required" property of every script in this repo. The HTTP shape is OpenAI-compatible (the proxies *are* OpenAI Chat Completions schema), so urllib's 30-line POST does the same job as `openai.ChatCompletion.create(...)`. Matches the same pattern as the translator's existing Stage C LLM client (also urllib).
+
+### Asset version state at end of v0.9
+
+| Asset | Schema | Notes |
+|---|---|---|
+| `corpus/terminology-candidates-technology.json` | v1.0.0 | unchanged from v0.8 |
+| `corpus/domain-terminology.json` | **v1.0.0** | **NEW** in v0.9 |
+
 ## v0.8 — Asset F (terminology candidates) — net-new corpus-mined asset
 
 **Released:** 2026-05-28

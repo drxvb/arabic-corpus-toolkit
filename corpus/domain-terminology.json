@@ -1,0 +1,1535 @@
+{
+  "$schema_version": "1.0.0",
+  "asset_name": "domain-terminology",
+  "domain": "technology",
+  "provenance": {
+    "source_candidates_file": "corpus\\terminology-candidates-technology.json",
+    "source_candidates_count": 300,
+    "n_articles_processed": 64484,
+    "primary_proxy": "minimax",
+    "primary_model": "MiniMax-M2.7",
+    "confirm_proxy": null,
+    "confirm_model": null,
+    "ngram_filter": "bigram_trigram",
+    "pairing_timestamp": "2026-05-28T21:28:25"
+  },
+  "notes": [
+    "Phase 2 output: LLM-paired EN translations for Phase-1 AR candidates.",
+    "Each pair carries corpus_freq (Phase-1 frequency) + LLM proposer + confidence.",
+    "When --confirm-with is used, pairs also carry cross_llm_agreement and confirmed_by fields."
+  ],
+  "pairs": [
+    {
+      "ar": "عبر الإنترنت",
+      "en": "online",
+      "domain": "technology",
+      "corpus_freq": 8223,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الذكاء الاصطناعي",
+      "en": "artificial intelligence",
+      "domain": "technology",
+      "corpus_freq": 8146,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البريد الإلكتروني",
+      "en": "email",
+      "domain": "technology",
+      "corpus_freq": 7477,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التواصل الاجتماعي",
+      "en": "social media",
+      "domain": "technology",
+      "corpus_freq": 7216,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تقنية المعلومات",
+      "en": "IT",
+      "domain": "technology",
+      "corpus_freq": 5957,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تكنولوجيا المعلومات",
+      "en": "IT",
+      "domain": "technology",
+      "corpus_freq": 5702,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جوجل بلاي",
+      "en": "Google Play",
+      "domain": "technology",
+      "corpus_freq": 5050,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بدقة ميجابكسل",
+      "en": "megapixel",
+      "domain": "technology",
+      "corpus_freq": 4836,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مقاطع الفيديو",
+      "en": "videos",
+      "domain": "technology",
+      "corpus_freq": 4574,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التشغيل أندرويد",
+      "en": "Android",
+      "domain": "technology",
+      "corpus_freq": 4359,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجيل الخامس",
+      "en": "5G",
+      "domain": "technology",
+      "corpus_freq": 4184,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متجر جوجل",
+      "en": "Google Store",
+      "domain": "technology",
+      "corpus_freq": 3899,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الإمارات العربية المتحدة",
+      "en": "United Arab Emirates",
+      "domain": "technology",
+      "corpus_freq": 3882,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دولة الإمارات",
+      "en": "United Arab Emirates",
+      "domain": "technology",
+      "corpus_freq": 3812,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التشغيل ويندوز",
+      "en": "Windows operating system",
+      "domain": "technology",
+      "corpus_freq": 3579,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العربية السعودية",
+      "en": "Saudi Arabia",
+      "domain": "technology",
+      "corpus_freq": 3469,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متجر جوجل بلاي",
+      "en": "Google Play Store",
+      "domain": "technology",
+      "corpus_freq": 3434,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تيك توك",
+      "en": "TikTok",
+      "domain": "technology",
+      "corpus_freq": 3400,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بلاك بيري",
+      "en": "BlackBerry",
+      "domain": "technology",
+      "corpus_freq": 3245,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البنية التحتية",
+      "en": "infrastructure",
+      "domain": "technology",
+      "corpus_freq": 3200,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جوجل كروم",
+      "en": "Google Chrome",
+      "domain": "technology",
+      "corpus_freq": 3074,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكة الإنترنت",
+      "en": "internet",
+      "domain": "technology",
+      "corpus_freq": 3044,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بنظام أندرويد",
+      "en": "Android operating system",
+      "domain": "technology",
+      "corpus_freq": 3001,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بنظام التشغيل",
+      "en": "operating system",
+      "domain": "technology",
+      "corpus_freq": 2976,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سناب شات",
+      "en": "Snapchat",
+      "domain": "technology",
+      "corpus_freq": 2968,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ميلي أمبير",
+      "en": "mAh",
+      "domain": "technology",
+      "corpus_freq": 2941,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الواقع الافتراضي",
+      "en": "virtual reality",
+      "domain": "technology",
+      "corpus_freq": 2861,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المملكة العربية السعودية",
+      "en": "Saudi Arabia",
+      "domain": "technology",
+      "corpus_freq": 2799,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرئيس التنفيذي لشركة",
+      "en": "CEO of",
+      "domain": "technology",
+      "corpus_freq": 2765,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "إكس بوكس",
+      "en": "Xbox",
+      "domain": "technology",
+      "corpus_freq": 2701,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ويندوز فون",
+      "en": "Windows Phone",
+      "domain": "technology",
+      "corpus_freq": 2673,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كاسبرسكي لاب",
+      "en": "Kaspersky Lab",
+      "domain": "technology",
+      "corpus_freq": 2622,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ثلاثية الأبعاد",
+      "en": "3D",
+      "domain": "technology",
+      "corpus_freq": 2519,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "واي فاي",
+      "en": "Wi-Fi",
+      "domain": "technology",
+      "corpus_freq": 2446,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لوحة المفاتيح",
+      "en": "keyboard",
+      "domain": "technology",
+      "corpus_freq": 2428,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المعلومات والاتصالات",
+      "en": "ICT",
+      "domain": "technology",
+      "corpus_freq": 2424,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كلمات المرور",
+      "en": "passwords",
+      "domain": "technology",
+      "corpus_freq": 2357,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأوسط وأفريقيا",
+      "en": "Middle East and Africa",
+      "domain": "technology",
+      "corpus_freq": 2344,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تسجيل الدخول",
+      "en": "login",
+      "domain": "technology",
+      "corpus_freq": 2343,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نائب رئيس",
+      "en": "vice president",
+      "domain": "technology",
+      "corpus_freq": 2324,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وصول عشوائي",
+      "en": "random access",
+      "domain": "technology",
+      "corpus_freq": 2311,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سطح المكتب",
+      "en": "desktop",
+      "domain": "technology",
+      "corpus_freq": 2309,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجيل الثالث",
+      "en": "third generation",
+      "domain": "technology",
+      "corpus_freq": 2243,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتحاد الأوروبي",
+      "en": "European Union",
+      "domain": "technology",
+      "corpus_freq": 2236,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "للهواتف الذكية",
+      "en": "for smartphones",
+      "domain": "technology",
+      "corpus_freq": 2227,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بلاي ستيشن",
+      "en": "PlayStation",
+      "domain": "technology",
+      "corpus_freq": 2193,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البوابة التقنية",
+      "en": "tech portal",
+      "domain": "technology",
+      "corpus_freq": 2192,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بسعة جيجابايت",
+      "en": "with gigabyte capacity",
+      "domain": "technology",
+      "corpus_freq": 2182,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشبكات الاجتماعية",
+      "en": "social networks",
+      "domain": "technology",
+      "corpus_freq": 2154,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "فيروس كورونا",
+      "en": "coronavirus",
+      "domain": "technology",
+      "corpus_freq": 2144,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بدقة ميجابيكسل",
+      "en": "with megapixel resolution",
+      "domain": "technology",
+      "corpus_freq": 2140,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجيل الرابع",
+      "en": "4G",
+      "domain": "technology",
+      "corpus_freq": 2130,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الوصول العشوائي",
+      "en": "Random Access",
+      "domain": "technology",
+      "corpus_freq": 1998,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جالاكسي نوت",
+      "en": "Galaxy Note",
+      "domain": "technology",
+      "corpus_freq": 1983,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "آيفون وآيباد",
+      "en": "iPhone and iPad",
+      "domain": "technology",
+      "corpus_freq": 1969,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تعمل بنظام",
+      "en": "runs on",
+      "domain": "technology",
+      "corpus_freq": 1946,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "محرك البحث",
+      "en": "search engine",
+      "domain": "technology",
+      "corpus_freq": 1946,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الواقع المعزز",
+      "en": "augmented reality",
+      "domain": "technology",
+      "corpus_freq": 1918,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المدير التنفيذي",
+      "en": "CEO",
+      "domain": "technology",
+      "corpus_freq": 1886,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نائب الرئيس",
+      "en": "Vice President",
+      "domain": "technology",
+      "corpus_freq": 1869,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جيتكس للتقنية",
+      "en": "GITEX Technology",
+      "domain": "technology",
+      "corpus_freq": 1866,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لنظام التشغيل",
+      "en": "for the operating system",
+      "domain": "technology",
+      "corpus_freq": 1860,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحوسبة السحابية",
+      "en": "cloud computing",
+      "domain": "technology",
+      "corpus_freq": 1859,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العلامة التجارية",
+      "en": "brand",
+      "domain": "technology",
+      "corpus_freq": 1853,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العلامات التجارية",
+      "en": "brands",
+      "domain": "technology",
+      "corpus_freq": 1845,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أسبوع جيتكس",
+      "en": "GITEX week",
+      "domain": "technology",
+      "corpus_freq": 1840,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التخزين الداخلية",
+      "en": "internal storage",
+      "domain": "technology",
+      "corpus_freq": 1821,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دولارا أمريكيا",
+      "en": "US dollars",
+      "domain": "technology",
+      "corpus_freq": 1805,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ذاكرة الوصول",
+      "en": "access memory",
+      "domain": "technology",
+      "corpus_freq": 1802,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتصالات السعودية",
+      "en": "Saudi Telecom Company",
+      "domain": "technology",
+      "corpus_freq": 1801,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يعمل بنظام",
+      "en": "runs on",
+      "domain": "technology",
+      "corpus_freq": 1788,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الولايات المتحدة الأمريكية",
+      "en": "United States of America",
+      "domain": "technology",
+      "corpus_freq": 1787,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تجدر الإشارة",
+      "en": "notably",
+      "domain": "technology",
+      "corpus_freq": 1779,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ذاكرة الوصول العشوائي",
+      "en": "RAM",
+      "domain": "technology",
+      "corpus_freq": 1765,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وشمال أفريقيا",
+      "en": "and North Africa",
+      "domain": "technology",
+      "corpus_freq": 1760,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بسعة ميلي",
+      "en": "with milli capacity",
+      "domain": "technology",
+      "corpus_freq": 1744,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شاشة بقياس",
+      "en": "screen measuring",
+      "domain": "technology",
+      "corpus_freq": 1720,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أسبوع جيتكس للتقنية",
+      "en": "GITEX Technology Week",
+      "domain": "technology",
+      "corpus_freq": 1707,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "للمرة الأولى",
+      "en": "for the first time",
+      "domain": "technology",
+      "corpus_freq": 1691,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الوصول إليها",
+      "en": "access it",
+      "domain": "technology",
+      "corpus_freq": 1669,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ماك بوك",
+      "en": "MacBook",
+      "domain": "technology",
+      "corpus_freq": 1661,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متجر ستور",
+      "en": "App Store",
+      "domain": "technology",
+      "corpus_freq": 1653,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البرمجيات الخبيثة",
+      "en": "malware",
+      "domain": "technology",
+      "corpus_freq": 1651,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأوسط وشمال أفريقيا",
+      "en": "Middle East and North Africa",
+      "domain": "technology",
+      "corpus_freq": 1647,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بسعة ميلي أمبير",
+      "en": "milliampere-hour capacity",
+      "domain": "technology",
+      "corpus_freq": 1645,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "إنترنت الأشياء",
+      "en": "Internet of Things",
+      "domain": "technology",
+      "corpus_freq": 1637,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "قطاع الاتصالات",
+      "en": "telecommunications sector",
+      "domain": "technology",
+      "corpus_freq": 1636,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التراسل الفوري",
+      "en": "instant messaging",
+      "domain": "technology",
+      "corpus_freq": 1623,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شبكات الجيل الخامس",
+      "en": "5G networks",
+      "domain": "technology",
+      "corpus_freq": 1623,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشرق الأوسط وأفريقيا",
+      "en": "Middle East and Africa",
+      "domain": "technology",
+      "corpus_freq": 1614,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "النسخة التجريبية",
+      "en": "beta version",
+      "domain": "technology",
+      "corpus_freq": 1613,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بقياس بوصة",
+      "en": "inch display",
+      "domain": "technology",
+      "corpus_freq": 1608,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جهات الاتصال",
+      "en": "contacts",
+      "domain": "technology",
+      "corpus_freq": 1584,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نتائج البحث",
+      "en": "search results",
+      "domain": "technology",
+      "corpus_freq": 1558,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نطاق واسع",
+      "en": "wide area",
+      "domain": "technology",
+      "corpus_freq": 1534,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رسائل البريد",
+      "en": "emails",
+      "domain": "technology",
+      "corpus_freq": 1509,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الربع الثالث",
+      "en": "third quarter",
+      "domain": "technology",
+      "corpus_freq": 1499,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مساحة التخزين",
+      "en": "storage space",
+      "domain": "technology",
+      "corpus_freq": 1498,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لشركة آبل",
+      "en": "Apple",
+      "domain": "technology",
+      "corpus_freq": 1483,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تخزين داخلية",
+      "en": "internal storage",
+      "domain": "technology",
+      "corpus_freq": 1483,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "إمكانية الوصول",
+      "en": "accessibility",
+      "domain": "technology",
+      "corpus_freq": 1462,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تشرين الثاني",
+      "en": "November",
+      "domain": "technology",
+      "corpus_freq": 1462,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجيل الثاني",
+      "en": "second generation",
+      "domain": "technology",
+      "corpus_freq": 1454,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وتقنية المعلومات",
+      "en": "information technology",
+      "domain": "technology",
+      "corpus_freq": 1447,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بريد إلكتروني",
+      "en": "email",
+      "domain": "technology",
+      "corpus_freq": 1440,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كلمة المرور",
+      "en": "password",
+      "domain": "technology",
+      "corpus_freq": 1439,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مقطع فيديو",
+      "en": "video clip",
+      "domain": "technology",
+      "corpus_freq": 1429,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشبكة الاجتماعية",
+      "en": "social network",
+      "domain": "technology",
+      "corpus_freq": 1427,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرسائل النصية",
+      "en": "text messages",
+      "domain": "technology",
+      "corpus_freq": 1424,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كروم بوك",
+      "en": "Chromebook",
+      "domain": "technology",
+      "corpus_freq": 1413,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عالية الجودة",
+      "en": "high quality",
+      "domain": "technology",
+      "corpus_freq": 1405,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجموعة واسعة",
+      "en": "wide range",
+      "domain": "technology",
+      "corpus_freq": 1402,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متصفح كروم",
+      "en": "Chrome browser",
+      "domain": "technology",
+      "corpus_freq": 1386,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجموعة متنوعة",
+      "en": "variety",
+      "domain": "technology",
+      "corpus_freq": 1383,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البث المباشر",
+      "en": "live stream",
+      "domain": "technology",
+      "corpus_freq": 1383,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جيجابايت جيجابايت",
+      "en": "gigabyte",
+      "domain": "technology",
+      "corpus_freq": 1377,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الربع الثاني",
+      "en": "second quarter",
+      "domain": "technology",
+      "corpus_freq": 1376,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "خلفية بدقة",
+      "en": "wallpaper",
+      "domain": "technology",
+      "corpus_freq": 1362,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "واجهة المستخدم",
+      "en": "user interface",
+      "domain": "technology",
+      "corpus_freq": 1361,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كاميرا خلفية",
+      "en": "rear camera",
+      "domain": "technology",
+      "corpus_freq": 1360,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الوسائط المتعددة",
+      "en": "multimedia",
+      "domain": "technology",
+      "corpus_freq": 1353,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس مجلس",
+      "en": "board chairman",
+      "domain": "technology",
+      "corpus_freq": 1353,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رسائل البريد الإلكتروني",
+      "en": "email messages",
+      "domain": "technology",
+      "corpus_freq": 1348,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لشركة جوجل",
+      "en": "for Google",
+      "domain": "technology",
+      "corpus_freq": 1347,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كانون الثاني",
+      "en": "January",
+      "domain": "technology",
+      "corpus_freq": 1344,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لنظام أندرويد",
+      "en": "for Android",
+      "domain": "technology",
+      "corpus_freq": 1321,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متحدث باسم",
+      "en": "spokesperson",
+      "domain": "technology",
+      "corpus_freq": 1311,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "معرض جيتكس",
+      "en": "GITEX",
+      "domain": "technology",
+      "corpus_freq": 1310,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر أكتوبر",
+      "en": "October",
+      "domain": "technology",
+      "corpus_freq": 1308,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شهر أغسطس",
+      "en": "August",
+      "domain": "technology",
+      "corpus_freq": 1308,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لوحة مفاتيح",
+      "en": "keyboard",
+      "domain": "technology",
+      "corpus_freq": 1302,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أمن المعلومات",
+      "en": "information security",
+      "domain": "technology",
+      "corpus_freq": 1300,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ذاكرة وصول",
+      "en": "access memory",
+      "domain": "technology",
+      "corpus_freq": 1294,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العملات المشفرة",
+      "en": "cryptocurrencies",
+      "domain": "technology",
+      "corpus_freq": 1293,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بروتوكول الإنترنت",
+      "en": "Internet Protocol",
+      "domain": "technology",
+      "corpus_freq": 1285,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مشاركة الصور",
+      "en": "photo sharing",
+      "domain": "technology",
+      "corpus_freq": 1285,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عمر البطارية",
+      "en": "battery life",
+      "domain": "technology",
+      "corpus_freq": 1283,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأمن السيبراني",
+      "en": "cybersecurity",
+      "domain": "technology",
+      "corpus_freq": 1279,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ألعاب الفيديو",
+      "en": "video games",
+      "domain": "technology",
+      "corpus_freq": 1271,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متصفح جوجل",
+      "en": "Google Chrome",
+      "domain": "technology",
+      "corpus_freq": 1270,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "القابلة للارتداء",
+      "en": "wearable",
+      "domain": "technology",
+      "corpus_freq": 1269,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ذاكرة وصول عشوائي",
+      "en": "RAM",
+      "domain": "technology",
+      "corpus_freq": 1268,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وسائل التواصل",
+      "en": "social media",
+      "domain": "technology",
+      "corpus_freq": 1258,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأمن القومي",
+      "en": "national security",
+      "domain": "technology",
+      "corpus_freq": 1250,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تريند مايكرو",
+      "en": "Trend Micro",
+      "domain": "technology",
+      "corpus_freq": 1241,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "متصفح جوجل كروم",
+      "en": "Google Chrome",
+      "domain": "technology",
+      "corpus_freq": 1237,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وول ستريت",
+      "en": "Wall Street",
+      "domain": "technology",
+      "corpus_freq": 1233,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التابع لشركة",
+      "en": "subsidiary of",
+      "domain": "technology",
+      "corpus_freq": 1230,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجال توفير",
+      "en": "coverage area",
+      "domain": "technology",
+      "corpus_freq": 1226,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جيجابايت ذاكرة",
+      "en": "Gigabytes of memory",
+      "domain": "technology",
+      "corpus_freq": 1205,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عالية الدقة",
+      "en": "high-definition",
+      "domain": "technology",
+      "corpus_freq": 1191,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحاسب اللوحي",
+      "en": "tablet",
+      "domain": "technology",
+      "corpus_freq": 1176,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "محرك بحث",
+      "en": "search engine",
+      "domain": "technology",
+      "corpus_freq": 1175,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأمن الإلكتروني",
+      "en": "cybersecurity",
+      "domain": "technology",
+      "corpus_freq": 1173,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأقراص الصلبة",
+      "en": "hard drives",
+      "domain": "technology",
+      "corpus_freq": 1168,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الواي فاي",
+      "en": "Wi-Fi",
+      "domain": "technology",
+      "corpus_freq": 1157,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتصالات وتقنية المعلومات",
+      "en": "ICT",
+      "domain": "technology",
+      "corpus_freq": 1156,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عدد مستخدمي",
+      "en": "number of users",
+      "domain": "technology",
+      "corpus_freq": 1143,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وتكنولوجيا المعلومات",
+      "en": "and information technology",
+      "domain": "technology",
+      "corpus_freq": 1141,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "استهلاك الطاقة",
+      "en": "power consumption",
+      "domain": "technology",
+      "corpus_freq": 1139,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الكاميرا الأمامية",
+      "en": "front camera",
+      "domain": "technology",
+      "corpus_freq": 1130,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بطارية بسعة",
+      "en": "battery capacity of",
+      "domain": "technology",
+      "corpus_freq": 1123,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "لهواتف آيفون",
+      "en": "for iPhone phones",
+      "domain": "technology",
+      "corpus_freq": 1106,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشحن السريع",
+      "en": "fast charging",
+      "domain": "technology",
+      "corpus_freq": 1106,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بقياس إنش",
+      "en": "measuring inches",
+      "domain": "technology",
+      "corpus_freq": 1097,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبر شبكة",
+      "en": "over network",
+      "domain": "technology",
+      "corpus_freq": 1094,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وسائل التواصل الاجتماعي",
+      "en": "social media",
+      "domain": "technology",
+      "corpus_freq": 1080,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مارك زوكربيرج",
+      "en": "Mark Zuckerberg",
+      "domain": "technology",
+      "corpus_freq": 1073,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    }
+  ]
+}

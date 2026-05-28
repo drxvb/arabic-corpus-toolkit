@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/drxvb/arabic-corpus-toolkit/corpus/domain-terminology.schema.json",
+  "title": "Domain terminology schema (Asset G — Phase 2 paired terms)",
+  "description": "Schema for the Phase-2 output of the terminology pipeline. Pairs are validated EN↔AR terminology with corpus-frequency evidence + LLM proposer attribution + optional cross-vendor agreement. Unlike Asset F (Phase-1 candidates, AR-only), Asset G has both sides and is suitable for direct injection into the translator's Stage A prompt.",
+  "type": "object",
+  "required": ["$schema_version", "asset_name", "domain", "provenance", "pairs"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "asset_name": { "const": "domain-terminology" },
+    "domain": { "type": "string", "minLength": 2 },
+    "provenance": {
+      "type": "object",
+      "required": ["source_candidates_file", "primary_proxy"],
+      "additionalProperties": true,
+      "properties": {
+        "source_candidates_file": { "type": "string" },
+        "source_candidates_count": { "type": "integer", "minimum": 0 },
+        "n_articles_processed": { "type": "integer", "minimum": 0 },
+        "primary_proxy": { "type": "string" },
+        "primary_model": { "type": "string" },
+        "confirm_proxy": { "type": ["string", "null"] },
+        "confirm_model": { "type": ["string", "null"] },
+        "ngram_filter": { "type": "string" },
+        "pairing_timestamp": { "type": "string" }
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } },
+    "pairs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["ar", "en", "domain", "corpus_freq", "confidence", "proposer"],
+        "additionalProperties": false,
+        "properties": {
+          "ar": { "type": "string", "minLength": 2 },
+          "en": { "type": "string", "minLength": 1 },
+          "domain": { "type": "string" },
+          "corpus_freq": { "type": "integer", "minimum": 1 },
+          "ngram_size": { "enum": ["unigram", "bigram", "trigram"] },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "proposer": {
+            "type": "string",
+            "description": "Which LLM proxy proposed this pair (kimi/codex/gemini/minimax)."
+          },
+          "cross_llm_agreement": {
+            "type": "boolean",
+            "description": "Set when a second LLM proxy independently agreed with the proposed EN. Present only when --confirm-with was used."
+          },
+          "confirmed_by": {
+            "type": "string",
+            "description": "Which proxy confirmed the pair."
+          },
+          "disagreement_alt_en": {
+            "type": "string",
+            "description": "If cross_llm_agreement is false, the alternative EN the second LLM proposed."
+          }
+        }
+      }
+    }
+  }
+}
