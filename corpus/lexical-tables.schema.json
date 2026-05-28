@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/drxvb/arabic-corpus-toolkit/corpus/lexical-tables.schema.json",
+  "title": "lexical-tables asset schema (arabic-corpus-toolkit)",
+  "description": "Schema for the consolidated lexical-substitution asset (Asset C). Validates structure of corpus/lexical-tables.json. Each sub-table has its own policy and entry shape; the schema uses 'oneOf' to dispatch on policy. NOTE: the validator in scripts/validate_outline.py (in the authoring-suite repo) does NOT yet implement oneOf — toolkit consumers either tolerate this or implement a stricter validator. Soft validation via scripts/lexical_tables.py.load() is the current contract.",
+  "type": "object",
+  "required": ["$schema_version", "asset_name", "tables"],
+  "properties": {
+    "$schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "SemVer of this asset. Bumped per per-asset SemVer (Kimi style)."
+    },
+    "asset_name": { "const": "lexical-tables" },
+    "description": { "type": "string" },
+    "provenance": { "type": "object" },
+    "tables": {
+      "type": "object",
+      "required": ["ai_phrases", "connectors", "repetitive_starters", "fillers",
+                   "numbered_transitions", "quote_verbs", "templated_starters"],
+      "additionalProperties": false,
+      "properties": {
+        "ai_phrases":           { "$ref": "#/$defs/table_deterministic_alternatives" },
+        "connectors":           { "$ref": "#/$defs/table_probabilistic_replacement" },
+        "repetitive_starters":  { "$ref": "#/$defs/table_consecutive_trigger" },
+        "fillers":              { "$ref": "#/$defs/table_intensity_gated" },
+        "numbered_transitions": { "$ref": "#/$defs/table_probabilistic_replacement" },
+        "quote_verbs":          { "$ref": "#/$defs/table_rotation_pool" },
+        "templated_starters":   { "$ref": "#/$defs/table_advisory_strategy" }
+      }
+    },
+    "global_policies": { "type": "object" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "table_deterministic_alternatives": {
+      "type": "object",
+      "required": ["policy", "entries"],
+      "properties": {
+        "policy": { "const": "deterministic_all_matches" },
+        "policy_notes": { "type": "string" },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["input", "alternatives"],
+            "properties": {
+              "input": { "type": "string", "minLength": 1 },
+              "alternatives": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "source_tag": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "table_probabilistic_replacement": {
+      "type": "object",
+      "required": ["policy", "probability", "entries"],
+      "properties": {
+        "policy": { "const": "probabilistic_per_match" },
+        "probability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "policy_notes": { "type": "string" },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["input", "replacement"],
+            "properties": {
+              "input": { "type": "string", "minLength": 1 },
+              "replacement": { "type": "string", "minLength": 1 },
+              "source_tag": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "table_consecutive_trigger": {
+      "type": "object",
+      "required": ["policy", "probability", "detectors", "replacements"],
+      "properties": {
+        "policy": { "const": "consecutive_repeat_trigger" },
+        "probability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "policy_notes": { "type": "string" },
+        "detectors":    { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "replacements": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    },
+    "table_intensity_gated": {
+      "type": "object",
+      "required": ["policy", "probability_formula", "entries"],
+      "properties": {
+        "policy": { "const": "intensity_gated" },
+        "probability_formula": { "type": "string" },
+        "min_sentence_chars":  { "type": "integer", "minimum": 0 },
+        "skip_first_sentence": { "type": "boolean" },
+        "policy_notes": { "type": "string" },
+        "entries": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    },
+    "table_rotation_pool": {
+      "type": "object",
+      "required": ["policy", "entries"],
+      "properties": {
+        "policy": { "const": "rotation_pool" },
+        "register_filter": { "type": "string" },
+        "policy_notes": { "type": "string" },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["input", "rotation_pool"],
+            "properties": {
+              "input": { "type": "string", "minLength": 1 },
+              "rotation_pool": {
+                "type": "array",
+                "minItems": 2,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "source_tag": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "table_advisory_strategy": {
+      "type": "object",
+      "required": ["policy", "entries"],
+      "properties": {
+        "policy": { "const": "advisory_strategy" },
+        "policy_notes": { "type": "string" },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["pattern", "strategy"],
+            "properties": {
+              "pattern": { "type": "string", "minLength": 1 },
+              "strategy": { "type": "string", "minLength": 1 },
+              "source_tag": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,37 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.7 — Asset C migration (lexical-tables) with policy-in-data
+
+**Released:** 2026-05-28
+
+- **`corpus/lexical-tables.json`** (Asset C — final base asset from the original v0.2 migration plan): consolidated deterministic lexical-substitution layer migrated from `arabic-ai-text-humanizer/references/13-inherited-lexical-tables.md`. Schema v1.0.0.
+  - Seven sub-tables: `ai_phrases` (30 v1 + 10 Gap A), `connectors` (8 v1 + 13 Gap B), `repetitive_starters` (7 detectors + 4 replacements), `fillers` (4 entries), `numbered_transitions` (5 entries), `quote_verbs` (3 entries, Gap D rotation pools), `templated_starters` (10 advisory entries, Gap C).
+  - **Policy-in-data**: each sub-table declares its own substitution policy (`deterministic_all_matches`, `probabilistic_per_match` with probability, `consecutive_repeat_trigger`, `intensity_gated`, `rotation_pool`, `advisory_strategy`). Consumers no longer encode policy in code — they read it from the asset.
+  - Source-tag attribution per entry: `v1_substrate` vs `gap_a` / `gap_b` / `gap_c` / `gap_d` so future audits can trace provenance.
+  - `global_policies` block documents Gap E (register gating), Gap F (quoted-span bypass), Gap G (intensifier de-stacking) — advisory for consumers; not enforced by the asset itself.
+- **`corpus/lexical-tables.schema.json`** — JSON Schema draft-2020-12 with per-policy `$defs` (`table_deterministic_alternatives`, `table_probabilistic_replacement`, `table_consecutive_trigger`, `table_intensity_gated`, `table_rotation_pool`, `table_advisory_strategy`). Uses `$ref` to dispatch per table; the validator in `scripts/lexical_tables.py:soft_validate()` covers the policy checks without needing full draft-2020-12 implementation.
+- **`scripts/lexical_tables.py`** — 13-function typed read API (`load_tables`, `schema_version`, `table_names`, `get_table`, `ai_phrase_alternatives`, `connector_replacement`, `is_repetitive_starter`, `starter_replacements`, `filler_entries`, `numbered_transition_replacement`, `quote_verb_pool`, `templated_starter_strategies`, `soft_validate`, `stats`). mtime-keyed cache. Stdlib only. Module also runnable as CLI: `python scripts/lexical_tables.py` prints stats + soft validation.
+- **`scripts/test_lexical_tables.py`** — 19-assertion release gate covering: schema version, all seven tables present, v1 substrate entries, Gap A/B/D extension entries, missing-key returns `None`, exact entry counts (40 / 21 / 5).
+
+### Asset version state at end of v0.7
+
+| Asset | Schema version | Notes |
+|---|---|---|
+| `corpus/calque-dictionary.json` | **v1.2.0** | unchanged from v0.5 |
+| `corpus/empirical-patterns.json` | **v1.0.0** | unchanged from v0.5 |
+| `corpus/typography-rules.json` | **v1.0.0** | unchanged from v0.5 |
+| `corpus/reader-respect-patterns.json` | **v1.0.0** | unchanged from v0.5 |
+| `corpus/lexical-tables.json` | **v1.0.0** | **NEW** in v0.7 |
+| `scripts/lexical_tables.py` | n/a | **NEW** in v0.7 |
+
+## v0.6 — Consumer-view export
+
+**Released:** 2026-05-28
+
+- **`scripts/export_consumer_view.py`** — three view modes (minimal / standard / full) × three formats (JSON / TSV / Markdown-table). Filter by `domain`, `min_confidence`. Lets consumers materialize a slice of the calque dictionary without depending on the full v1.2.0 schema.
+- No asset schema bumps. Tooling-only release.
+
 ## v0.5 — Typography + reader-respect promotion + schema-diff enforcement
 
 **Released:** 2026-05-28

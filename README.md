@@ -2,7 +2,7 @@
 
 > Shared Arabic linguistic infrastructure: calque dictionary, corpus stats, register policies, MSA style guide. Consumed by `arabic-ai-text-humanizer`, the upcoming `arabic-corpus-translator`, and the future `arabic-authoring-suite`.
 
-**Status:** v0.1 scaffold. Asset migration from `arabic-ai-text-humanizer` is staged for v0.2.
+**Status:** v0.7 — Asset C (lexical-tables) migration ships. Six assets now live in this toolkit; three sibling skills consume them (`arabic-ai-text-humanizer` v2.7.0, `arabic-corpus-translator` v0.2.1, `arabic-authoring-suite` v0.1.1).
 
 ## Why this exists
 
@@ -38,12 +38,15 @@ Architecturally validated by the multi-agent review documented at `M:\Main\AI\Co
 
 | Version | Ships | Status |
 |---|---|---|
-| **v0.1** | Scaffold (SKILL.md, README, LICENSE, directory tree) | ✅ Current |
-| **v0.2** | Migrate `calque-dictionary.json` + `empirical-patterns.json` from humanizer | Pending humanizer v2.7.0 |
-| **v0.3** | Migrate register policies + connector tables + MSA style guide | Pending humanizer v2.7.0 |
-| **v0.4** | Read API for `arabic-corpus-translator` | Pending translator scaffold |
-| **v0.5** | Read API for `arabic-authoring-suite` | Pending authoring scaffold |
-| **v1.0** | All three consumers stable; semver enforced | Q2 2027 |
+| **v0.1** | Scaffold (SKILL.md, README, LICENSE, directory tree) | ✅ Done |
+| **v0.2** | Asset A (calque-dictionary) + Asset B (empirical-patterns) + `dictionary.py` read API | ✅ Done |
+| **v0.3** | `validate.py` SchemaReport + `register.py` policy lookup + schema files + CHANGELOG | ✅ Done |
+| **v0.4** | `corpus_stats.py` 10-function read API for translator | ✅ Done |
+| **v0.5** | Asset D (typography-rules) + Asset E (reader-respect-patterns) + `diff_schema.py` CLI | ✅ Done |
+| **v0.6** | `export_consumer_view.py` (3 view modes × 3 formats) | ✅ Done |
+| **v0.7** | **Asset C (lexical-tables): 40 ai-phrases + 21 connectors + 5 numbered + 4 fillers + 7 repetitive starters + 3 quote-verb pools + 10 advisory templated starters; per-table substitution policies in data; `lexical_tables.py` 13-function read API + soft-validate + stats** | ✅ **This release** |
+| v0.8+ | Aho-Corasick matcher for dictionary; humanizer cutover to read Asset C from toolkit | Pending |
+| v1.0 | All consumers pinned to stable schemas; per-asset SemVer enforced | Q2 2027 |
 
 ## License
 

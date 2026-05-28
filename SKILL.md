@@ -5,7 +5,7 @@ description: "Shared Arabic-language corpus infrastructure: calque dictionary, c
 
 # arabic-corpus-toolkit — Shared Arabic Linguistic Infrastructure
 
-**Status:** v0.6 — consumer-view export tool ships. v0.5 — two more asset types promoted from humanizer Markdown to machine-readable JSON (typography rules + reader-respect patterns); schema-diff CLI ships for enforcement. Two consumers now live: `arabic-ai-text-humanizer` v2.7.0 (calque dictionary) + `arabic-corpus-translator` v0.1 (calque dictionary for Stage A terminology lookup).
+**Status:** v0.7 — Asset C migration ships (lexical-tables: 40 ai-phrases + 21 connectors + 5 numbered-transitions + 4 fillers + 7 repetitive-starter detectors + 3 quote-verb rotation pools + 10 advisory templated starters; v1 substrate + Gap A/B/C/D corpus extensions; per-table substitution policies in the data). v0.6 — consumer-view export tool. v0.5 — two more asset types promoted from humanizer Markdown to JSON (typography rules + reader-respect patterns) + schema-diff CLI. Consumers live today: `arabic-ai-text-humanizer` v2.7.0, `arabic-corpus-translator` v0.2.1, `arabic-authoring-suite` v0.1.1.
 
 - **v0.2**: assets migrated from `arabic-ai-text-humanizer` (340-entry calque dictionary + 71.28M-token empirical patterns); `scripts/dictionary.py` 6-function read API; `references/02-external-sources.md` from Gemini-style lens.
 - **v0.3 (current)**:
@@ -28,13 +28,14 @@ If each sibling vendors its own copy of the calque dictionary, **a single bad en
 
 ## What this skill owns
 
-| Asset | Source (today) | Migration target (v0.2) |
-|---|---|---|
-| `calque-dictionary.json` | `arabic-ai-text-humanizer/corpus/calque-dictionary.json` (340 entries, v2.6.0 triaged) | `arabic-corpus-toolkit/corpus/calque-dictionary.json` |
-| `empirical-patterns.json` | `arabic-ai-text-humanizer/corpus/empirical-patterns.json` (100K-record mining output) | `arabic-corpus-toolkit/corpus/empirical-patterns.json` |
-| Register policies | `arabic-ai-text-humanizer/references/13-inherited-lexical-tables.md` | `arabic-corpus-toolkit/references/02-register-policies.md` |
-| MSA style guide | scattered across `references/14-reader-respect.md`, `15-typography-hygiene.md`, `16-fasl-wa-wasl.md` | `arabic-corpus-toolkit/references/03-msa-style-guide.md` |
-| Connector tables | `arabic-ai-text-humanizer/references/16-fasl-wa-wasl.md` | `arabic-corpus-toolkit/references/04-connector-tables.md` |
+| Asset | Toolkit path | Schema version | Migrated in |
+|---|---|---|---|
+| **A** — calque-dictionary | `corpus/calque-dictionary.json` (340 entries, v2.6.0 triaged) | 1.2.0 | v0.2 |
+| **B** — empirical-patterns | `corpus/empirical-patterns.json` (100K-record mining output) | 1.0.0 | v0.2 |
+| **B'** — register policies | `scripts/register.py` (encoded in code per Codex-style API) | code-versioned | v0.3 |
+| **D** — typography-rules | `corpus/typography-rules.json` (9 rules + 13-source authority log) | 1.0.0 | v0.5 |
+| **E** — reader-respect-patterns | `corpus/reader-respect-patterns.json` (6 inverse-scored anti-patterns) | 1.0.0 | v0.5 |
+| **C** — lexical-tables | `corpus/lexical-tables.json` (5 v1 tables + Gap A/B/C/D extensions + per-table policies) | 1.0.0 | **v0.7 (this release)** |
 
 ## What this skill does NOT own
 
@@ -44,21 +45,33 @@ If each sibling vendors its own copy of the calque dictionary, **a single bad en
 - Content generation (will live in arabic-authoring-suite)
 - Sacred-text guard (lives in arabic-ai-text-humanizer/scripts/sacred_text_guard.py — moved here in a later version once two skills need it)
 
-## Read-only API (intent for v0.2)
+## Read-only API (live)
 
-Three Python helper modules will expose the assets to consumers:
+Python helper modules exposing the assets to consumers (all stdlib, no pip install):
 
 ```python
-# Consumers import like this:
-from arabic_corpus_toolkit import dictionary, corpus_stats, register
-
+# Asset A — calque dictionary
+from scripts import dictionary
 entries = dictionary.find_by_en("personalization")     # 1+ entries with full schema
 entry = dictionary.find_canonical("personalization")   # single best entry
-stats = corpus_stats.connector_distribution("news")    # per-register stats
-policy = register.policy_for("classical")              # which transformations gate on
+
+# Asset B — empirical patterns
+from scripts import corpus_stats
+top = corpus_stats.top_connectors("news", n=10)
+
+# Asset B' — register policies (code-encoded)
+from scripts import register
+policy = register.policy_for("classical")
+
+# Asset C — lexical tables (NEW in v0.7)
+from scripts import lexical_tables
+alts = lexical_tables.ai_phrase_alternatives("من المهم ملاحظة")
+replacement = lexical_tables.connector_replacement("وعلاوة على ذلك،")
+pool = lexical_tables.quote_verb_pool("قال")           # Gap D rotation
+errs = lexical_tables.soft_validate()                  # release-gate
 ```
 
-Each helper is pure Python 3 stdlib — no SQLite, no FAISS, no LLM call. The intent is read-only lookup; modifications go through the toolkit's own write API (versioned, audited).
+Each helper is pure Python 3 stdlib — no SQLite, no FAISS, no LLM call. Modifications go through the toolkit's own write API (versioned, audited).
 
 ## Roadmap
 
