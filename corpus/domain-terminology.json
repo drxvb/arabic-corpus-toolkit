@@ -1,5 +1,5 @@
 {
-  "$schema_version": "1.0.0",
+  "$schema_version": "1.1.0",
   "asset_name": "domain-terminology",
   "domain": "technology",
   "provenance": {
@@ -8,15 +8,19 @@
     "n_articles_processed": 64484,
     "primary_proxy": "minimax",
     "primary_model": "MiniMax-M2.7",
-    "confirm_proxy": null,
-    "confirm_model": null,
+    "confirm_proxy": "codex",
+    "confirm_model": "gpt-5.5",
     "ngram_filter": "bigram_trigram",
-    "pairing_timestamp": "2026-05-28T21:28:25"
+    "pairing_timestamp": "2026-05-28T21:28:25",
+    "confirm_top_n": 50,
+    "confirm_agreement_count": 34,
+    "confirm_timestamp": "2026-05-28T21:39:16"
   },
   "notes": [
     "Phase 2 output: LLM-paired EN translations for Phase-1 AR candidates.",
     "Each pair carries corpus_freq (Phase-1 frequency) + LLM proposer + confidence.",
-    "When --confirm-with is used, pairs also carry cross_llm_agreement and confirmed_by fields."
+    "When --confirm-with is used, pairs also carry cross_llm_agreement and confirmed_by fields.",
+    "v0.9.1: cross-LLM confirmation pass with codex-proxy on top 50 pairs. 34/50 agreement. Schema 1.0.0 -> 1.1.0 (MINOR additive)."
   ],
   "pairs": [
     {
@@ -26,7 +30,9 @@
       "corpus_freq": 8223,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "الذكاء الاصطناعي",
@@ -35,7 +41,9 @@
       "corpus_freq": 8146,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "البريد الإلكتروني",
@@ -44,7 +52,9 @@
       "corpus_freq": 7477,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "التواصل الاجتماعي",
@@ -53,7 +63,9 @@
       "corpus_freq": 7216,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "تقنية المعلومات",
@@ -62,7 +74,10 @@
       "corpus_freq": 5957,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "information technology"
     },
     {
       "ar": "تكنولوجيا المعلومات",
@@ -71,7 +86,10 @@
       "corpus_freq": 5702,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "information technology"
     },
     {
       "ar": "جوجل بلاي",
@@ -80,7 +98,9 @@
       "corpus_freq": 5050,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "بدقة ميجابكسل",
@@ -89,7 +109,9 @@
       "corpus_freq": 4836,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "مقاطع الفيديو",
@@ -98,7 +120,10 @@
       "corpus_freq": 4574,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "video clips"
     },
     {
       "ar": "التشغيل أندرويد",
@@ -107,7 +132,9 @@
       "corpus_freq": 4359,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "الجيل الخامس",
@@ -116,7 +143,9 @@
       "corpus_freq": 4184,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "متجر جوجل",
@@ -125,7 +154,9 @@
       "corpus_freq": 3899,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "الإمارات العربية المتحدة",
@@ -134,7 +165,10 @@
       "corpus_freq": 3882,
       "ngram_size": "trigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "دولة الإمارات",
@@ -143,7 +177,10 @@
       "corpus_freq": 3812,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "التشغيل ويندوز",
@@ -152,7 +189,9 @@
       "corpus_freq": 3579,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "العربية السعودية",
@@ -161,7 +200,10 @@
       "corpus_freq": 3469,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "متجر جوجل بلاي",
@@ -170,7 +212,9 @@
       "corpus_freq": 3434,
       "ngram_size": "trigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "تيك توك",
@@ -179,7 +223,9 @@
       "corpus_freq": 3400,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "بلاك بيري",
@@ -188,7 +234,9 @@
       "corpus_freq": 3245,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "البنية التحتية",
@@ -196,8 +244,10 @@
       "domain": "technology",
       "corpus_freq": 3200,
       "ngram_size": "bigram",
-      "confidence": "medium",
-      "proposer": "minimax"
+      "confidence": "high",
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "جوجل كروم",
@@ -206,7 +256,9 @@
       "corpus_freq": 3074,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "شبكة الإنترنت",
@@ -215,7 +267,9 @@
       "corpus_freq": 3044,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "بنظام أندرويد",
@@ -224,7 +278,10 @@
       "corpus_freq": 3001,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "running android"
     },
     {
       "ar": "بنظام التشغيل",
@@ -232,8 +289,10 @@
       "domain": "technology",
       "corpus_freq": 2976,
       "ngram_size": "bigram",
-      "confidence": "medium",
-      "proposer": "minimax"
+      "confidence": "high",
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "سناب شات",
@@ -242,7 +301,9 @@
       "corpus_freq": 2968,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "ميلي أمبير",
@@ -251,7 +312,10 @@
       "corpus_freq": 2941,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "milliampere"
     },
     {
       "ar": "الواقع الافتراضي",
@@ -260,7 +324,9 @@
       "corpus_freq": 2861,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "المملكة العربية السعودية",
@@ -269,7 +335,10 @@
       "corpus_freq": 2799,
       "ngram_size": "trigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "الرئيس التنفيذي لشركة",
@@ -277,8 +346,10 @@
       "domain": "technology",
       "corpus_freq": 2765,
       "ngram_size": "trigram",
-      "confidence": "medium",
-      "proposer": "minimax"
+      "confidence": "high",
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "إكس بوكس",
@@ -287,7 +358,9 @@
       "corpus_freq": 2701,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "ويندوز فون",
@@ -296,7 +369,9 @@
       "corpus_freq": 2673,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "كاسبرسكي لاب",
@@ -305,7 +380,9 @@
       "corpus_freq": 2622,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "ثلاثية الأبعاد",
@@ -314,7 +391,9 @@
       "corpus_freq": 2519,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "واي فاي",
@@ -323,7 +402,9 @@
       "corpus_freq": 2446,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "لوحة المفاتيح",
@@ -332,7 +413,9 @@
       "corpus_freq": 2428,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "المعلومات والاتصالات",
@@ -341,7 +424,10 @@
       "corpus_freq": 2424,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "information and communications"
     },
     {
       "ar": "كلمات المرور",
@@ -350,7 +436,9 @@
       "corpus_freq": 2357,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "الأوسط وأفريقيا",
@@ -359,7 +447,10 @@
       "corpus_freq": 2344,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "تسجيل الدخول",
@@ -368,7 +459,9 @@
       "corpus_freq": 2343,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "نائب رئيس",
@@ -377,7 +470,9 @@
       "corpus_freq": 2324,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "وصول عشوائي",
@@ -386,7 +481,9 @@
       "corpus_freq": 2311,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "سطح المكتب",
@@ -395,7 +492,9 @@
       "corpus_freq": 2309,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "الجيل الثالث",
@@ -404,7 +503,10 @@
       "corpus_freq": 2243,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "3g"
     },
     {
       "ar": "الاتحاد الأوروبي",
@@ -413,7 +515,10 @@
       "corpus_freq": 2236,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "للهواتف الذكية",
@@ -422,7 +527,9 @@
       "corpus_freq": 2227,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "بلاي ستيشن",
@@ -431,7 +538,9 @@
       "corpus_freq": 2193,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "البوابة التقنية",
@@ -440,7 +549,10 @@
       "corpus_freq": 2192,
       "ngram_size": "bigram",
       "confidence": "medium",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "بسعة جيجابايت",
@@ -449,7 +561,10 @@
       "corpus_freq": 2182,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": "with a capacity of gigabytes"
     },
     {
       "ar": "الشبكات الاجتماعية",
@@ -458,7 +573,9 @@
       "corpus_freq": 2154,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": true,
+      "confirmed_by": "codex"
     },
     {
       "ar": "فيروس كورونا",
@@ -467,7 +584,10 @@
       "corpus_freq": 2144,
       "ngram_size": "bigram",
       "confidence": "high",
-      "proposer": "minimax"
+      "proposer": "minimax",
+      "cross_llm_agreement": false,
+      "confirmed_by": "codex",
+      "disagreement_alt_en": ""
     },
     {
       "ar": "بدقة ميجابيكسل",

@@ -2,6 +2,37 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.9.1 — Cross-LLM confirmation on top 50 paired terms (executed via Agent Portal Phase 2)
+
+**Released:** 2026-05-28
+
+**Operationalized through the Agent Portal.** Used the portal infrastructure documented at `M:\Main\AI\Master\docs\AGENT-PORTAL.md`:
+
+1. Registered agent `arabic-corpus-toolkit-claude` in `taskbus.Capabilities` with 9-action whitelist.
+2. Enqueued task `arabic-corpus-toolkit.v0.9.1.cross-llm-confirmation` (TaskID=10).
+3. Proposed a 5-step Phase-2 plan (PlanID=10) — flagged `NeedsConfirmation=true` because 3 steps are mutating (edit_code + write_documentation + commit_release).
+4. Approved via `POST http://192.168.80.112:3100/api/plans/10/approve`.
+5. Executed: codex-proxy confirmation pass on top 50 minimax-paired terms.
+6. Marked plan + task complete; audit timeline shows the full sequence.
+
+**Result:** 34/50 cross-LLM agreement (68%). The 16 disagreements reveal three signal types:
+
+| Type | Example | Interpretation |
+|---|---|---|
+| Synonym preference | minimax: `IT` / codex: `information technology` | Both valid; codex prefers expanded form |
+| Precision improvement | minimax: `videos` / codex: `video clips` | Codex more rigorous |
+| **Real filter** | minimax: `الإمارات العربية المتحدة → United Arab Emirates` / codex: `""` | **Codex correctly rejects geographic term as non-tech terminology** |
+
+The geographic-term rejection is the most important diagnostic: v0.9 had 4-6 country/region names paired as "tech terminology" because they had high AITNews frequency (UAE/Saudi Arabia mentions in tech news). Codex's stricter confidence filter caught them. v0.9.1 preserves them with `cross_llm_agreement: false` + `disagreement_alt_en: ""` so a future v0.10 review can prune.
+
+**Schema bump v1.0.0 → v1.1.0 (MINOR additive).** Three optional fields added to enriched pairs: `cross_llm_agreement: bool`, `confirmed_by: str`, `disagreement_alt_en: str`. v1.0.0 readers ignore them. The translator's `domain_terminology.py` loader continues to work unchanged.
+
+### Asset version state at end of v0.9.1
+
+| Asset | Schema | Notes |
+|---|---|---|
+| `corpus/domain-terminology.json` | **v1.1.0** | Top 50 pairs enriched with cross-LLM agreement field. Other 118 pairs unchanged from v0.9. |
+
 ## v0.9 — Asset G (paired EN↔AR terminology) — Phase 2 of the terminology pipeline
 
 **Released:** 2026-05-28
