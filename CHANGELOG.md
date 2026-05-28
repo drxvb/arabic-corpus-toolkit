@@ -2,6 +2,65 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.10 — Three-way LLM tiebreaker (gemini-proxy resolves v0.9.1 disagreements)
+
+**Released:** 2026-05-28
+
+**Completes the multi-vendor swarm.** v0.9 paired via minimax. v0.9.1 cross-checked via codex (34/50 agreement). v0.10 brings gemini-2.5-flash as **third independent vendor** to resolve the 16 remaining disagreements. Second portal-native release: TaskID=11, PlanID=11 in `taskbus`, audit timeline #21-#25.
+
+### Decision rule
+
+| Codex says | Gemini says | Verdict |
+|---|---|---|
+| empty | empty | **drop_consensus** (2+ LLMs reject as non-terminology) |
+| same as minimax | — | keep_minimax |
+| codex's alt | matches codex | switch_to_codex (better English) |
+| differ | differ from both | three_way_differ → keep minimax + `needs_manual_review: true` |
+
+### Outcomes from the 16 disagreements
+
+| Verdict | Count | Examples |
+|---|---|---|
+| `drop_consensus` | **6** | UAE / Saudi Arabia (2 forms) / Middle East & Africa / European Union / دولة الإمارات — all geographic, codex+gemini agreed not-terminology |
+| `switch_to_codex` | **5** | IT→`information technology` (×2), `videos`→`video clips`, `mAh`→`milliampere`, `ICT`→`information and communications` |
+| `keep_minimax` | **3** | `الجيل الثالث` (codex's "3G" was too specific, gemini agreed third generation); `البوابة التقنية` (codex said empty, gemini agreed tech portal); `فيروس كورونا → coronavirus` (codex said empty; gemini correctly identified pandemic-era tech-news terminology) |
+| `three_way_differ` | **2** | `بنظام أندرويد` (three reasonable English variants); `بسعة جيجابايت` (three paraphrases). Kept minimax + flagged `needs_manual_review` |
+
+### Net change
+
+- **v0.9.1 had 168 pairs. v0.10 has 162 pairs** (-6 geographic).
+- **5 pairs got better English** via codex+gemini consensus.
+- **3 minimax wins survived** the codex challenge thanks to gemini's independent vote.
+
+### The coronavirus diagnostic
+
+`فيروس كورونا`: codex returned empty (thought it wasn't tech). Minimax and gemini both kept it as `coronavirus`. This is the most architecturally important resolution: **two vendors disagreeing with one another is more informative than two vendors agreeing wrongly**. If v0.10 had been a two-LLM swarm (minimax+codex), codex's empty would have dropped coronavirus from the dictionary. With three independent vendors, gemini rescued it. The vendor-diversity property of the proxy fleet is what makes this resilient.
+
+### Schema bump 1.1.0 → 1.2.0 (MINOR additive)
+
+New optional fields on tiebroken pairs:
+- `gemini_tiebreaker_en: str`
+- `three_way_verdict: str` (one of: `drop_consensus` / `keep_minimax (gemini concurs)` / `switch_to_codex (gemini concurs)` / `three_way_differ` / `three_way_agree (normalization)`)
+- `needs_manual_review: bool` (only present when `three_way_differ`)
+- `previous_en: str` (only present when `switch_to_codex`; preserves what was overridden)
+
+v1.0.0 and v1.1.0 readers ignore all new fields. `domain_terminology.py` loader unchanged.
+
+### Portal trace
+
+Audit timeline rows #21-#25:
+- #21 task_started
+- #22 plan_created (PlanID=11)
+- #23 plan_approved (via portal actions API)
+- #24 plan_executed
+- #25 task_completed
+
+### Asset version state at end of v0.10
+
+| Asset | Schema | Notes |
+|---|---|---|
+| `corpus/domain-terminology.json` | **v1.2.0** | 162 pairs (down from 168), 5 enriched with three-way verdict + tiebreaker EN; 2 flagged for manual review |
+
 ## v0.9.1 — Cross-LLM confirmation on top 50 paired terms (executed via Agent Portal Phase 2)
 
 **Released:** 2026-05-28

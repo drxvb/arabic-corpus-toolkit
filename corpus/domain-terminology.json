@@ -1,5 +1,5 @@
 {
-  "$schema_version": "1.1.0",
+  "$schema_version": "1.2.0",
   "asset_name": "domain-terminology",
   "domain": "technology",
   "provenance": {
@@ -14,13 +14,20 @@
     "pairing_timestamp": "2026-05-28T21:28:25",
     "confirm_top_n": 50,
     "confirm_agreement_count": 34,
-    "confirm_timestamp": "2026-05-28T21:39:16"
+    "confirm_timestamp": "2026-05-28T21:39:16",
+    "tiebreaker_proxy": "gemini",
+    "tiebreaker_model": "gemini-2.5-flash",
+    "tiebreaker_count": 16,
+    "tiebreaker_timestamp": "2026-05-28T21:43:42",
+    "n_dropped_v0.10": 6,
+    "n_switched_v0.10": 5
   },
   "notes": [
     "Phase 2 output: LLM-paired EN translations for Phase-1 AR candidates.",
     "Each pair carries corpus_freq (Phase-1 frequency) + LLM proposer + confidence.",
     "When --confirm-with is used, pairs also carry cross_llm_agreement and confirmed_by fields.",
-    "v0.9.1: cross-LLM confirmation pass with codex-proxy on top 50 pairs. 34/50 agreement. Schema 1.0.0 -> 1.1.0 (MINOR additive)."
+    "v0.9.1: cross-LLM confirmation pass with codex-proxy on top 50 pairs. 34/50 agreement. Schema 1.0.0 -> 1.1.0 (MINOR additive).",
+    "v0.10: gemini-2.5-flash tiebreaker on 16 v0.9.1 disagreements. 6 dropped (2+ LLMs agreed not-terminology), 5 switched to codex+gemini consensus EN."
   ],
   "pairs": [
     {
@@ -69,7 +76,7 @@
     },
     {
       "ar": "تقنية المعلومات",
-      "en": "IT",
+      "en": "information technology",
       "domain": "technology",
       "corpus_freq": 5957,
       "ngram_size": "bigram",
@@ -77,11 +84,14 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "information technology"
+      "disagreement_alt_en": "information technology",
+      "gemini_tiebreaker_en": "information technology",
+      "three_way_verdict": "switch_to_codex (gemini concurs)",
+      "previous_en": "IT"
     },
     {
       "ar": "تكنولوجيا المعلومات",
-      "en": "IT",
+      "en": "information technology",
       "domain": "technology",
       "corpus_freq": 5702,
       "ngram_size": "bigram",
@@ -89,7 +99,10 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "information technology"
+      "disagreement_alt_en": "information technology",
+      "gemini_tiebreaker_en": "information technology",
+      "three_way_verdict": "switch_to_codex (gemini concurs)",
+      "previous_en": "IT"
     },
     {
       "ar": "جوجل بلاي",
@@ -115,7 +128,7 @@
     },
     {
       "ar": "مقاطع الفيديو",
-      "en": "videos",
+      "en": "video clips",
       "domain": "technology",
       "corpus_freq": 4574,
       "ngram_size": "bigram",
@@ -123,7 +136,10 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "video clips"
+      "disagreement_alt_en": "video clips",
+      "gemini_tiebreaker_en": "video clips",
+      "three_way_verdict": "switch_to_codex (gemini concurs)",
+      "previous_en": "videos"
     },
     {
       "ar": "التشغيل أندرويد",
@@ -159,30 +175,6 @@
       "confirmed_by": "codex"
     },
     {
-      "ar": "الإمارات العربية المتحدة",
-      "en": "United Arab Emirates",
-      "domain": "technology",
-      "corpus_freq": 3882,
-      "ngram_size": "trigram",
-      "confidence": "high",
-      "proposer": "minimax",
-      "cross_llm_agreement": false,
-      "confirmed_by": "codex",
-      "disagreement_alt_en": ""
-    },
-    {
-      "ar": "دولة الإمارات",
-      "en": "United Arab Emirates",
-      "domain": "technology",
-      "corpus_freq": 3812,
-      "ngram_size": "bigram",
-      "confidence": "high",
-      "proposer": "minimax",
-      "cross_llm_agreement": false,
-      "confirmed_by": "codex",
-      "disagreement_alt_en": ""
-    },
-    {
       "ar": "التشغيل ويندوز",
       "en": "Windows operating system",
       "domain": "technology",
@@ -192,18 +184,6 @@
       "proposer": "minimax",
       "cross_llm_agreement": true,
       "confirmed_by": "codex"
-    },
-    {
-      "ar": "العربية السعودية",
-      "en": "Saudi Arabia",
-      "domain": "technology",
-      "corpus_freq": 3469,
-      "ngram_size": "bigram",
-      "confidence": "high",
-      "proposer": "minimax",
-      "cross_llm_agreement": false,
-      "confirmed_by": "codex",
-      "disagreement_alt_en": ""
     },
     {
       "ar": "متجر جوجل بلاي",
@@ -281,7 +261,10 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "running android"
+      "disagreement_alt_en": "running android",
+      "gemini_tiebreaker_en": "android system",
+      "three_way_verdict": "three_way_differ",
+      "needs_manual_review": true
     },
     {
       "ar": "بنظام التشغيل",
@@ -307,7 +290,7 @@
     },
     {
       "ar": "ميلي أمبير",
-      "en": "mAh",
+      "en": "milliampere",
       "domain": "technology",
       "corpus_freq": 2941,
       "ngram_size": "bigram",
@@ -315,7 +298,10 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "milliampere"
+      "disagreement_alt_en": "milliampere",
+      "gemini_tiebreaker_en": "milliampere",
+      "three_way_verdict": "switch_to_codex (gemini concurs)",
+      "previous_en": "mAh"
     },
     {
       "ar": "الواقع الافتراضي",
@@ -327,18 +313,6 @@
       "proposer": "minimax",
       "cross_llm_agreement": true,
       "confirmed_by": "codex"
-    },
-    {
-      "ar": "المملكة العربية السعودية",
-      "en": "Saudi Arabia",
-      "domain": "technology",
-      "corpus_freq": 2799,
-      "ngram_size": "trigram",
-      "confidence": "high",
-      "proposer": "minimax",
-      "cross_llm_agreement": false,
-      "confirmed_by": "codex",
-      "disagreement_alt_en": ""
     },
     {
       "ar": "الرئيس التنفيذي لشركة",
@@ -419,7 +393,7 @@
     },
     {
       "ar": "المعلومات والاتصالات",
-      "en": "ICT",
+      "en": "information and communications",
       "domain": "technology",
       "corpus_freq": 2424,
       "ngram_size": "bigram",
@@ -427,7 +401,10 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "information and communications"
+      "disagreement_alt_en": "information and communications",
+      "gemini_tiebreaker_en": "information and communications",
+      "three_way_verdict": "switch_to_codex (gemini concurs)",
+      "previous_en": "ICT"
     },
     {
       "ar": "كلمات المرور",
@@ -439,18 +416,6 @@
       "proposer": "minimax",
       "cross_llm_agreement": true,
       "confirmed_by": "codex"
-    },
-    {
-      "ar": "الأوسط وأفريقيا",
-      "en": "Middle East and Africa",
-      "domain": "technology",
-      "corpus_freq": 2344,
-      "ngram_size": "bigram",
-      "confidence": "high",
-      "proposer": "minimax",
-      "cross_llm_agreement": false,
-      "confirmed_by": "codex",
-      "disagreement_alt_en": ""
     },
     {
       "ar": "تسجيل الدخول",
@@ -506,19 +471,9 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "3g"
-    },
-    {
-      "ar": "الاتحاد الأوروبي",
-      "en": "European Union",
-      "domain": "technology",
-      "corpus_freq": 2236,
-      "ngram_size": "bigram",
-      "confidence": "high",
-      "proposer": "minimax",
-      "cross_llm_agreement": false,
-      "confirmed_by": "codex",
-      "disagreement_alt_en": ""
+      "disagreement_alt_en": "3g",
+      "gemini_tiebreaker_en": "third generation",
+      "three_way_verdict": "keep_minimax (gemini concurs)"
     },
     {
       "ar": "للهواتف الذكية",
@@ -548,11 +503,13 @@
       "domain": "technology",
       "corpus_freq": 2192,
       "ngram_size": "bigram",
-      "confidence": "medium",
+      "confidence": "high",
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": ""
+      "disagreement_alt_en": "",
+      "gemini_tiebreaker_en": "tech portal",
+      "three_way_verdict": "keep_minimax (gemini concurs)"
     },
     {
       "ar": "بسعة جيجابايت",
@@ -564,7 +521,10 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": "with a capacity of gigabytes"
+      "disagreement_alt_en": "with a capacity of gigabytes",
+      "gemini_tiebreaker_en": "gigabyte capacity",
+      "three_way_verdict": "three_way_differ",
+      "needs_manual_review": true
     },
     {
       "ar": "الشبكات الاجتماعية",
@@ -587,7 +547,9 @@
       "proposer": "minimax",
       "cross_llm_agreement": false,
       "confirmed_by": "codex",
-      "disagreement_alt_en": ""
+      "disagreement_alt_en": "",
+      "gemini_tiebreaker_en": "coronavirus",
+      "three_way_verdict": "keep_minimax (gemini concurs)"
     },
     {
       "ar": "بدقة ميجابيكسل",
