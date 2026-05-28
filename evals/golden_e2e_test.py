@@ -68,6 +68,32 @@ def golden_canon_sloppy_ar() -> str:
     )
 
 
+def test_asset_registry() -> int:
+    """v1.6.0: assert the asset version registry contract."""
+    failures = 0
+    print("\n━━━ Toolkit asset_registry (v1.6.0+) ━━━")
+    from asset_registry import (  # type: ignore
+        list_assets, current_version, is_compatible, check_consumer,
+    )
+    assets = list_assets()
+    if not _assert(len(assets) >= 8,
+                   f"Registry lists >=8 assets (got {len(assets)})"):
+        failures += 1
+    if not _assert(is_compatible("G.technology", "1.4.0"),
+                   "G.technology v1.4.0 within band"):
+        failures += 1
+    if not _assert(not is_compatible("G.technology", "2.0.0"),
+                   "G.technology v2.0.0 outside band (refused)"):
+        failures += 1
+    # Consumer audits
+    for consumer in ("humanizer", "translator", "authoring"):
+        r = check_consumer(consumer)
+        if not _assert(not r.has_problems,
+                       f"check_consumer({consumer!r}) reports no problems"):
+            failures += 1
+    return failures
+
+
 def test_arabic_normalize() -> int:
     """v1.5.0: assert the canonical Arabic normalization contract."""
     failures = 0
@@ -238,6 +264,7 @@ def main() -> int:
     print("  arabic-* family GOLDEN E2E regression  v1.4.1")
     print("═" * 68)
     total = 0
+    total += test_asset_registry()
     total += test_arabic_normalize()
     total += test_toolkit()
     total += test_translator()

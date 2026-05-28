@@ -1,0 +1,124 @@
+{
+  "$registry_version": "1.0.0",
+  "description": "Asset Version Registry (Gap G2). Canonical declaration of every shipped asset's current version + which consumer versions can read it. Consumers should query this via scripts/asset_registry.py rather than hardcoding schema_major checks.",
+  "generated_by": "toolkit v1.6.0 — manually maintained; future v1.7+ may auto-derive from corpus/*.json $schema_version fields.",
+  "assets": {
+    "A": {
+      "name": "calque-dictionary",
+      "path": "corpus/calque-dictionary.json",
+      "current_version": "1.2.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["humanizer", "translator"],
+      "description": "Calque dictionary (340 entries). AI-error → natural-AR mapping with topic-guard fields (v1.1.0+) and three_way_verdict fields (v1.2.0+)."
+    },
+    "B": {
+      "name": "empirical-patterns",
+      "path": "corpus/empirical-patterns.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator"],
+      "description": "Aggregated corpus stats (4 register categories, sentence-length burstiness, top connectors)."
+    },
+    "C": {
+      "name": "lexical-tables",
+      "path": "corpus/lexical-tables.json",
+      "current_version": "1.1.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["humanizer", "translator"],
+      "description": "Six lexical tables (ai_phrases 67, connectors 22, structural_openers 10, etc). v1.1.0 added regex_capture_substitute + regex_substitute policies. Reverse-compatible with v1.0.0 readers (additive only)."
+    },
+    "D": {
+      "name": "typography-rules",
+      "path": "corpus/typography-rules.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["humanizer"],
+      "description": "9 typography rules with 13-source authority log. Consumed by humanizer v2.12.0+."
+    },
+    "E": {
+      "name": "reader-respect-patterns",
+      "path": "corpus/reader-respect-patterns.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["humanizer"],
+      "description": "6 anti-patterns (tautology, re-explanation, forced-conclusion). Consumed by humanizer v2.12.0+."
+    },
+    "F.technology": {
+      "name": "terminology-candidates-technology",
+      "path": "corpus/terminology-candidates-technology.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator", "authoring"],
+      "description": "999 candidates mined from AITNews 64,484 tech-news articles."
+    },
+    "F.news": {
+      "name": "terminology-candidates-news",
+      "path": "corpus/terminology-candidates-news.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator", "authoring"],
+      "description": "498 candidates mined from Elaph 3,801 news articles."
+    },
+    "G.technology": {
+      "name": "domain-terminology",
+      "path": "corpus/domain-terminology.json",
+      "current_version": "1.4.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator", "authoring"],
+      "description": "422 paired EN↔AR tech terms. All cross-vendor-validated via codex+gemini swarms through v1.4.0."
+    },
+    "G.news": {
+      "name": "domain-terminology-news",
+      "path": "corpus/domain-terminology-news.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator", "authoring"],
+      "description": "50 paired EN↔AR news terms from Elaph corpus."
+    }
+  },
+  "consumer_declared_requirements": {
+    "humanizer": {
+      "min_versions_required": ["v2.12.0+"],
+      "asset_requirements": {
+        "A": "^1.0.0",
+        "C": "^1.0.0",
+        "D": "^1.0.0",
+        "E": "^1.0.0"
+      }
+    },
+    "translator": {
+      "min_versions_required": ["v1.0.0+"],
+      "asset_requirements": {
+        "A": "^1.0.0",
+        "B": "^1.0.0",
+        "C": "^1.0.0",
+        "F.technology": "^1.0.0",
+        "F.news": "^1.0.0",
+        "G.technology": "^1.0.0",
+        "G.news": "^1.0.0"
+      }
+    },
+    "authoring": {
+      "min_versions_required": ["v1.0.0+"],
+      "asset_requirements": {
+        "G.technology": "^1.0.0",
+        "G.news": "^1.0.0"
+      }
+    }
+  },
+  "notes": [
+    "Compatibility uses npm-style range syntax: ^1.0.0 means '>=1.0.0 <2.0.0'. The asset_registry.py loader resolves ranges.",
+    "breaking_versions is an explicit deny-list for known-incompatible point releases (empty for all current assets).",
+    "When an asset bumps to 2.0.0, this registry's compatibility field updates to ^2.0.0 and consumers expecting ^1.0.0 will get a structured CompatibilityError instead of silent empty results.",
+    "consumer_declared_requirements documents what each consumer expects; consumers should NOT hardcode versions in their code anymore — they should call registry.required_for(consumer_name)."
+  ]
+}
