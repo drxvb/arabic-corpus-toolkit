@@ -2,6 +2,38 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.7.0 — Per-output asset-influence telemetry (Gap G3, foundational)
+
+**Released:** 2026-05-28
+
+Third and final foundational debt all three evaluators (Sonnet/Codex/Gemini) flagged independently. Codex: "I cannot tell which asset, rule, vendor, or stage caused a specific output decision." Sonnet: "A translation comes back with `matched_count: 11` but no per-output trace of WHICH 11 Asset G entries fired."
+
+`scripts/influence_telemetry.py` ships the contract:
+
+- **`InfluenceTrace`** — append-only causal record (immutable per-record). Consumers create one per top-level operation (one translation, one section draft), pass it through pipeline stages, and serialize it in the output's `influence_trace` field.
+- **`record(asset_id, asset_version, trigger, evidence, stage)`** — log one influence. 11 standardized triggers (`term_hint_injected`, `calque_correction_applied`, `lex_substitution_fired`, `intensifier_destacked`, `typography_normalized`, `anti_pattern_detected`, `terminology_confirmed`, `cross_vendor_correction`, `humanizer_gate_decision`, `language_check_failed`, `compatibility_refused`, plus `other` fallback). Unknown trigger names are normalized to `other` with `trigger_raw` preserving the user-supplied string.
+- **`as_json()` / `from_json()`** — round-trip serialization. Verified identical-bytes round-trip in self-test.
+- **`.filter_by(**kw)`, `.by_asset()`, `.by_stage()`, `.by_trigger()`** — read queries for users auditing "why did this output fire?"
+- **`.summary()`** — aggregate counts per asset / stage / trigger.
+
+### Self-test
+
+`python scripts/influence_telemetry.py` exercises 4-record trace + filters + summary + JSON round-trip + unknown-trigger normalization. All assertions pass.
+
+### Golden e2e
+
+Expanded 34 → 40 assertions (6 new telemetry checks). Family pipeline still intact.
+
+### Adoption path
+
+Consumers should thread `InfluenceTrace()` through their pipeline stages and emit it as a top-level `influence_trace` field in their output JSON. Translator + authoring adoptions follow in subsequent releases. Once adopted, a user running `translate(text, ..., trace=True)` gets a structured answer to "why did this happen?" with per-asset, per-stage, per-trigger granularity.
+
+## v1.6.0 — Asset Version Registry (Gap G2, foundational architecture)
+
+**Released:** 2026-05-28
+
+Second 3-evaluator-flagged debt closed. `corpus/asset-registry.json` (canonical declaration of every asset's current version + compatibility band + per-consumer requirements) + `scripts/asset_registry.py` (typed read API with npm-style range parsing: `^1.0.0` / `~1.2.0` / `>=1.0.0` / exact). `check_consumer(name)` returns structured `CompatibilityReport` with per-asset problem messages. Replaces hardcoded `schema_major == "1"` checks across the family. 5/5 compatibility tests pass; all 3 consumers (humanizer 4 assets, translator 7, authoring 2) report 0 incompatibilities. Golden e2e expanded 28 → 34 assertions.
+
 ## v1.5.0 — Unicode normalization contract (Gap G1, foundational architecture)
 
 **Released:** 2026-05-28

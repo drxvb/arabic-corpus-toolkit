@@ -68,6 +68,43 @@ def golden_canon_sloppy_ar() -> str:
     )
 
 
+def test_influence_telemetry() -> int:
+    """v1.7.0: assert the influence telemetry contract."""
+    failures = 0
+    print("\n━━━ Toolkit influence_telemetry (v1.7.0+) ━━━")
+    from influence_telemetry import InfluenceTrace, known_triggers  # type: ignore
+    t = InfluenceTrace()
+    if not _assert(len(t) == 0, "Empty trace has length 0"):
+        failures += 1
+    t.record(asset_id="G.technology", asset_version="1.4.0",
+             trigger="term_hint_injected",
+             evidence={"en": "cloud computing", "ar": "الحوسبة السحابية"},
+             stage="A_terminology")
+    t.record(asset_id="A", asset_version="1.2.0",
+             trigger="calque_correction_applied",
+             evidence={"calque": "x", "natural": "y"},
+             stage="D_validator")
+    if not _assert(len(t) == 2, f"After 2 records, length is 2 (got {len(t)})"):
+        failures += 1
+    if not _assert(len(t.by_stage("A_terminology")) == 1,
+                   "filter_by_stage isolates 1 record"):
+        failures += 1
+    s = t.summary()
+    if not _assert(s["total_influences"] == 2,
+                   f"summary reports 2 influences (got {s['total_influences']})"):
+        failures += 1
+    # JSON round-trip preserves
+    rebuilt = InfluenceTrace.from_json(t.as_json())
+    if not _assert(rebuilt.as_json() == t.as_json(),
+                   "JSON round-trip preserves trace identically"):
+        failures += 1
+    # Known triggers list is comprehensive
+    if not _assert(len(known_triggers()) >= 10,
+                   f"At least 10 standard triggers documented (got {len(known_triggers())})"):
+        failures += 1
+    return failures
+
+
 def test_asset_registry() -> int:
     """v1.6.0: assert the asset version registry contract."""
     failures = 0
@@ -264,6 +301,7 @@ def main() -> int:
     print("  arabic-* family GOLDEN E2E regression  v1.4.1")
     print("═" * 68)
     total = 0
+    total += test_influence_telemetry()
     total += test_asset_registry()
     total += test_arabic_normalize()
     total += test_toolkit()
