@@ -2,12 +2,20 @@ MIT License
 
 Copyright (c) 2026 Basil Aziz
 
-Migrated content (planned for v0.2+) retains its upstream provenance:
-- Calque dictionary and empirical patterns originate in arabic-ai-text-humanizer
-  (https://github.com/drxvb/arabic-ai-text-humanizer), MIT-licensed.
-- English-pattern catalogue (when migrated) further traces to
-  hardikpandya/stop-slop (https://github.com/hardikpandya/stop-slop),
-  Copyright (c) 2025 Hardik Pandya, MIT-licensed.
+Migrated content retains its upstream provenance:
+- Assets A (calque-dictionary), B (empirical-patterns), C (lexical-tables),
+  D (typography-rules), E (reader-respect-patterns) originate in
+  arabic-ai-text-humanizer (https://github.com/drxvb/arabic-ai-text-humanizer),
+  MIT-licensed.
+- English-pattern catalogue traces to hardikpandya/stop-slop
+  (https://github.com/hardikpandya/stop-slop), Copyright (c) 2025 Hardik
+  Pandya, MIT-licensed.
+- Asset F (terminology-candidates) and Asset G (domain-terminology) are
+  net-new corpus-mined assets (technology + news domains, AITNews + Elaph
+  corpora) with LLM-pairing via the local LXC 203 proxy fleet (Moonshot
+  Kimi, OpenAI Codex, Google Gemini, MiniMax). The proxy outputs are derived
+  works under the source corpora's licenses; LLM-proposed translations are
+  factual statements about EN-AR equivalence (not creative works).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

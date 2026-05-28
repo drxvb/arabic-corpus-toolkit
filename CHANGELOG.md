@@ -2,6 +2,56 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.0.0 — STABLE FREEZE
+
+**Released:** 2026-05-28
+
+The toolkit is stable. All seven assets are present with documented schemas, soft-validation, and at least one live consumer.
+
+### Asset inventory at v1.0.0
+
+| Asset | File | Schema | Consumers |
+|---|---|---|---|
+| A | `corpus/calque-dictionary.json` | v1.2.0 | humanizer v2.7.0+, translator v0.2+ |
+| B | `corpus/empirical-patterns.json` | v1.0.0 | translator v0.3+ (via corpus_stats) |
+| B' | `scripts/register.py` (code-encoded) | n/a | humanizer, authoring-suite |
+| C | `corpus/lexical-tables.json` | v1.1.0 | **humanizer v2.7.1+ (hard dep v2.8.0+)**, translator v0.2.2+ |
+| D | `corpus/typography-rules.json` | v1.0.0 | (consumer integration pending) |
+| E | `corpus/reader-respect-patterns.json` | v1.0.0 | (consumer integration pending) |
+| F | `corpus/terminology-candidates-{technology,news}.json` | v1.0.0 | translator v0.3.0+ (verification signal) |
+| G | `corpus/domain-terminology.json` (technology, 422 pairs cross-vendor validated) + `domain-terminology-news.json` (news, 50 pairs) | v1.3.1 | translator v0.3.1+ (direct EN injection) |
+
+### Stability commitments
+
+- **Per-asset SemVer is enforced**: MAJOR bumps require consumer updates; MINOR/PATCH are backward-compatible. The schema-major-refuse pattern is implemented in every consumer cutover.
+- **No schema breaking changes** without MAJOR bump (e.g., v1.x → v2.0.0).
+- **LICENSE attribution chain** documented for all seven assets including the LLM-proxy provenance for Assets F/G.
+- **Multi-vendor LLM swarm** is operational for terminology validation: minimax + codex + gemini all available as drop-in OpenAI endpoints.
+
+### Pipeline maturity
+
+```
+Corpus mining   → Phase 1 candidates → LLM pairing (single vendor) →
+Cross-LLM confirmation (codex) → Three-way tiebreaker (gemini) → Bulk expansion → Multi-domain.
+                                                                            ↑ proven through v0.8 → v0.14
+```
+
+Every step in the pipeline has been exercised at scale and audited through the Agent Portal (`taskbus.AuditEvents`).
+
+### What's deliberately out of scope for v1.0.0
+
+- Aho-Corasick matcher (mentioned in Codex's v0.2 multi-agent review as "forward-compat door"): not implemented because the linear scan hasn't shown performance pain on real-world consumer usage. v1.x can add it as PATCH if telemetry justifies.
+- Consumer integrations for Assets D and E: pending — toolkit ships the data; consumers haven't cut over yet. Doesn't block v1.0.0.
+- News-domain cross-LLM validation: v0.14 ships single-vendor pairs. v1.x can add cross-vendor passes for the news domain matching the technology workflow.
+
+## v0.14 — News domain added (50 paired terms from Elaph)
+
+50 paired terms from Elaph corpus (3,801 AR articles). Second domain after technology. Note: corpus is Iraq-War-era heavy; terminology is dated but valid.
+
+## v0.13 — Codex confirmation on v0.12 new pairs + Elaph corpus mined
+
+34/50 codex agreement on top 50 of v0.12 additions. Plus: Elaph mined (498 candidates). Pairing landed in v0.14.
+
 ## v0.12 — Bulk-pair expansion to 422 pairs (third portal-native release)
 
 **Released:** 2026-05-28
