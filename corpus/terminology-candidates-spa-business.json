@@ -1,0 +1,1006 @@
+{
+  "corpus": "SPA NewsDataForTranslation (spa-economic.jsonl)",
+  "article_count": 1773,
+  "candidates": [
+    {
+      "term_ar": "المملكة",
+      "freq": 4066,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السعودية",
+      "freq": 2269,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرياض",
+      "freq": 1892,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الموافق",
+      "freq": 1796,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "واس",
+      "freq": 1795,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "انتهى",
+      "freq": 1774,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بما",
+      "freq": 1721,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "تعزيز",
+      "freq": 1330,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "القطاع",
+      "freq": 1316,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التعاون",
+      "freq": 1274,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأعمال",
+      "freq": 1161,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاستثمار",
+      "freq": 1080,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العالمية",
+      "freq": 1073,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الدولي",
+      "freq": 1069,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وتعزيز",
+      "freq": 1062,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "معالي",
+      "freq": 1059,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وزير",
+      "freq": 1033,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "قطاع",
+      "freq": 1016,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الوطنية",
+      "freq": 980,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "تطوير",
+      "freq": 963,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "رؤية",
+      "freq": 951,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عبر",
+      "freq": 930,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الصناعة",
+      "freq": 917,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاقتصادية",
+      "freq": 911,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السعودي",
+      "freq": 903,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "جانب",
+      "freq": 858,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الصناعية",
+      "freq": 844,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العامة",
+      "freq": 807,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الهيئة",
+      "freq": 779,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الدولية",
+      "freq": 775,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "إضافة",
+      "freq": 767,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العمل",
+      "freq": 761,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التنمية",
+      "freq": 754,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاقتصادي",
+      "freq": 752,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "رؤية المملكة",
+      "freq": 745,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "أسهم",
+      "freq": 735,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "دعم",
+      "freq": 726,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "جمادى",
+      "freq": 700,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المالية",
+      "freq": 695,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العالمي",
+      "freq": 695,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عدد",
+      "freq": 693,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأولى",
+      "freq": 689,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاقتصاد",
+      "freq": 685,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مستهدفات",
+      "freq": 664,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "رئيس",
+      "freq": 664,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "معالي وزير",
+      "freq": 655,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "التنفيذي",
+      "freq": 634,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الخاص",
+      "freq": 631,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الطاقة",
+      "freq": 628,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرئيس",
+      "freq": 609,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مجلس",
+      "freq": 603,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "منظومة",
+      "freq": 600,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العربية",
+      "freq": 598,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "أعمال",
+      "freq": 596,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المعدنية",
+      "freq": 588,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "يسهم",
+      "freq": 576,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاستثمارات",
+      "freq": 573,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مستقبل",
+      "freq": 571,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الوطني",
+      "freq": 567,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "فرص",
+      "freq": 566,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التعدين",
+      "freq": 565,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العالم",
+      "freq": 565,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "نوفمبر",
+      "freq": 556,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "فيما",
+      "freq": 542,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مستوى",
+      "freq": 542,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التحتية",
+      "freq": 541,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاستثمارية",
+      "freq": 539,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التجارة",
+      "freq": 533,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "منصة",
+      "freq": 529,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بناء",
+      "freq": 528,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مختلف",
+      "freq": 525,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأسهم",
+      "freq": 524,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مجالات",
+      "freq": 519,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الإستراتيجية",
+      "freq": 517,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مما",
+      "freq": 515,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المحلي",
+      "freq": 507,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "تحقيق",
+      "freq": 497,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المؤتمر",
+      "freq": 497,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ذات",
+      "freq": 496,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الابتكار",
+      "freq": 496,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الصناعي",
+      "freq": 493,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "أكتوبر",
+      "freq": 490,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عبدالعزيز",
+      "freq": 489,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المنطقة",
+      "freq": 488,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "والثروة",
+      "freq": 485,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاصطناعي",
+      "freq": 484,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرياض جمادى",
+      "freq": 484,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "منطقة",
+      "freq": 481,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وزارة",
+      "freq": 478,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عالميا",
+      "freq": 477,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "والثروة المعدنية",
+      "freq": 477,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "القطاعات",
+      "freq": 475,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الصناعة والثروة",
+      "freq": 471,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "التحول",
+      "freq": 469,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ودعم",
+      "freq": 469,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الصناعة والثروة المعدنية",
+      "freq": 469,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "النمو",
+      "freq": 468,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المهندس",
+      "freq": 460,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "كفاءة",
+      "freq": 460,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الفرص",
+      "freq": 459,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "إطار",
+      "freq": 456,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "يناير",
+      "freq": 455,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "جمادى الأولى",
+      "freq": 453,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الأولى الموافق",
+      "freq": 453,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "جمادى الأولى الموافق",
+      "freq": 453,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الأستاذ",
+      "freq": 451,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وفي",
+      "freq": 450,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السوق",
+      "freq": 447,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مستهدفات رؤية",
+      "freq": 445,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الدول",
+      "freq": 444,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بلغت",
+      "freq": 441,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "نمو",
+      "freq": 439,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "نقطة",
+      "freq": 436,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "جودة",
+      "freq": 428,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الشراكات",
+      "freq": 424,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "لتعزيز",
+      "freq": 422,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ربيع",
+      "freq": 420,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأسواق",
+      "freq": 419,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاجتماع",
+      "freq": 414,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بيئة",
+      "freq": 413,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "والخدمات",
+      "freq": 411,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التمويل",
+      "freq": 408,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عالمية",
+      "freq": 407,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "تمكين",
+      "freq": 407,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وتطوير",
+      "freq": 402,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المستثمرين",
+      "freq": 402,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرئيس التنفيذي",
+      "freq": 402,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "بما يسهم",
+      "freq": 399,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "البلدين",
+      "freq": 398,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مستهدفات رؤية المملكة",
+      "freq": 397,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "يعكس",
+      "freq": 395,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "معاليه",
+      "freq": 395,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الملك",
+      "freq": 394,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الفترة",
+      "freq": 393,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "القطاع الخاص",
+      "freq": 387,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "وأكد",
+      "freq": 386,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مجموعة",
+      "freq": 386,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "البنية",
+      "freq": 386,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مكانة",
+      "freq": 385,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "يعزز",
+      "freq": 383,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "برنامج",
+      "freq": 382,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مشاركة",
+      "freq": 382,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "القيمة",
+      "freq": 382,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الموافق نوفمبر",
+      "freq": 382,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "محمد",
+      "freq": 381,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "نوفمبر واس",
+      "freq": 380,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الموافق نوفمبر واس",
+      "freq": 380,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "قيمتها",
+      "freq": 377,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الهيئة العامة",
+      "freq": 377,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "البنك",
+      "freq": 376,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مجال",
+      "freq": 373,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التقنية",
+      "freq": 372,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "إدارة",
+      "freq": 372,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "إستراتيجية",
+      "freq": 371,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المستدامة",
+      "freq": 370,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "تحت",
+      "freq": 368,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الموافق أكتوبر",
+      "freq": 367,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "المحلية",
+      "freq": 366,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "البنية التحتية",
+      "freq": 365,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "التجارية",
+      "freq": 364,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "أكتوبر واس",
+      "freq": 364,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الموافق أكتوبر واس",
+      "freq": 364,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "تسهم",
+      "freq": 362,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المشاريع",
+      "freq": 360,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "والمتوسطة",
+      "freq": 357,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المعرض",
+      "freq": 357,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المشترك",
+      "freq": 356,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الدكتور",
+      "freq": 355,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "سوق",
+      "freq": 355,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الشراكة",
+      "freq": 351,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "اللوجستية",
+      "freq": 351,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بمشاركة",
+      "freq": 350,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الجهات",
+      "freq": 347,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المنشآت",
+      "freq": 344,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المنتدى",
+      "freq": 342,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "شعبان",
+      "freq": 342,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "شعبان الموافق",
+      "freq": 341,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الذكاء",
+      "freq": 338,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ديسمبر",
+      "freq": 336,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ورفع",
+      "freq": 335,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "سلاسل",
+      "freq": 333,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مشيرا",
+      "freq": 333,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العقاري",
+      "freq": 330,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بهدف",
+      "freq": 328,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الذكاء الاصطناعي",
+      "freq": 326,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "جدة",
+      "freq": 325,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المشتركة",
+      "freq": 324,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الحكومية",
+      "freq": 323,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مبادرة",
+      "freq": 322,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "متكاملة",
+      "freq": 320,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وتمكين",
+      "freq": 316,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "للتنمية",
+      "freq": 315,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وأوضح",
+      "freq": 315,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عمل",
+      "freq": 313,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "صندوق",
+      "freq": 313,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأسهم السعودية",
+      "freq": 310,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "مؤشر",
+      "freq": 309,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التقنيات",
+      "freq": 309,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرياض جمادى الأولى",
+      "freq": 309,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الرقمي",
+      "freq": 308,
+      "ngram_size": "unigram"
+    }
+  ]
+}

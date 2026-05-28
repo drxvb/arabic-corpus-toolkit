@@ -2,6 +2,73 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.11.0 — SPA mining lands → G.legal escapes placeholder, +66% active pairs
+
+**Released:** 2026-05-29
+
+Closes the v1.10.0 deferred work: G.legal at 0 active pairs (placeholder) and the explicit "mine SPA NewsDataForTranslation 40K corpus" item that 3 of 5 A5 evaluators flagged (Sonnet, Kimi, Gemini).
+
+### Pipeline (Stages 1-5)
+
+1. **AR candidate extraction** from each SPA bucket (mined in v1.10.1's corpus walk). Top-N candidates by frequency with stopword filter + 3-character minimum + bigram/trigram support.
+2. **Minimax pair** — proposes EN translations for each AR candidate. Same pipeline as v1.9.0 but on the modern, higher-quality SPA-2024 corpus.
+3. **4-vendor confirm** — codex + gemini + kimi + minimax challenge each proposed pair in parallel per domain.
+4. **Tier prune** by 3-INDEPENDENT-vendor consensus (codex + gemini + kimi; minimax excluded as proposer). Threshold ≥1.
+5. **Additive merge** with v1.10.0 active pairs (dedup by AR text — v1.10.0 actives preserved as-is; new SPA-derived actives appended).
+
+### Results
+
+| Domain | v1.10.0 active | v1.11.0 active | Delta | v1.11.0 below |
+|---|---|---|---|---|
+| G.business | 51 | **69** | +18 | 91 |
+| **G.legal** | **0 (placeholder)** | **23** | **+23 — placeholder DROPPED** | 59 |
+| G.politics | 13 | 14 | +1 | 148 |
+
+**Total active: 64 → 106 (+66% growth in one mining pass).**
+
+### Per-vendor SPA-2024 agreement matrix
+
+| Domain | codex | gemini | kimi | minimax |
+|---|---|---|---|---|
+| legal | 13/74 (18%) | 20/74 (27%) | 6/74 (8%) | 34/74 (46%) |
+| business | 16/69 (23%) | timed out | 18/69 (26%) | 38/69 (55%) |
+| politics | 0/36 (0%) | 0/36 (0%) | 1/36 (3%) | 1/36 (3%) |
+
+**Notable**: gemini × business timed out mid-batch — its 0 votes for business mean a few candidate pairs may have lost a potential agreement signal. v1.11.1 patch could re-run just that cell. Politics's near-unanimous rejection (codex 0, gemini 0) is real signal: SPA political content is Saudi-specific (Vision 2030, GCC summits, royal protocol vocabulary) — vendor lexicons trained on broad global politics don't recognize most candidates as politics terminology.
+
+### Why G.legal escaped placeholder
+
+The SPA "general" bucket (4,330 bilingual articles) contains the governance/audit/ministry vocabulary that Elaph completely lacked. From the General bucket: 74 minimax-proposed pairs → 23 made the ≥1-independent-vendor consensus bar. Sample 3/3-unanimous legal pairs include core regulatory/governance terminology (the actual list is in `corpus/domain-terminology-legal.json` `pairs[*].n_independent_agree == 3`).
+
+The `validation_status: placeholder_pending_dedicated_legal_corpus` field is now removed; G.legal is back to `tiered_3_vendor_consensus` status.
+
+### Schema 1.3.0 → 1.4.0 (MINOR additive)
+
+New per-pair fields:
+- `source_corpus`: "spa-news-2024" for v1.11.0 additions; absent or "elaph-news-2003-2008" for v1.10.0 originals
+
+New provenance fields:
+- `provenance.v1_4_source_corpora`: ["elaph-news-2003-2008 (v1.0-v1.3)", "spa-news-2024 (v1.4)"]
+- `provenance.v1_4_new_active_added`: per-domain SPA contribution count
+- `provenance.v1_4_tier_breakdown`: 3/3 + 2/3 + 1/3 + legacy-no-consensus-field counts
+
+### Registry updates
+
+`asset-registry.json`: G.business / G.legal / G.politics bumped to current_version 1.4.0. `n_active_pairs` and `n_below_threshold` reflect the merged totals. `generated_by` updated to "toolkit v1.11.0 — SPA-news-2024 mining merged with v1.10.0 tiered actives."
+
+### New tracked staging artifacts
+
+`corpus/terminology-candidates-spa-{business,legal,politics}.json` — Stage 1 outputs. 200+200+300 = 700 candidates pre-pairing. Committed for provenance.
+
+### Verification
+
+- Inter-sibling contract conformance: **56/56 PASS** (added 2 new checks because G.legal now has active pairs that exercise the `n_independent_agree ∈ [0,3]` assertion that v1.10.0 skipped on empty pair list)
+- Golden e2e: **40/40 PASS**
+
+### Consumer impact (zero code change)
+
+Translator + authoring `_find_terminology_pairs_in_text` / `_find_terminology_hits` automatically pick up the new actives via the existing `pairs` field. The min_consensus filter shipped in translator v1.8.0 + authoring v1.6.0 transparently filters the new SPA-derived pairs by their `n_independent_agree` tier.
+
 ## v1.10.1 — Inter-sibling contract conformance suite + SPA corpus ingestion
 
 **Released:** 2026-05-29

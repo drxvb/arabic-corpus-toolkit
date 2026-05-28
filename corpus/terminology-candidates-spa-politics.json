@@ -1,0 +1,1006 @@
+{
+  "corpus": "SPA NewsDataForTranslation (spa-political.jsonl)",
+  "article_count": 1317,
+  "candidates": [
+    {
+      "term_ar": "مجلس",
+      "freq": 1486,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المملكة",
+      "freq": 1379,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "انتهى",
+      "freq": 1359,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الموافق",
+      "freq": 1340,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العربية",
+      "freq": 1330,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "واس",
+      "freq": 1319,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وزير",
+      "freq": 1218,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التعاون",
+      "freq": 1131,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "رئيس",
+      "freq": 1119,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الخارجية",
+      "freq": 1024,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "محمد",
+      "freq": 945,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المتحدة",
+      "freq": 925,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الوزراء",
+      "freq": 869,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السمو",
+      "freq": 849,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرياض",
+      "freq": 842,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "معالي",
+      "freq": 836,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأمير",
+      "freq": 781,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عبدالعزيز",
+      "freq": 779,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "جمهورية",
+      "freq": 747,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المجلس",
+      "freq": 729,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الدولي",
+      "freq": 708,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "صاحب",
+      "freq": 690,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السعودية",
+      "freq": 679,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "صاحب السمو",
+      "freq": 679,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "بما",
+      "freq": 652,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "سلمان",
+      "freq": 645,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "مجلس الوزراء",
+      "freq": 640,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "المشترك",
+      "freq": 617,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "سعود",
+      "freq": 600,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأمن",
+      "freq": 600,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ولي",
+      "freq": 595,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وزير الخارجية",
+      "freq": 585,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "العهد",
+      "freq": 576,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ولي العهد",
+      "freq": 576,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "سلمان عبدالعزيز",
+      "freq": 566,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "العربية السعودية",
+      "freq": 551,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "رئيس مجلس",
+      "freq": 539,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "عبدالعزيز سعود",
+      "freq": 535,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الدولية",
+      "freq": 529,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "دولة",
+      "freq": 523,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "سلمان عبدالعزيز سعود",
+      "freq": 516,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الملكي",
+      "freq": 508,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العامة",
+      "freq": 500,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المملكة العربية",
+      "freq": 488,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "المملكة العربية السعودية",
+      "freq": 487,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الدول",
+      "freq": 481,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "وجرى",
+      "freq": 473,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السمو الملكي",
+      "freq": 473,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "المنطقة",
+      "freq": 456,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "البلدين",
+      "freq": 447,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العلاقات",
+      "freq": 441,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الملكي الأمير",
+      "freq": 441,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "السمو الملكي الأمير",
+      "freq": 441,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "عبدالله",
+      "freq": 439,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الملك",
+      "freq": 437,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الدكتور",
+      "freq": 410,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الشريفين",
+      "freq": 409,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الحرمين",
+      "freq": 406,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الحرمين الشريفين",
+      "freq": 406,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "مجلس التعاون",
+      "freq": 399,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "رئيس مجلس الوزراء",
+      "freq": 392,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "دول",
+      "freq": 390,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ذات",
+      "freq": 387,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "اللقاء",
+      "freq": 383,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "صاحب السمو الملكي",
+      "freq": 371,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "خادم",
+      "freq": 358,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "خادم الحرمين",
+      "freq": 358,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "خادم الحرمين الشريفين",
+      "freq": 358,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "العهد رئيس",
+      "freq": 356,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "ولي العهد رئيس",
+      "freq": 356,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "العهد رئيس مجلس",
+      "freq": 356,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "تعزيز",
+      "freq": 355,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "والاستقرار",
+      "freq": 352,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "جمادى",
+      "freq": 351,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأمير محمد",
+      "freq": 347,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الملكي الأمير محمد",
+      "freq": 344,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الفلسطينية",
+      "freq": 342,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "محمد سلمان",
+      "freq": 342,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الأمير محمد سلمان",
+      "freq": 339,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "سعود ولي",
+      "freq": 332,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "سعود ولي العهد",
+      "freq": 332,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "محمد سلمان عبدالعزيز",
+      "freq": 329,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الأمين",
+      "freq": 326,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ربيع",
+      "freq": 321,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عبدالعزيز سعود ولي",
+      "freq": 321,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الأمم",
+      "freq": 320,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "فيصل",
+      "freq": 318,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السلام",
+      "freq": 317,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأمم المتحدة",
+      "freq": 316,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "سمو",
+      "freq": 313,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الإقليمية",
+      "freq": 309,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الله",
+      "freq": 308,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرئيس",
+      "freq": 307,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "غزة",
+      "freq": 306,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "لمجلس",
+      "freq": 298,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاجتماع",
+      "freq": 296,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الدولة",
+      "freq": 296,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السمو الأمير",
+      "freq": 293,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "والازدهار",
+      "freq": 287,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "فرحان",
+      "freq": 278,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأستاذ",
+      "freq": 277,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الجهود",
+      "freq": 275,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الإسلامي",
+      "freq": 273,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "نائب",
+      "freq": 273,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأمير فيصل",
+      "freq": 272,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "استعراض",
+      "freq": 271,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الجمهورية",
+      "freq": 271,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "صاحب السمو الأمير",
+      "freq": 271,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "فيصل فرحان",
+      "freq": 269,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الأمير فيصل فرحان",
+      "freq": 269,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "معالي وزير",
+      "freq": 267,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الاستقبال",
+      "freq": 266,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السمو الأمير فيصل",
+      "freq": 266,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الاحتلال",
+      "freq": 265,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "خارجية",
+      "freq": 265,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "لدول",
+      "freq": 264,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الخليج",
+      "freq": 264,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "رمضان",
+      "freq": 259,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التقدم",
+      "freq": 258,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "فرحان عبدالله",
+      "freq": 254,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "فيصل فرحان عبدالله",
+      "freq": 254,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "وزارة",
+      "freq": 253,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الشعب",
+      "freq": 253,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عبدالله وزير",
+      "freq": 253,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "فرحان عبدالله وزير",
+      "freq": 253,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الإنسانية",
+      "freq": 252,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الثنائية",
+      "freq": 252,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "عبدالله وزير الخارجية",
+      "freq": 252,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الأمن والاستقرار",
+      "freq": 250,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "ديسمبر",
+      "freq": 249,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "حضر",
+      "freq": 248,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "رمضان الموافق",
+      "freq": 248,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الفلسطيني",
+      "freq": 247,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الاهتمام",
+      "freq": 245,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "فبراير",
+      "freq": 245,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بمناسبة",
+      "freq": 243,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "المجالات",
+      "freq": 243,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "سبتمبر",
+      "freq": 242,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بحث",
+      "freq": 240,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ذات الاهتمام",
+      "freq": 240,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الاهتمام المشترك",
+      "freq": 240,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "ذات الاهتمام المشترك",
+      "freq": 240,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "والدولية",
+      "freq": 237,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "دعم",
+      "freq": 236,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "معالي الأمين",
+      "freq": 236,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "وفي",
+      "freq": 235,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "السيد",
+      "freq": 234,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الإسرائيلي",
+      "freq": 233,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الأمريكية",
+      "freq": 233,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الموافق فبراير",
+      "freq": 231,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "فبراير واس",
+      "freq": 231,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الموافق فبراير واس",
+      "freq": 231,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "قطر",
+      "freq": 230,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الرياض جمادى",
+      "freq": 227,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "ومعالي",
+      "freq": 226,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "معاليه",
+      "freq": 223,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الخليج العربية",
+      "freq": 223,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الإقليمية والدولية",
+      "freq": 223,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "التعاون لدول",
+      "freq": 222,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "لدول الخليج",
+      "freq": 222,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الموافق ديسمبر",
+      "freq": 222,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "التعاون لدول الخليج",
+      "freq": 222,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "لدول الخليج العربية",
+      "freq": 222,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الإسلامية",
+      "freq": 221,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الصحة",
+      "freq": 220,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "رجب",
+      "freq": 220,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "برقية",
+      "freq": 219,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "أهمية",
+      "freq": 218,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "ديسمبر واس",
+      "freq": 218,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الموافق ديسمبر واس",
+      "freq": 218,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الكويت",
+      "freq": 217,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "والسعادة",
+      "freq": 215,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "العمل",
+      "freq": 214,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الوطني",
+      "freq": 214,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "أكتوبر",
+      "freq": 214,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الملك سلمان",
+      "freq": 213,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "التقى",
+      "freq": 212,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "بعث",
+      "freq": 212,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التقدم والازدهار",
+      "freq": 212,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "العلاقات الثنائية",
+      "freq": 211,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "التمنيات",
+      "freq": 210,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "واس بعث",
+      "freq": 210,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "وشعب",
+      "freq": 208,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "يناير",
+      "freq": 208,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "التهاني",
+      "freq": 207,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "قطاع",
+      "freq": 206,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الموضوعات",
+      "freq": 206,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "الشقيق",
+      "freq": 206,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "تهنئة",
+      "freq": 206,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "برقية تهنئة",
+      "freq": 205,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "ربيع الآخر",
+      "freq": 205,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "الآخر الموافق",
+      "freq": 205,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "رجب الموافق",
+      "freq": 205,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "ربيع الآخر الموافق",
+      "freq": 205,
+      "ngram_size": "trigram"
+    },
+    {
+      "term_ar": "الشيخ",
+      "freq": 204,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "واس التقى",
+      "freq": 204,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "المشتركة",
+      "freq": 203,
+      "ngram_size": "unigram"
+    },
+    {
+      "term_ar": "لمجلس التعاون",
+      "freq": 202,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "المجلس الأعلى",
+      "freq": 202,
+      "ngram_size": "bigram"
+    },
+    {
+      "term_ar": "للشؤون",
+      "freq": 201,
+      "ngram_size": "unigram"
+    }
+  ]
+}
