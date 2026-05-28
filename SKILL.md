@@ -5,7 +5,7 @@ description: "Shared Arabic-language corpus infrastructure: calque dictionary, c
 
 # arabic-corpus-toolkit — Shared Arabic Linguistic Infrastructure
 
-**Status:** v0.5 — two more asset types promoted from humanizer Markdown to machine-readable JSON (typography rules + reader-respect patterns); schema-diff CLI ships for enforcement. Two consumers now live: `arabic-ai-text-humanizer` v2.7.0 (calque dictionary) + `arabic-corpus-translator` v0.1 (calque dictionary for Stage A terminology lookup).
+**Status:** v0.6 — consumer-view export tool ships. v0.5 — two more asset types promoted from humanizer Markdown to machine-readable JSON (typography rules + reader-respect patterns); schema-diff CLI ships for enforcement. Two consumers now live: `arabic-ai-text-humanizer` v2.7.0 (calque dictionary) + `arabic-corpus-translator` v0.1 (calque dictionary for Stage A terminology lookup).
 
 - **v0.2**: assets migrated from `arabic-ai-text-humanizer` (340-entry calque dictionary + 71.28M-token empirical patterns); `scripts/dictionary.py` 6-function read API; `references/02-external-sources.md` from Gemini-style lens.
 - **v0.3 (current)**:
