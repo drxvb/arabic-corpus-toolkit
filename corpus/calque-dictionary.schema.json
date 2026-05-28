@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/drxvb/arabic-corpus-toolkit/corpus/calque-dictionary.schema.json",
+  "title": "Arabic Calque Dictionary Schema v1.2.0",
+  "description": "Schema for arabic-corpus-toolkit calque-dictionary.json. Compatible with humanizer v2.3.0+ (base schema), v2.6.0+ (triage additions), and v2.6.3+ (topic-guard additions). See references/03-api-design.md for design rationale.",
+  "type": ["array", "object"],
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["entries"],
+      "properties": {
+        "$schema_version": {
+          "type": "string",
+          "description": "Asset-level SemVer. v1.0.0=base; v1.1.0 adds v2.6.0 triage fields; v1.2.0 adds v2.6.3 topic-guard fields. Use exact-match for breaking changes."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Free-form metadata: source, version, mining provenance"
+        },
+        "entries": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Entry" }
+        }
+      }
+    },
+    {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Entry" }
+    }
+  ],
+  "definitions": {
+    "Entry": {
+      "type": "object",
+      "required": ["en", "ai_default_calque", "natural_arabic", "domain", "confidence"],
+      "properties": {
+        "en": {
+          "type": "string",
+          "description": "The English source term. May include parenthetical disambiguation, e.g., 'view (database)' to distinguish from a UI sense."
+        },
+        "ai_default_calque": {
+          "type": "string",
+          "description": "The Arabic calque that AI translators typically produce. This is what the humanizer detects in input and replaces."
+        },
+        "natural_arabic": {
+          "type": "string",
+          "description": "The natural-Arabic replacement. Corpus-attested or institutionally-authoritative."
+        },
+        "alternatives": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Other natural-Arabic options. Informational; the lex pass uses natural_arabic."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Domain tag (e.g., tech-data, tech-software, business, news-journalism, politics, climate, healthcare, tech-ai-agents, tech-crypto)."
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "medium_consensus", "low", "high_user_attested", "topic-guarded"],
+          "description": "Source of confidence. 'high_user_attested' = native-speaker reviewed; 'topic-guarded' = re-added with context_keywords gate after v2.6.0 emergency triage."
+        },
+
+        "corpus_hits": {
+          "type": ["integer", "null"],
+          "description": "Frequency in the AITNews corpus (2.88M tokens)."
+        },
+        "partial_hits": {
+          "type": ["integer", "null"],
+          "description": "Approximate-match frequency (substring or inflection)."
+        },
+        "llm_votes": {
+          "type": "object",
+          "description": "Per-LLM vote in the multi-LLM swarm that produced this entry."
+        },
+        "n_llms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "consensus_strength": {
+          "type": "integer",
+          "minimum": 0
+        },
+
+        "regional_sensitivity": {
+          "type": ["string", "null"],
+          "enum": ["gulf", "levant", "maghreb", "pan-arab", null],
+          "description": "v1.1.0 (v2.6.0 of humanizer): regions where this term is sensitive."
+        },
+        "political_sensitivity": {
+          "type": ["string", "null"],
+          "enum": ["none", "low", "medium", "high", "critical", null],
+          "description": "v1.1.0: editorial risk level. 'high' / 'critical' entries should not be silently substituted by automation; flag for review."
+        },
+        "disambiguation_pair_id": {
+          "type": ["string", "null"],
+          "description": "v1.1.0: links entries that must be considered jointly (e.g., refugee + displaced person)."
+        },
+        "disambiguation_warning": {
+          "type": ["string", "null"],
+          "description": "v1.1.0: free-text editorial guidance for the LLM cognitive pass."
+        },
+        "applies_only_in_domain": {
+          "type": ["array", "null"],
+          "items": { "type": "string" },
+          "description": "v1.1.0: hard domain filter — substitution skips if input domain isn't listed."
+        },
+        "v2_6_triage_note": {
+          "type": "string",
+          "description": "v1.1.0: provenance note recording why this entry was added/changed in v2.6.x."
+        },
+
+        "context_keywords_arabic": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "v1.2.0 (v2.6.3 topic-guard): positive gate. At least context_keywords_required_count Arabic keywords must appear within ±100 chars of the candidate match."
+        },
+        "context_keywords_english": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "v1.2.0: positive gate — English keywords (e.g., 'SQL', 'PostgreSQL') often appear in tech-context Arabic prose."
+        },
+        "context_keywords_required_count": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "v1.2.0: how many keywords from the Arabic+English lists must hit to fire the substitution. Default 1."
+        },
+        "exclude_if_pattern": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "v1.2.0: regex patterns that block the substitution even when Layer 1 positive gate passes. Critical for 'رؤية\\s+\\d{4}' (Vision XXXX) class exclusions."
+        }
+      }
+    }
+  }
+}

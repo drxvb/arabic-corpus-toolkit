@@ -5,7 +5,16 @@ description: "Shared Arabic-language corpus infrastructure: calque dictionary, c
 
 # arabic-corpus-toolkit — Shared Arabic Linguistic Infrastructure
 
-**Status:** v0.2 — assets migrated from `arabic-ai-text-humanizer` (340-entry calque dictionary + 71.28M-token empirical-patterns mining output). Read API (`scripts/dictionary.py`) ships with six functions: `load_dictionary`, `find_by_en`, `find_canonical`, `iter_entries`, `has_topic_guard`, `stats`. External-sources catalog (`references/02-external-sources.md`) compiled from the multi-agent Gemini-style grounding lens — 12 authoritative institutions for cross-referencing, three dictionary claims flagged as needing external verification, and the fiqh-adjacent sacred-text-adjacency gap that no LLM can solve. The Kimi-style asset-promotion lens and Codex-style API-design lens are still running and will inform v0.3.
+**Status:** v0.3 — full multi-agent review (Gemini + Kimi + Codex lenses) absorbed.
+
+- **v0.2**: assets migrated from `arabic-ai-text-humanizer` (340-entry calque dictionary + 71.28M-token empirical patterns); `scripts/dictionary.py` 6-function read API; `references/02-external-sources.md` from Gemini-style lens.
+- **v0.3 (current)**:
+  - `scripts/validate.py` — typed `SchemaReport` validator with separated ERRORS / WARNINGS / unknown-field tracking + per-v2.6+ field coverage report. The "regression detector the humanizer never had" — Kimi-style lens identified this as the load-bearing net-new contribution.
+  - `scripts/register.py` — register policy lookup (`policy_for`, `applies`, `known_registers`) per Codex-style API design (encoded in code, not JSON — adding a register requires consumer code changes).
+  - `corpus/calque-dictionary.schema.json` — formal JSON Schema draft-07 covering base v1.0.0 + v2.6.0 triage (v1.1.0) + v2.6.3 topic-guard (v1.2.0) extensions.
+  - `CHANGELOG.md` — per-asset SemVer log (Kimi-style: per-asset versioning, not monolithic).
+  - `references/03-api-design.md` — design rationale (JSON-vs-SQLite trade-off, Aho-Corasick forward-compat door, errors-as-data discipline).
+  - `references/04-multi-agent-synthesis.md` — preserved Gemini + Kimi + Codex findings from the v0.2 review.
 
 ## Why this skill exists
 
