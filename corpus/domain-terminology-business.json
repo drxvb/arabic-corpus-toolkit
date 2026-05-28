@@ -1,0 +1,261 @@
+{
+  "$schema_version": "1.0.0",
+  "asset_name": "domain-terminology",
+  "domain": "business",
+  "provenance": {
+    "source_method": "single-pass classify+pair from terminology-candidates-news.json",
+    "primary_proxy": "minimax",
+    "primary_model": "MiniMax-M2.7",
+    "n_pairs": 27,
+    "pairing_timestamp": "2026-05-29T00:21:07"
+  },
+  "notes": [
+    "v1.9.0 domain expansion: minimax-classified pairs from Elaph news corpus.",
+    "Domain 'business' selected; geographic + other dropped."
+  ],
+  "pairs": [
+    {
+      "ar": "النفط",
+      "en": "oil",
+      "domain": "business",
+      "corpus_freq": 2056,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العمل",
+      "en": "work/labor",
+      "domain": "business",
+      "corpus_freq": 1613,
+      "ngram_size": "unigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المالية",
+      "en": "Finance",
+      "domain": "business",
+      "corpus_freq": 1229,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سعر",
+      "en": "price",
+      "domain": "business",
+      "corpus_freq": 1086,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بلغت",
+      "en": "reached",
+      "domain": "business",
+      "corpus_freq": 1015,
+      "ngram_size": "unigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "قطاع",
+      "en": "sector",
+      "domain": "business",
+      "corpus_freq": 996,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السوق",
+      "en": "market",
+      "domain": "business",
+      "corpus_freq": 956,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الدولي",
+      "en": "international",
+      "domain": "business",
+      "corpus_freq": 953,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دينار",
+      "en": "Dinar",
+      "domain": "business",
+      "corpus_freq": 933,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أجل",
+      "en": "term",
+      "domain": "business",
+      "corpus_freq": 930,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أسعار",
+      "en": "Prices",
+      "domain": "business",
+      "corpus_freq": 840,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بناء",
+      "en": "Construction",
+      "domain": "business",
+      "corpus_freq": 829,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سوق",
+      "en": "Market",
+      "domain": "business",
+      "corpus_freq": 813,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البنك",
+      "en": "Bank",
+      "domain": "business",
+      "corpus_freq": 807,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "أسعار النفط",
+      "en": "Oil Prices",
+      "domain": "business",
+      "corpus_freq": 311,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الربع الثالث",
+      "en": "the third quarter",
+      "domain": "business",
+      "corpus_freq": 275,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "القطاع الخاص",
+      "en": "the private sector",
+      "domain": "business",
+      "corpus_freq": 191,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأسهم السعودية",
+      "en": "Saudi stocks",
+      "domain": "business",
+      "corpus_freq": 179,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "البنك المركزي",
+      "en": "Central Bank",
+      "domain": "business",
+      "corpus_freq": 174,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سوق الأسهم",
+      "en": "stock market",
+      "domain": "business",
+      "corpus_freq": 168,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "اسعار النفط",
+      "en": "oil prices",
+      "domain": "business",
+      "corpus_freq": 152,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "النفط الخام",
+      "en": "crude oil",
+      "domain": "business",
+      "corpus_freq": 145,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سهم بقيمة",
+      "en": "share with value",
+      "domain": "business",
+      "corpus_freq": 144,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سوق الأسهم السعودية",
+      "en": "Saudi stock market",
+      "domain": "business",
+      "corpus_freq": 127,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجلس إدارة",
+      "en": "board of directors",
+      "domain": "business",
+      "corpus_freq": 126,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الناتج المحلي",
+      "en": "Domestic product",
+      "domain": "business",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مستوى نقطة",
+      "en": "Point level",
+      "domain": "business",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    }
+  ]
+}

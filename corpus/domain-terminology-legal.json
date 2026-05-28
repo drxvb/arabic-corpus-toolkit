@@ -1,0 +1,63 @@
+{
+  "$schema_version": "1.0.0",
+  "asset_name": "domain-terminology",
+  "domain": "legal",
+  "provenance": {
+    "source_method": "single-pass classify+pair from terminology-candidates-news.json",
+    "primary_proxy": "minimax",
+    "primary_model": "MiniMax-M2.7",
+    "n_pairs": 5,
+    "pairing_timestamp": "2026-05-29T00:21:07"
+  },
+  "notes": [
+    "v1.9.0 domain expansion: minimax-classified pairs from Elaph news corpus.",
+    "Domain 'legal' selected; geographic + other dropped."
+  ],
+  "pairs": [
+    {
+      "ar": "حقوق",
+      "en": "rights",
+      "domain": "legal",
+      "corpus_freq": 913,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "القانون",
+      "en": "the law",
+      "domain": "legal",
+      "corpus_freq": 872,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وزارة",
+      "en": "Ministry",
+      "domain": "legal",
+      "corpus_freq": 803,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حقوق الإنسان",
+      "en": "human rights",
+      "domain": "legal",
+      "corpus_freq": 222,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حقوق الانسان",
+      "en": "human rights",
+      "domain": "legal",
+      "corpus_freq": 148,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    }
+  ]
+}

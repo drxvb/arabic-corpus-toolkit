@@ -1,0 +1,639 @@
+{
+  "$schema_version": "1.0.0",
+  "asset_name": "domain-terminology",
+  "domain": "politics",
+  "provenance": {
+    "source_method": "single-pass classify+pair from terminology-candidates-news.json",
+    "primary_proxy": "minimax",
+    "primary_model": "MiniMax-M2.7",
+    "n_pairs": 69,
+    "pairing_timestamp": "2026-05-29T00:21:07"
+  },
+  "notes": [
+    "v1.9.0 domain expansion: minimax-classified pairs from Elaph news corpus.",
+    "Domain 'politics' selected; geographic + other dropped."
+  ],
+  "pairs": [
+    {
+      "ar": "الشعب",
+      "en": "the people/nation",
+      "domain": "politics",
+      "corpus_freq": 3286,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السياسية",
+      "en": "the political",
+      "domain": "politics",
+      "corpus_freq": 2735,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الدولة",
+      "en": "the state",
+      "domain": "politics",
+      "corpus_freq": 2423,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحكومة",
+      "en": "the government",
+      "domain": "politics",
+      "corpus_freq": 2286,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "صدام",
+      "en": "Saddam",
+      "domain": "politics",
+      "corpus_freq": 1947,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السياسي",
+      "en": "the political/the politician",
+      "domain": "politics",
+      "corpus_freq": 1861,
+      "ngram_size": "unigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس",
+      "en": "head/chief/president",
+      "domain": "politics",
+      "corpus_freq": 1757,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الوطنية",
+      "en": "the national/nationalism",
+      "domain": "politics",
+      "corpus_freq": 1672,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السلطة",
+      "en": "authority/power/government",
+      "domain": "politics",
+      "corpus_freq": 1608,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرئيس",
+      "en": "the president",
+      "domain": "politics",
+      "corpus_freq": 1570,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الانتخابات",
+      "en": "elections",
+      "domain": "politics",
+      "corpus_freq": 1524,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجلس",
+      "en": "council",
+      "domain": "politics",
+      "corpus_freq": 1366,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الديمقراطية",
+      "en": "democracy",
+      "domain": "politics",
+      "corpus_freq": 1290,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحرب",
+      "en": "war",
+      "domain": "politics",
+      "corpus_freq": 1070,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحكم",
+      "en": "rule",
+      "domain": "politics",
+      "corpus_freq": 992,
+      "ngram_size": "unigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حزب",
+      "en": "party",
+      "domain": "politics",
+      "corpus_freq": 948,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاحتلال",
+      "en": "Occupation",
+      "domain": "politics",
+      "corpus_freq": 943,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الفلسطيني",
+      "en": "Palestinian",
+      "domain": "politics",
+      "corpus_freq": 829,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "القوى",
+      "en": "Forces",
+      "domain": "politics",
+      "corpus_freq": 802,
+      "ngram_size": "unigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "صدام حسين",
+      "en": "Saddam Hussein",
+      "domain": "politics",
+      "corpus_freq": 585,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حزب الله",
+      "en": "Hezbollah",
+      "domain": "politics",
+      "corpus_freq": 336,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس الوزراء",
+      "en": "Prime Minister",
+      "domain": "politics",
+      "corpus_freq": 313,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحكومة العراقية",
+      "en": "Iraqi Government",
+      "domain": "politics",
+      "corpus_freq": 304,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأمم المتحدة",
+      "en": "the United Nations",
+      "domain": "politics",
+      "corpus_freq": 251,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجمعية الوطنية",
+      "en": "the National Assembly",
+      "domain": "politics",
+      "corpus_freq": 234,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المجتمع المدني",
+      "en": "civil society",
+      "domain": "politics",
+      "corpus_freq": 213,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العملية السياسية",
+      "en": "the political process",
+      "domain": "politics",
+      "corpus_freq": 211,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس مجلس",
+      "en": "Chairman of the Council",
+      "domain": "politics",
+      "corpus_freq": 204,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حزب البعث",
+      "en": "the Baath Party",
+      "domain": "politics",
+      "corpus_freq": 201,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السياسية العراقية",
+      "en": "Iraqi politics",
+      "domain": "politics",
+      "corpus_freq": 190,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجلس التعاون",
+      "en": "the Cooperation Council",
+      "domain": "politics",
+      "corpus_freq": 187,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبد الله",
+      "en": "Abdullah",
+      "domain": "politics",
+      "corpus_freq": 164,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الوطنية العراقية",
+      "en": "Iraqi National",
+      "domain": "politics",
+      "corpus_freq": 161,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السلطة الفلسطينية",
+      "en": "Palestinian Authority",
+      "domain": "politics",
+      "corpus_freq": 156,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتحاد الأوروبي",
+      "en": "European Union",
+      "domain": "politics",
+      "corpus_freq": 152,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جورج بوش",
+      "en": "George Bush",
+      "domain": "politics",
+      "corpus_freq": 150,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الامم المتحدة",
+      "en": "United Nations",
+      "domain": "politics",
+      "corpus_freq": 147,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مقتدى الصدر",
+      "en": "Muqtada al-Sadr",
+      "domain": "politics",
+      "corpus_freq": 145,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الإدارة الأمريكية",
+      "en": "American administration",
+      "domain": "politics",
+      "corpus_freq": 145,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشعب الكردي",
+      "en": "the Kurdish people",
+      "domain": "politics",
+      "corpus_freq": 143,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس الجمهورية",
+      "en": "president of the republic",
+      "domain": "politics",
+      "corpus_freq": 142,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المجلس الوطني",
+      "en": "National Council",
+      "domain": "politics",
+      "corpus_freq": 141,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجلس الوزراء",
+      "en": "Council of Ministers",
+      "domain": "politics",
+      "corpus_freq": 140,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رفيق الحريري",
+      "en": "Rafik Hariri",
+      "domain": "politics",
+      "corpus_freq": 140,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دول المجلس",
+      "en": "council states",
+      "domain": "politics",
+      "corpus_freq": 139,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العربية المتحدة",
+      "en": "United Arab",
+      "domain": "politics",
+      "corpus_freq": 138,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التعاون الخليجي",
+      "en": "Gulf Cooperation",
+      "domain": "politics",
+      "corpus_freq": 137,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المواطن العراقي",
+      "en": "the Iraqi citizen",
+      "domain": "politics",
+      "corpus_freq": 136,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الانتخابات العراقية",
+      "en": "Iraqi elections",
+      "domain": "politics",
+      "corpus_freq": 132,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "القوى السياسية",
+      "en": "political forces",
+      "domain": "politics",
+      "corpus_freq": 131,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "العملية الانتخابية",
+      "en": "electoral process",
+      "domain": "politics",
+      "corpus_freq": 130,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحزب الشيوعي",
+      "en": "Communist Party",
+      "domain": "politics",
+      "corpus_freq": 130,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشارع العراقي",
+      "en": "the Iraqi street",
+      "domain": "politics",
+      "corpus_freq": 129,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نائب رئيس",
+      "en": "Vice President",
+      "domain": "politics",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ناصر العريج",
+      "en": "Nasser Al-Areesh",
+      "domain": "politics",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المقابر الجماعية",
+      "en": "Mass graves",
+      "domain": "politics",
+      "corpus_freq": 101,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبد الناصر",
+      "en": "Abdel Nasser",
+      "domain": "politics",
+      "corpus_freq": 101,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجامعة العربية",
+      "en": "Arab League",
+      "domain": "politics",
+      "corpus_freq": 100,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبد العزيز",
+      "en": "Abdul Aziz",
+      "domain": "politics",
+      "corpus_freq": 100,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرئيس بوش",
+      "en": "President Bush",
+      "domain": "politics",
+      "corpus_freq": 100,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ناصر العريج الرياض",
+      "en": "Nasser Al-Areesh Riyadh",
+      "domain": "politics",
+      "corpus_freq": 100,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشعوب العربية",
+      "en": "Arab peoples",
+      "domain": "politics",
+      "corpus_freq": 99,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "القضية الفلسطينية",
+      "en": "Palestinian cause",
+      "domain": "politics",
+      "corpus_freq": 99,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المجتمع الدولي",
+      "en": "International community",
+      "domain": "politics",
+      "corpus_freq": 98,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "شعب العراق",
+      "en": "People of Iraq",
+      "domain": "politics",
+      "corpus_freq": 98,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الشعب اللبناني",
+      "en": "Lebanese people",
+      "domain": "politics",
+      "corpus_freq": 98,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الوطني العراقي",
+      "en": "Iraqi national",
+      "domain": "politics",
+      "corpus_freq": 97,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجيش العراقي",
+      "en": "Iraqi army",
+      "domain": "politics",
+      "corpus_freq": 96,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "والولايات المتحدة",
+      "en": "And the United States",
+      "domain": "politics",
+      "corpus_freq": 96,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    }
+  ]
+}

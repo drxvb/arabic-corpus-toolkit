@@ -2,6 +2,48 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.9.0 — Domain expansion: business + legal + politics (pivot from audit pattern)
+
+**Released:** 2026-05-29
+
+Strategic pivot after the fourth audit. All three evaluators independently recommended pivoting from internal architecture refinement (where the +5 marginal score gain was approaching diminishing returns) to external capability growth via domain expansion.
+
+This release introduces three new Asset G domains by classifying + pairing the existing Elaph news candidates (498 terms from toolkit v0.14) through a single-pass LLM domain classifier instead of mining new corpora.
+
+### Method: single-pass classify+pair
+
+`scripts/domain_classify_and_pair.py` sends each Arabic candidate to minimax-proxy with a system prompt asking for BOTH the canonical English translation AND a domain classification ({business, legal, politics, geographic, other}). The classifier sets `confidence=low` for off-domain or unclassifiable terms; the script's `if conf == "low": skip` policy enforces it. Output splits into three new Asset G files.
+
+### Pairs landed (from 269 of 300 candidates classified)
+
+| Domain | Pairs | Sample terms |
+|---|---|---|
+| **politics** | **69** | الحكومة → government, السلطة → authority, الرئيس → the president, صدام → Saddam, الوطنية → national |
+| **business** | **27** | النفط → oil, السوق → market, المالية → Finance, دينار → Dinar, قطاع → sector, السعر → price |
+| **legal** | **5** | القانون → the law, حقوق → rights, حقوق الإنسان → human rights, وزارة → Ministry |
+
+`geographic` (43) and `other` (125) were correctly dropped — they're not actionable terminology for Stage A injection.
+
+### Why politics dominates, legal is thin
+
+Elaph 2003-2008 is heavily Iraq War-era news. Political content saturates the corpus; legal/government terminology is sparse. The 5 legal pairs are valid starter content but not comprehensive. v1.10+ would expand legal from a dedicated legal corpus (the deferred queue still includes this).
+
+### Registry updates
+
+`corpus/asset-registry.json`: registry now lists 12 assets (was 9). G.business, G.legal, G.politics added with `consumers: ["translator", "authoring"]`. Translator declared requirements expanded from 7 to 10 assets; authoring from 2 to 5. `check_consumer("translator")` returns 10 compatible / 0 incompatible / 0 missing. Same clean state for authoring.
+
+### Translator + authoring automatically gain coverage
+
+Both consumers already use domain-keyed Asset G lookup (`_load_domain_terminology(domain)` / `_load_asset_g(domain)`). When a user runs `translate(text, domain="business")` or generates a `book-chapter` with `outline.terminology_domain="legal"`, the new files load automatically. **No translator or authoring code change required** — that's the multi-domain architectural property the v1.0.1 + v1.5.0 cutovers committed to.
+
+### Acceptance rate comparison vs prior pairing runs
+
+- Tech v0.9 minimax pairing: 56% acceptance (mid-frequency terminology)
+- News v0.14 minimax pairing: 25% acceptance (system prompt was tech-biased)
+- **v1.9.0 classification+pairing: 90% pairing rate (269/300), 34% domain-actionable (101/300)**
+
+The high pairing rate but low domain-actionable rate is the Elaph corpus signature: most candidates pair to something but many are geographic/dates/proper-names that don't belong in a domain terminology asset. Future v1.10+ work on dedicated business/legal corpora would substantially improve the actionable yield.
+
 ## v1.8.0 — install_family.py — cross-platform install + verification (Gap G4)
 
 **Released:** 2026-05-28

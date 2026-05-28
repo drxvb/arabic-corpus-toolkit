@@ -75,6 +75,33 @@
       "consumers": ["translator", "authoring"],
       "description": "422 paired EN↔AR tech terms. All cross-vendor-validated via codex+gemini swarms through v1.4.0."
     },
+    "G.business": {
+      "name": "domain-terminology-business",
+      "path": "corpus/domain-terminology-business.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator", "authoring"],
+      "description": "27 business/finance/economy terms from Elaph 2003-2008. Includes oil, market, Dinar, sector, Finance, price. minimax-classified."
+    },
+    "G.legal": {
+      "name": "domain-terminology-legal",
+      "path": "corpus/domain-terminology-legal.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator", "authoring"],
+      "description": "5 legal/government terms from Elaph (corpus is politics-heavy, legal coverage thin). Future v1.10+ may expand from dedicated legal corpus."
+    },
+    "G.politics": {
+      "name": "domain-terminology-politics",
+      "path": "corpus/domain-terminology-politics.json",
+      "current_version": "1.0.0",
+      "compatibility": "^1.0.0",
+      "breaking_versions": [],
+      "consumers": ["translator", "authoring"],
+      "description": "69 politics/government/diplomacy terms from Elaph 2003-2008. Era-specific (Iraq War context); useful for political news translation."
+    },
     "G.news": {
       "name": "domain-terminology-news",
       "path": "corpus/domain-terminology-news.json",
@@ -104,14 +131,20 @@
         "F.technology": "^1.0.0",
         "F.news": "^1.0.0",
         "G.technology": "^1.0.0",
-        "G.news": "^1.0.0"
+        "G.news": "^1.0.0",
+        "G.business": "^1.0.0",
+        "G.legal": "^1.0.0",
+        "G.politics": "^1.0.0"
       }
     },
     "authoring": {
       "min_versions_required": ["v1.0.0+"],
       "asset_requirements": {
         "G.technology": "^1.0.0",
-        "G.news": "^1.0.0"
+        "G.news": "^1.0.0",
+        "G.business": "^1.0.0",
+        "G.legal": "^1.0.0",
+        "G.politics": "^1.0.0"
       }
     }
   },
