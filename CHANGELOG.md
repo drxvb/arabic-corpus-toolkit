@@ -2,6 +2,59 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.8.0 — install_family.py — cross-platform install + verification (Gap G4)
+
+**Released:** 2026-05-28
+
+Closes Gap G4 (Gemini's evaluator complaint: "How am I supposed to install this? There's no package, no requirements.txt, no setup script.").
+
+`install_family.py` is a top-level, cross-platform (Windows/Linux/Mac) installer that lives at the toolkit's root because the toolkit anchors the family. One-step bootstrap: clone arabic-corpus-toolkit → run `python install_family.py` → you have all 4 siblings installed and verified.
+
+### Two phases
+
+1. **ACQUIRE** — `git clone` any missing sibling into the target directory (sibling-layout by default, configurable via `--target`).
+2. **VERIFY** — run `family_doctor.py` (cross-asset + consumer + proxy health) and `golden_e2e_test.py` (40-assertion family regression).
+
+Each phase exits non-zero independently, so CI can use `--verify-only` to check an existing install without re-cloning.
+
+### Verified on this machine
+
+```
+[2/2] VERIFY   — running family_doctor.py + golden_e2e_test.py
+  family_doctor exit:  0
+  golden_e2e exit:     0
+  golden_e2e PASS:     40
+  golden_e2e FAIL:     0
+✓ Family installed and verified. All 4 siblings present + 40/40 e2e PASS.
+```
+
+### Exit codes
+
+- `0` — full success (everything installed + all checks pass)
+- `1` — git clone failure or family_doctor reports problems
+- `2` — golden e2e regression failure
+- `3` — missing prerequisite CLI tools (git or python)
+
+### CI usage
+
+```bash
+python install_family.py --json | jq '.overall'    # "ok" or "*_failed"
+python install_family.py --verify-only             # don't re-clone
+```
+
+### Unicode/Windows fix
+
+Subprocess calls force `encoding='utf-8'` with `errors='replace'` to tolerate the Arabic content in family_doctor/golden_e2e output (default cp1252 on Windows fails on Arabic chars).
+
+### All 4 evaluator-flagged foundational debts now closed
+
+| Gap | Toolkit ship | Consumer adoption |
+|---|---|---|
+| **G1** Unicode normalization | v1.5.0 `arabic_normalize.py` | authoring v1.4.0 |
+| **G2** Asset version registry | v1.6.0 `asset_registry.py` + JSON | translator v1.4.0 |
+| **G3** Per-output telemetry | v1.7.0 `influence_telemetry.py` | translator v1.5.0 |
+| **G4** Install bundle | **v1.8.0 `install_family.py`** (this release) | n/a (top-level) |
+
 ## v1.7.0 — Per-output asset-influence telemetry (Gap G3, foundational)
 
 **Released:** 2026-05-28
