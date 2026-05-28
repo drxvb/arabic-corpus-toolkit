@@ -2,6 +2,54 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.4.2 — Documentation reconciliation (3-evaluator audit response)
+
+**Released:** 2026-05-28
+
+Triangulated evaluation by Sonnet (filesystem-grounded), Codex (gpt-5.5), and Gemini (gemini-2.5-pro) scored the family 62/72/65 = mean 66/100 with **strong consensus on documentation drift between claimed state (SKILL.md, CHANGELOG, ROADMAP) and observed state (actual code + asset files)**.
+
+Sonnet found specific evidence:
+- CHANGELOG ended at v1.0.0 but `domain-terminology.json` was at schema 1.4.0
+- Aho-Corasick claimed "out of scope" in v1.0.0 entry but shipped fully in v1.3.0
+- `bilingual_export.py` shipped without any CHANGELOG/SKILL.md/ROADMAP mention
+- Toolkit SKILL.md body Roadmap table called v0.3 "current" and scheduled v1.0 for Q2 2027
+
+This release backfills the missing CHANGELOG entries. No code change.
+
+## v1.4.1 — Golden e2e regression suite (roadmap item #3)
+
+**Released:** 2026-05-28
+
+`evals/golden_e2e_test.py`: 21 deterministic OFFLINE assertions across all 4 siblings. Toolkit asset shapes + counts, translator Stage A hit counts, humanizer score_text + Asset D/E behavior, authoring suite Asset G consumption. All anchor pairs (artificial intelligence, cloud computing, 5G, email) verified to be present in Asset G. Catches silent regressions when any release ships.
+
+Multi-agent roadmap consensus item (both codex + minimax critics ranked top-5).
+
+## v1.4.0 — Codex cross-validation of v0.12+v0.13 legacy pairs (roadmap item #2)
+
+**Released:** 2026-05-28
+
+v0.9.1 + v0.10 cross-vendored the top 50 + 16 disagreements. v0.12 + v0.13 added 328 more pairs single-vendor (minimax). v1.4.0 sent all 328 through codex-proxy for confirmation. **182/328 codex agreement (55%).** Lower than v0.9.1's 68% because mid-frequency pairs have more genuine ambiguity (synonym variants, register-specific preferences). Asset G `domain-terminology.json` now has cross-LLM coverage on the full 422 technology pairs. Schema bumped to v1.4.0 (provenance fields added).
+
+## v1.3.0 — Aho-Corasick matcher (closes Codex's v0.2 forward-compat door)
+
+**Released:** 2026-05-28
+
+Aho-Corasick deferred since v0.3 because the linear scan was sufficient at 340 patterns × KB-sized inputs. v1.3.0 ships it anyway to close Codex's v0.2 multi-agent review "forward-compat door" promise. `AhoCorasick.from_calque_dictionary()` builds in 4ms from 340 patterns. `AhoCorasick.from_terminology_pairs(domain, side='ar'|'en')` from 422 pairs. `AhoCorasick.from_lexical_ai_phrases()` from 67 phrases. Generic `from_strings(list)` for ad-hoc patterns. `iter_matches(text)` yields (start, end, pattern) including overlapping matches. O(L+matches) scan vs linear O(P*L). Python 3 stdlib only.
+
+**Note:** the v1.0.0 entry below stated this was "deliberately out of scope" — v1.3.0 reversed that decision because the architecture promise was load-bearing for the toolkit's v1.x stability claim. Future v2.0 consumer can adopt incrementally.
+
+## v1.2.0 — bilingual_export.py for external CAT tools
+
+**Released:** 2026-05-28
+
+`scripts/bilingual_export.py`: unifies Asset G across all domains (technology + news = 472 pairs total, 386 high-confidence) into a single exchange artifact for external consumers — CAT tools (memoQ/SDL Trados/OmegaT), MT post-editing pipelines. Four formats: tsv, json, tbx-lite (TermBase eXchange Basic subset), markdown. Filters by `--domains` and `--min-confidence {high,medium,low}`. Dedup by AR (prefers higher corpus_freq when same AR appears in multiple domains).
+
+## v1.1.0 — family_doctor.py cross-asset health check
+
+**Released:** 2026-05-28
+
+`scripts/family_doctor.py`: single-command introspection across the family. Reports 9 assets (A/B/C/D/E/F.tech/F.news/G.tech/G.news) with schema versions + item counts + sizes, 3 consumer skills with reachability checks, 4 LLM proxies with health probes. Exit code 0 = full health, 1 = asset validation failure, 2 = consumer missing. JSON mode for monitoring integration.
+
 ## v1.0.0 — STABLE FREEZE
 
 **Released:** 2026-05-28
@@ -40,7 +88,7 @@ Every step in the pipeline has been exercised at scale and audited through the A
 
 ### What's deliberately out of scope for v1.0.0
 
-- Aho-Corasick matcher (mentioned in Codex's v0.2 multi-agent review as "forward-compat door"): not implemented because the linear scan hasn't shown performance pain on real-world consumer usage. v1.x can add it as PATCH if telemetry justifies.
+- **Aho-Corasick matcher**: not implemented in v1.0.0. The linear scan was sufficient for typical KB-sized inputs at 340 patterns. **NOTE (added in v1.4.2 docs reconciliation):** v1.3.0 reversed this decision and shipped the full implementation at `scripts/aho_corasick.py`. The v1.0.0 "out of scope" claim was accurate at the time but became contradictory once v1.3.0 shipped. See v1.3.0 entry above.
 - Consumer integrations for Assets D and E: pending — toolkit ships the data; consumers haven't cut over yet. Doesn't block v1.0.0.
 - News-domain cross-LLM validation: v0.14 ships single-vendor pairs. v1.x can add cross-vendor passes for the news domain matching the technology workflow.
 
