@@ -54,6 +54,32 @@ Currently a translation comes back with `stages.A_terminology.matched_count: 11`
 
 Items 4 (domain expansion), 6 (install bundle), and the novel gaps G1-G3 become the queue for follow-on sessions.
 
+## Execution status (updated v1.4.2)
+
+| Item | Status | Shipped |
+|---|---|---|
+| #1 Asset D + E cutover | ✅ DONE | humanizer v2.12.0 |
+| #2 Cross-validate v0.12 pairs | ✅ DONE | toolkit v1.4.0 (182/328 codex agree) |
+| #5 Vendor rotation in score_text_deep | ✅ DONE | humanizer v2.13.0 |
+| #3 Golden e2e regression | ✅ DONE | toolkit v1.4.1 (21/21 PASS) |
+| #4 Domain expansion (business/legal/politics) | ⏳ QUEUED | — |
+| #6 Install bundle / PyPI publish | ⏳ QUEUED | — |
+| #7 Authoring kimi-cli swarm banner fix | ⏳ QUEUED | — |
+| #8 Rubric-guided targeted regeneration | ⏳ QUEUED | — |
+| Gap G1 Unicode normalization contract | ⏳ QUEUED (reinforced by 3-evaluator audit) | — |
+| Gap G2 Asset version registry | ⏳ QUEUED (reinforced by 3-evaluator audit) | — |
+| Gap G3 Per-output asset-influence telemetry | ⏳ QUEUED (reinforced by 3-evaluator audit) | — |
+
+## Second-pass 3-evaluator audit findings (2026-05-28)
+
+Sonnet (filesystem-grounded, Grade C, 62/100), Codex (gpt-5.5, 72/100), Gemini (gemini-2.5-pro, 65/100) independently scored mean **66/100**. Strong consensus on:
+
+- **Silent fallback paths** — `_toolkit_root()` returning None silently; `score_text_deep` falling back to heuristic on LAN failure; Stage F "pass" verdict on heuristic looks identical to LLM-cognitive pass.
+- **`book-chapter → "technology"` hardcoding** — Saudi labor-law book chapter gets injected with 5G/IoT terminology.
+- **Documentation drift** (Sonnet's #1) — fixed in v1.4.2.
+
+The four foundational gaps (Unicode contract, version registry, telemetry, packaging) are now reinforced by **two independent swarm runs**. Promoted to highest-priority queue items, ahead of remaining feature work.
+
 ## Vendor agreement notes
 
 Of the 28 raw proposals from the 4 vendors, structured cross-critique (codex + minimax) converged on the same 6 items in different orders. Kimi and gemini critics returned prose rather than structured JSON; I synthesized from the structured pair while reading the prose for novel-gap signal.
