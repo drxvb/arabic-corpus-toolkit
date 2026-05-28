@@ -5,7 +5,7 @@ description: "Shared Arabic-language corpus infrastructure: calque dictionary, c
 
 # arabic-corpus-toolkit — Shared Arabic Linguistic Infrastructure
 
-**Status:** v0.1 scaffold (skeleton). Migration of assets from `arabic-ai-text-humanizer` is staged for v0.2.
+**Status:** v0.2 — assets migrated from `arabic-ai-text-humanizer` (340-entry calque dictionary + 71.28M-token empirical-patterns mining output). Read API (`scripts/dictionary.py`) ships with six functions: `load_dictionary`, `find_by_en`, `find_canonical`, `iter_entries`, `has_topic_guard`, `stats`. External-sources catalog (`references/02-external-sources.md`) compiled from the multi-agent Gemini-style grounding lens — 12 authoritative institutions for cross-referencing, three dictionary claims flagged as needing external verification, and the fiqh-adjacent sacred-text-adjacency gap that no LLM can solve. The Kimi-style asset-promotion lens and Codex-style API-design lens are still running and will inform v0.3.
 
 ## Why this skill exists
 
