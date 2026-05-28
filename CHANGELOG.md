@@ -2,6 +2,36 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.8 — Asset F (terminology candidates) — net-new corpus-mined asset
+
+**Released:** 2026-05-28
+
+**Why this exists.** The calque dictionary (Asset A) catalogs AI errors. It does NOT cover standard terminology. A user translating "cloud computing" through the translator gets no Stage A hint because it's not a known calque — the LLM defaults to whatever it thinks. Asset F fills that gap: corpus-mined EN-tech terminology with sample contexts, ready for Phase 2 LLM-assisted pairing into validated EN↔AR pairs.
+
+**First net-new asset.** A-E all came from the humanizer's prior work. Asset F is mined from scratch from `Y:\Linguistics\News\Technology\AITNews` (64,485 monolingual AR tech articles). User-driven: "let kimi CLI or whatever extract and create dictionaries for that based on content data I provided for news and technology news, to know the right terminology and correct translations to be used."
+
+- **`scripts/mine_terminology.py`** — Python stdlib extractor. Walks a JSON-article corpus, decodes HTML entities, tokenizes Arabic (strip tashkeel + tatweel, keep ≥3-char words), filters by ~150-entry stopword set (particles, generic nouns, temporal noise, intensifiers), counts unigrams + bigrams + trigrams, prunes counters every 5000 articles to bound memory (drops freq=1 entries), samples 50-char contexts for the top 50 candidates. Configurable: `--corpus`, `--domain`, `--top`, `--min-freq`, `--sample` (dev mode).
+- **`corpus/terminology-candidates-technology.json`** — Phase-1 output. Top 1000 candidates with min-freq 20 from the full 64,485-article AITNews corpus. Schema v1.0.0.
+- **`corpus/terminology-candidates.schema.json`** — JSON Schema draft-2020-12 covering the candidate-file shape. Top-level required fields: `$schema_version`, `asset_name` (const "terminology-candidates"), `domain` (free-form string), `provenance` (corpus path + article/token counts), `candidates` (array of `{term_ar, freq, ngram_size, sample_contexts}`).
+- **`scripts/terminology.py`** — 9-function typed read API: `load_candidates`, `candidate_count`, `list_domains`, `iter_candidates`, `top_candidates`, `has_term`, `asset_path`, `soft_validate`, `stats`. mtime-keyed cache keyed by domain (multi-domain support: one cache slot per domain).
+- **`scripts/test_terminology.py`** — release gate. Validates: schema fields present, ≥100 articles processed, ≥10K tokens, ≥50 candidates emitted, top 5 includes a known tech term, `has_term` works both ways, top 50 candidates have sample_contexts, n-gram diversity, soft-validate clean, stats structured.
+- **`references/06-terminology-pipeline.md`** — permanent record. Documents why two-phase (Phase 1 mines AR-side candidates, Phase 2 LLM-pairs them with EN translations + validates), why naive paths (LLM-only generation; SPA download wait) were rejected, stopword calibration approach, and the Phase 2 workflow template for the user to execute via Kimi CLI / Claude / Codex / whatever LLM tooling they have.
+
+### Phase 2 plan (not in this release)
+
+Promote validated EN↔AR pairs from candidates into `corpus/domain-terminology.json` (separate asset). Workflow: top N candidates → LLM proposes EN per AR term → reverse-translation verifies AR appears in candidates at meaningful frequency → cross-LLM agreement filter (Kimi + Claude + Codex multi-vendor swarm) → promote to pairs file. The scripts in this repo never make LLM calls themselves; Phase 2 is run by the user with their LLM tooling of choice.
+
+### Translator integration (not in this release; lands in translator vNext)
+
+Asset F's Phase 1 candidates don't have EN translations, so they can't be naively injected into Stage A's LLM prompt. The right integration is a **verification signal**: Stage A's existing calque-dictionary recommendations get a `corpus_confirmed: bool` field via `terminology.has_term(natural_arabic, "technology")`. Calques whose natural-AR form appears in the candidates list get higher Stage-A confidence than those that don't. Lands in a follow-up translator release once toolkit v0.8 is on disk.
+
+### Asset version state at end of v0.8
+
+| Asset | Schema | Notes |
+|---|---|---|
+| `corpus/lexical-tables.json` | v1.1.0 | unchanged from v0.7.1 |
+| `corpus/terminology-candidates-technology.json` | **v1.0.0** | **NEW** in v0.8 |
+
 ## v0.7.1 — Asset C parity audit + humanizer-code reconciliation
 
 **Released:** 2026-05-28

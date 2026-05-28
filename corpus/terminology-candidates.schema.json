@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/drxvb/arabic-corpus-toolkit/corpus/terminology-candidates.schema.json",
+  "title": "Terminology candidates schema (Asset F — Phase 1)",
+  "description": "Schema for the Phase-1 output of the terminology-mining pipeline. Asset F has TWO files: (1) terminology-candidates-*.json — AR-side mined candidates with no EN translations (this schema). (2) domain-terminology.json — validated EN↔AR pairs promoted from candidates (separate schema, lands when first batch is paired). This schema covers the Phase-1 file. Candidates are NOT terminology — they are evidence that the AR term is real and used in the domain. EN translations come from Phase 2 (LLM-assisted pairing + corpus validation).",
+  "type": "object",
+  "required": ["$schema_version", "asset_name", "domain", "provenance", "candidates"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "SemVer of this asset shape."
+    },
+    "asset_name": {
+      "const": "terminology-candidates",
+      "description": "Discriminates this from the (eventual) terminology-pairs asset."
+    },
+    "domain": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Domain tag: 'technology', 'news', 'business', 'politics', etc. Free-form to let consumers add domains without schema bumps."
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["corpus_path", "n_articles_processed", "n_tokens_total"],
+      "additionalProperties": true,
+      "properties": {
+        "corpus_path": { "type": "string", "minLength": 1 },
+        "n_articles_processed": { "type": "integer", "minimum": 0 },
+        "n_tokens_total": { "type": "integer", "minimum": 0 },
+        "mining_elapsed_s": { "type": "number", "minimum": 0 },
+        "extraction_script": { "type": "string" },
+        "min_freq_threshold": { "type": "integer", "minimum": 0 },
+        "top_n_kept": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["term_ar", "freq", "ngram_size"],
+        "additionalProperties": false,
+        "properties": {
+          "term_ar": { "type": "string", "minLength": 2 },
+          "freq": { "type": "integer", "minimum": 1 },
+          "ngram_size": {
+            "enum": ["unigram", "bigram", "trigram"],
+            "description": "Whether this candidate is a single token, two-token, or three-token phrase. Multi-token candidates are more likely to be real terminology."
+          },
+          "sample_contexts": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Up to 3 snippets showing how the term appears in the corpus (50-char windows). Populated for the top 50 candidates only to keep file size manageable."
+          }
+        }
+      }
+    }
+  }
+}
