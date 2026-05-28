@@ -66,11 +66,21 @@ Items 4 (domain expansion), 6 (install bundle), and the novel gaps G1-G3 become 
 | #6 Install bundle / PyPI publish | ⏳ QUEUED | — |
 | #7 Authoring kimi-cli swarm banner fix | ⏳ QUEUED | — |
 | #8 Rubric-guided targeted regeneration | ⏳ QUEUED | — |
-| Gap G1 Unicode normalization contract | ⏳ QUEUED (reinforced by 3-evaluator audit) | — |
-| Gap G2 Asset version registry | ⏳ QUEUED (reinforced by 3-evaluator audit) | — |
-| Gap G3 Per-output asset-influence telemetry | ⏳ QUEUED (reinforced by 3-evaluator audit) | — |
+| Gap G1 Unicode normalization contract | ✅ DONE | toolkit v1.5.0 `arabic_normalize.py` + authoring v1.4.0 adoption |
+| Gap G2 Asset version registry | ✅ DONE | toolkit v1.6.0 `asset_registry.py` + JSON + translator v1.4.0 adoption (partial — legacy checks coexist) |
+| Gap G3 Per-output asset-influence telemetry | ✅ DONE | toolkit v1.7.0 `influence_telemetry.py` + translator v1.5.0 Stage A adoption |
+| Gap G4 Install bundle / packaging | ✅ DONE | toolkit v1.8.0 `install_family.py` (cross-platform; ACQUIRE+VERIFY phases) |
 
-## Second-pass 3-evaluator audit findings (2026-05-28)
+## Re-audit findings (2026-05-28 — third evaluation pass)
+
+Sonnet 77 (Grade B), Codex 76, Gemini 78 → mean **77/100, +11 from baseline 66**. All three independently diagnosed the same NEW pathology: contracts shipped, adoption asymmetric. Codex: "foundation materially better, would not go higher until legacy paths removed." Gemini: "successfully built tools but failed to enforce use." Sonnet (with file evidence): translator/authoring SKILL.md status lines were stuck at v1.3.1 despite code reaching v1.5.0/v1.4.0, ROADMAP gap table still said QUEUED for shipped contracts, humanizer adopted 0 of 4 contracts.
+
+Cross-vendor consensus on remaining work (all 3 evaluators independently produced the same 3 next-actions):
+1. Mandate `arabic_normalize` adoption in humanizer + translator (currently only authoring)
+2. Delete legacy `schema_major` checks from translator loader sites, humanizer, authoring; route all asset compatibility through `asset_registry.is_compatible()`
+3. Extend `influence_trace` emission to translator Stages D/E/F + humanizer + authoring (currently only translator Stage A)
+
+## Original second-pass 3-evaluator audit findings (2026-05-28)
 
 Sonnet (filesystem-grounded, Grade C, 62/100), Codex (gpt-5.5, 72/100), Gemini (gemini-2.5-pro, 65/100) independently scored mean **66/100**. Strong consensus on:
 
