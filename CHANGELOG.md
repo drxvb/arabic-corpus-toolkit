@@ -2,6 +2,30 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.7.1 — Asset C parity audit + humanizer-code reconciliation
+
+**Released:** 2026-05-28
+
+**Why this exists.** v0.7 migrated Asset C from `arabic-ai-text-humanizer/references/13-inherited-lexical-tables.md` (Markdown documentation). When preparing the humanizer cutover, reading `scripts/humanize_v2.py` revealed the live code had evolved past the documentation. v0.7.1 brings the asset to parity with the v2.7.0 humanizer code before any consumer touches it.
+
+- **`corpus/lexical-tables.json`** → schema **v1.1.0** (MINOR, backward-relaxing):
+  - `ai_phrases`: **40 → 67 entries**. Added 6 pro-drop deletions (Arabic prefers implicit subjects for fluff verbs; `""` is a valid alternative), 7 clause-preserving variants (distinct treatment for `…أن` clausal vs bare), 16 newsroom AI-tells (from the cross-LLM journalist critique), 4 English-calque pipeline entries (`خط أنابيب → مسار عمل`), tashkeel-bearing variants.
+  - `connectors`: 21 → 22 (added tashkeel-bearing `في حين أنّ` alongside bare `في حين أن`).
+  - `repetitive_starters`: 7 → 11 detectors (humanizer has tashkeel + bare variants for the same verbs).
+  - `quote_verbs`: 3 → 4 entries (separate tashkeel + bare for `ذكر أن`/`أنّ`).
+  - **`structural_openers`** (NEW table, replaces v1.0.0's `templated_starters`): 10 regex patterns with capture groups and `{0}`-positional substitution — was `advisory_strategy` in v1.0.0 (documentation-only); now `regex_capture_substitute` (mechanically applicable).
+  - **`intensifier_destack`** (NEW table, replaces v1.0.0's `global_policies.intensifier_destacking` advisory note): 8 regex patterns as first-class table with `regex_substitute` policy.
+- **`corpus/lexical-tables.schema.json`** → updated with two new policy defs (`table_regex_capture_substitute`, `table_regex_substitute`); relaxed `alternatives` items from `minLength: 1` to `minLength: 0` so pro-drop `""` is structurally valid; `x-changelog` block documents the v1.0.0 → v1.1.0 evolution.
+- **`scripts/lexical_tables.py`** → added `structural_opener_patterns()`, `intensifier_destack_patterns()`; updated `soft_validate()`'s EXPECTED_POLICIES map.
+- **`scripts/test_lexical_tables.py`** → 19 assertions → 24 assertions, updated to humanizer-parity content (e.g., `quote_verb_pool('قال')` now expects `أكّد` with tashkeel; ai_phrases count is 67).
+- **`references/05-asset-c-migration-audit.md`** — permanent record of the v0.7 gap, why it happened, and the principle encoded for future migrations: **the cutover step IS the audit step; data-asset migrations should always terminate at the consumer's actual code, not its documentation.**
+
+### Asset version state at end of v0.7.1
+
+| Asset | Schema | Notes |
+|---|---|---|
+| `corpus/lexical-tables.json` | **v1.1.0** | **Parity with humanizer v2.7.0** confirmed |
+
 ## v0.7 — Asset C migration (lexical-tables) with policy-in-data
 
 **Released:** 2026-05-28

@@ -5,6 +5,10 @@
   "description": "Schema for the consolidated lexical-substitution asset (Asset C). Validates structure of corpus/lexical-tables.json. Each sub-table has its own policy and entry shape; the schema uses 'oneOf' to dispatch on policy. NOTE: the validator in scripts/validate_outline.py (in the authoring-suite repo) does NOT yet implement oneOf — toolkit consumers either tolerate this or implement a stricter validator. Soft validation via scripts/lexical_tables.py.load() is the current contract.",
   "type": "object",
   "required": ["$schema_version", "asset_name", "tables"],
+  "x-changelog": {
+    "1.1.0": "MINOR: added regex_capture_substitute + regex_substitute policies; relaxed alternatives minLength from 1 to 0 (pro-drop deletion is a valid alternative); structural_openers and intensifier_destack now first-class tables. Backward-compatible with v1.0.0 readers that ignore new tables.",
+    "1.0.0": "Initial schema (v0.7 of toolkit)."
+  },
   "properties": {
     "$schema_version": {
       "type": "string",
@@ -17,7 +21,8 @@
     "tables": {
       "type": "object",
       "required": ["ai_phrases", "connectors", "repetitive_starters", "fillers",
-                   "numbered_transitions", "quote_verbs", "templated_starters"],
+                   "numbered_transitions", "quote_verbs",
+                   "structural_openers", "intensifier_destack"],
       "additionalProperties": false,
       "properties": {
         "ai_phrases":           { "$ref": "#/$defs/table_deterministic_alternatives" },
@@ -26,10 +31,12 @@
         "fillers":              { "$ref": "#/$defs/table_intensity_gated" },
         "numbered_transitions": { "$ref": "#/$defs/table_probabilistic_replacement" },
         "quote_verbs":          { "$ref": "#/$defs/table_rotation_pool" },
-        "templated_starters":   { "$ref": "#/$defs/table_advisory_strategy" }
+        "structural_openers":   { "$ref": "#/$defs/table_regex_capture_substitute" },
+        "intensifier_destack":  { "$ref": "#/$defs/table_regex_substitute" }
       }
     },
-    "global_policies": { "type": "object" }
+    "global_policies":          { "type": "object" },
+    "v1.1.0_audit_findings":    { "type": "object" }
   },
   "additionalProperties": false,
   "$defs": {
@@ -50,7 +57,11 @@
               "alternatives": {
                 "type": "array",
                 "minItems": 1,
-                "items": { "type": "string", "minLength": 1 }
+                "items": {
+                  "type": "string",
+                  "minLength": 0,
+                  "description": "Empty string '' is a valid alternative: represents the pro-drop / delete-don't-substitute pattern. Relaxed from minLength: 1 in schema v1.1.0."
+                }
               },
               "source_tag": { "type": "string" }
             },
@@ -132,21 +143,52 @@
         }
       }
     },
-    "table_advisory_strategy": {
+    "table_regex_capture_substitute": {
       "type": "object",
       "required": ["policy", "entries"],
       "properties": {
-        "policy": { "const": "advisory_strategy" },
+        "policy": { "const": "regex_capture_substitute" },
+        "policy_notes": { "type": "string" },
+        "capture_pattern_note": { "type": "string" },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["pattern", "replacements"],
+            "properties": {
+              "pattern": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Python regex with capture groups. Replacement strings use {0}, {1}, ... for positional substitution."
+              },
+              "replacements": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "source_tag": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "table_regex_substitute": {
+      "type": "object",
+      "required": ["policy", "entries"],
+      "properties": {
+        "policy": { "const": "regex_substitute" },
         "policy_notes": { "type": "string" },
         "entries": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["pattern", "strategy"],
+            "required": ["pattern", "replacement"],
             "properties": {
               "pattern": { "type": "string", "minLength": 1 },
-              "strategy": { "type": "string", "minLength": 1 },
+              "replacement": { "type": "string", "minLength": 0 },
               "source_tag": { "type": "string" }
             },
             "additionalProperties": false

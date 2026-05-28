@@ -5,7 +5,7 @@ description: "Shared Arabic-language corpus infrastructure: calque dictionary, c
 
 # arabic-corpus-toolkit — Shared Arabic Linguistic Infrastructure
 
-**Status:** v0.7 — Asset C migration ships (lexical-tables: 40 ai-phrases + 21 connectors + 5 numbered-transitions + 4 fillers + 7 repetitive-starter detectors + 3 quote-verb rotation pools + 10 advisory templated starters; v1 substrate + Gap A/B/C/D corpus extensions; per-table substitution policies in the data). v0.6 — consumer-view export tool. v0.5 — two more asset types promoted from humanizer Markdown to JSON (typography rules + reader-respect patterns) + schema-diff CLI. Consumers live today: `arabic-ai-text-humanizer` v2.7.0, `arabic-corpus-translator` v0.2.1, `arabic-authoring-suite` v0.1.1.
+**Status:** v0.7.1 — Asset C parity audit. v0.7 was migrated from stale Markdown documentation; v0.7.1 brings the asset to full parity with the live humanizer code (67 ai-phrases including pro-drop deletions + clause-preserving variants + newsroom AI-tells + English-calque pipeline; 22 connectors; 11 repetitive-starter detectors; 4 quote-verb rotation pools; structural_openers as regex with capture groups; intensifier_destack as first-class regex table). Schema bumped to v1.1.0 (MINOR, backward-relaxing). See `references/05-asset-c-migration-audit.md` for the permanent record of the v0.7 gap. Consumers live today: `arabic-ai-text-humanizer` v2.7.0, `arabic-corpus-translator` v0.2.1, `arabic-authoring-suite` v0.1.1.
 
 - **v0.2**: assets migrated from `arabic-ai-text-humanizer` (340-entry calque dictionary + 71.28M-token empirical patterns); `scripts/dictionary.py` 6-function read API; `references/02-external-sources.md` from Gemini-style lens.
 - **v0.3 (current)**:

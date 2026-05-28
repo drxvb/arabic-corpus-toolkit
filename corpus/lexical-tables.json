@@ -1,59 +1,87 @@
 {
-  "$schema_version": "1.0.0",
+  "$schema_version": "1.1.0",
   "asset_name": "lexical-tables",
-  "description": "Consolidated deterministic lexical-substitution layer migrated from arabic-ai-text-humanizer references/13-inherited-lexical-tables.md. Five base tables (v1 substrate) + three corpus-mined extensions (Gap A/B/D from references/12-corpus-findings.md). Each sub-table declares its own substitution policy so consumers can apply identical semantics without re-reading the original Python.",
+  "description": "Consolidated deterministic lexical-substitution layer migrated from arabic-ai-text-humanizer. v1.1.0 (toolkit v0.7.1) brings the asset to parity with humanize_v2.py — earlier v1.0.0 was migrated from the references/13 documentation, which had fallen behind the live code. Each sub-table declares its own substitution policy so consumers can apply identical semantics without re-reading the original Python.",
   "provenance": {
     "source_repo": "arabic-ai-text-humanizer",
-    "source_file": "references/13-inherited-lexical-tables.md",
+    "source_file_v1.0.0": "references/13-inherited-lexical-tables.md (stale documentation)",
+    "source_file_v1.1.0": "scripts/humanize_v2.py lines 51-209 (live code, v2.7.0 release)",
     "source_release": "v2.7.0",
     "v1_substrate_origin": "predecessor lexical-only Arabic humanizer (referenced as 'v1' in source)",
-    "extensions_origin": "corpus mining documented in references/12-corpus-findings.md (Gaps A, B, D)"
+    "extensions_origin": "corpus mining (Gaps A-G) + cross-LLM critique (newsroom AI-tells) + ChatGPT-deep-research findings (clause-preserving variants)"
   },
   "tables": {
     "ai_phrases": {
       "policy": "deterministic_all_matches",
-      "policy_notes": "Every match is rewritten; one alternative chosen at runtime. v1 default. v2 allows --intensity < 1.0 to skip a fraction probabilistically.",
+      "policy_notes": "Every match is rewritten; one alternative chosen at runtime. Empty string '' is a valid alternative — represents the pro-drop / delete-don't-substitute pattern. Arabic prefers implicit subjects for fluff verbs, so deletion is grammatically cleaner than substitution for many AI tells.",
       "entries": [
-        {"input": "من المهم ملاحظة", "alternatives": ["للعلم", "من الجدير بالذكر", "تذكر"]},
-        {"input": "من الجدير بالذكر", "alternatives": ["للعلم", "من المهم ملاحظة", "تذكر"]},
-        {"input": "من المفيد الإشارة", "alternatives": ["من الجدير بالذكر", "من المهم ملاحظة"]},
-        {"input": "في سياق متصل", "alternatives": ["أيضا", "كذلك", "بالإضافة إلى ذلك"]},
-        {"input": "في نفس السياق", "alternatives": ["أيضا", "كذلك", "علاوة على ذلك"]},
-        {"input": "علاوة على ذلك", "alternatives": ["بالإضافة", "أيضا", "فضلا عن ذلك"]},
-        {"input": "بالإضافة إلى ذلك", "alternatives": ["أيضا", "كذلك", "علاوة على ذلك"]},
-        {"input": "من ناحية أخرى", "alternatives": ["لكن", "بالمقابل", "في المقابل"]},
-        {"input": "على الجانب الآخر", "alternatives": ["بالمقابل", "في المقابل", "لكن"]},
-        {"input": "في النهاية", "alternatives": ["أخيرا", "ختاما", "في الختام"]},
-        {"input": "في الختام", "alternatives": ["أخيرا", "ختاما", "في النهاية"]},
-        {"input": "في البداية", "alternatives": ["أولا", "في الأول", "لنبدأ بـ"]},
-        {"input": "كما ذكر سابقا", "alternatives": ["كما قلنا", "كما أسلفنا", "كما سبق"]},
-        {"input": "كما أسلفنا", "alternatives": ["كما ذكرنا", "كما سبق", "كما قلنا"]},
-        {"input": "من الواضح أن", "alternatives": ["بوضوح", "واضحا", "من البديهي أن"]},
-        {"input": "من المهم التأكيد", "alternatives": ["نؤكد", "يجب التنويه", "من الجدير التنويه"]},
-        {"input": "لا بد من الإشارة", "alternatives": ["من الجدير بالذكر", "من المهم ملاحظة"]},
-        {"input": "في إطار", "alternatives": ["ضمن", "في نطاق", "في مجال"]},
-        {"input": "على صعيد", "alternatives": ["في مجال", "فيما يتعلق بـ", "بخصوص"]},
-        {"input": "في ظل", "alternatives": ["مع", "في حال", "في وقت"]},
-        {"input": "بناء على ما تقدم", "alternatives": ["وبناء عليه", "لذلك", "وعليه"]},
-        {"input": "في ظل التطورات", "alternatives": ["مع التطورات", "بالنظر إلى التطورات"]},
-        {"input": "جدير بالذكر", "alternatives": ["من المهم", "من الجدير بالذكر", "للعلم"]},
-        {"input": "من الممكن أن", "alternatives": ["قد", "يمكن أن", "ربما"]},
-        {"input": "من المتوقع أن", "alternatives": ["من المرجح", "من المنتظر", "يتوقع"]},
-        {"input": "يشار إلى أن", "alternatives": ["للعلم", "من الجدير بالذكر"]},
-        {"input": "يعتبر من", "alternatives": ["هو من", "يعد من"]},
-        {"input": "في هذا الإطار", "alternatives": ["في هذا السياق", "ضمن هذا", "في هذا المجال"]},
-        {"input": "على المستوى", "alternatives": ["في مجال", "فيما يخص"]},
-        {"input": "في مجال", "alternatives": ["بخصوص", "فيما يتعلق بـ"]},
-        {"input": "تجدر الإشارة إلى أن", "alternatives": ["يذكر أن", "والحقيقة أن"], "source_tag": "gap_a"},
-        {"input": "في هذا الصدد", "alternatives": ["هنا", "بصدد ذلك"], "source_tag": "gap_a"},
+        {"input": "من المهم ملاحظة أنه", "alternatives": ["", "ينبغي تذكُّر أن"], "source_tag": "pro_drop"},
+        {"input": "ولا بد من الإشارة هنا إلى أنه", "alternatives": ["", "نشير هنا إلى أن"], "source_tag": "pro_drop"},
+        {"input": "في الواقع", "alternatives": ["", "حقيقةً"], "source_tag": "pro_drop"},
+        {"input": "في الحقيقة", "alternatives": ["", "حقيقةً"], "source_tag": "pro_drop"},
+        {"input": "لا شك أن", "alternatives": ["", "بلا شك"], "source_tag": "pro_drop"},
+        {"input": "بكل تأكيد", "alternatives": [""], "source_tag": "pro_drop"},
+        {"input": "في الواقع والحقيقة", "alternatives": [""], "source_tag": "tautology_delete"},
+        {"input": "من المهم ملاحظة أن", "alternatives": ["نشير إلى أن", "ثمة ما يستوجب التنبيه أن", "يلزم التنبيه إلى أن"], "source_tag": "clause_preserving"},
+        {"input": "من المهم ملاحظة", "alternatives": ["نشير إلى", "يلزم التنبيه إلى"], "source_tag": "v1_substrate"},
+        {"input": "من الجدير بالذكر أن", "alternatives": ["مما يُذكر أن", "ومما تجدر معرفته أن"], "source_tag": "clause_preserving"},
+        {"input": "من الجدير بالذكر", "alternatives": ["ومما يُذكر", "وتجدر معرفة"], "source_tag": "v1_substrate"},
+        {"input": "من المفيد الإشارة إلى", "alternatives": ["ثمة ما يستحق الإشارة إلى", "نُشير إلى"], "source_tag": "clause_preserving"},
+        {"input": "في سياق متصل", "alternatives": ["وفي صلة بذلك", "وعلى صعيد متصل"], "source_tag": "v1_substrate"},
+        {"input": "في نفس السياق", "alternatives": ["وفي السياق ذاته", "وعلى الصعيد نفسه"], "source_tag": "v1_substrate"},
+        {"input": "علاوة على ذلك", "alternatives": ["وفوق ذلك", "ويُضاف إلى ذلك"], "source_tag": "v1_substrate"},
+        {"input": "بالإضافة إلى ذلك", "alternatives": ["ويُضاف إلى ذلك", "وفوق ذلك"], "source_tag": "v1_substrate"},
+        {"input": "خط أنابيب", "alternatives": ["مسار عمل", "مسار العمل", "تسلسل العمل"], "source_tag": "english_calque"},
+        {"input": "خطّ أنابيب", "alternatives": ["مسار عمل", "مسار العمل"], "source_tag": "english_calque"},
+        {"input": "خط الأنابيب", "alternatives": ["مسار العمل", "تسلسل العمل"], "source_tag": "english_calque"},
+        {"input": "خطّ الأنابيب", "alternatives": ["مسار العمل", "تسلسل العمل"], "source_tag": "english_calque"},
+        {"input": "من ناحية أخرى", "alternatives": ["وعلى صعيد آخر", "وبالمقابل"], "source_tag": "v1_substrate"},
+        {"input": "على الجانب الآخر", "alternatives": ["وعلى الصعيد المقابل", "وبالمقابل"], "source_tag": "v1_substrate"},
+        {"input": "في النهاية", "alternatives": ["وفي الختام", "وفي نهاية المطاف"], "source_tag": "v1_substrate"},
+        {"input": "في البداية", "alternatives": ["في المبتدأ", "بادئ الأمر"], "source_tag": "v1_substrate"},
+        {"input": "كما ذكر سابقاً", "alternatives": ["كما تقدّم", "كما سبق ذكره"], "source_tag": "v1_substrate"},
+        {"input": "كما أسلفنا", "alternatives": ["كما تقدّم", "وفي ضوء ما تقدّم"], "source_tag": "v1_substrate"},
+        {"input": "من الواضح أن", "alternatives": ["لا يخفى أن", "من البديهي أن", "بات معلوماً أن"], "source_tag": "v1_substrate"},
+        {"input": "من المهم التأكيد على أن", "alternatives": ["نؤكد أن", "يجدر التأكيد على أن"], "source_tag": "clause_preserving"},
+        {"input": "لا بد من الإشارة إلى أن", "alternatives": ["مما يستلزم الإشارة إليه أن", "نشير إلى أن"], "source_tag": "clause_preserving"},
+        {"input": "في إطار", "alternatives": ["ضمن", "في نطاق"], "source_tag": "v1_substrate"},
+        {"input": "على صعيد", "alternatives": ["في مجال", "في إطار"], "source_tag": "v1_substrate"},
+        {"input": "في ظل", "alternatives": ["مع وجود", "في وقت"], "source_tag": "v1_substrate"},
+        {"input": "بناءً على ما تقدم", "alternatives": ["وبناءً عليه", "وعليه"], "source_tag": "v1_substrate"},
+        {"input": "جدير بالذكر أن", "alternatives": ["مما يستحق الذكر أن", "نُشير إلى أن"], "source_tag": "clause_preserving"},
+        {"input": "من الممكن أن", "alternatives": ["قد", "ربما"], "source_tag": "v1_substrate"},
+        {"input": "من المتوقع أن", "alternatives": ["من المرجح أن", "من المنتظر أن"], "source_tag": "v1_substrate"},
+        {"input": "يشار إلى أن", "alternatives": ["نشير إلى أن", "تجدر الإشارة إلى أن"], "source_tag": "clause_preserving"},
+        {"input": "يُعتبر من", "alternatives": ["يُعدّ من", "هو من"], "source_tag": "v1_substrate"},
+        {"input": "في هذا الإطار", "alternatives": ["في هذا السياق", "ضمن هذا الإطار"], "source_tag": "v1_substrate"},
+        {"input": "في تطور لافت", "alternatives": ["في تطوّر", ""], "source_tag": "newsroom_ai_tell"},
+        {"input": "في تطور مثير", "alternatives": ["في تطوّر", ""], "source_tag": "newsroom_ai_tell"},
+        {"input": "في خطوة لافتة", "alternatives": ["في خطوة", ""], "source_tag": "newsroom_ai_tell"},
+        {"input": "وفي سياق متصل", "alternatives": ["كذلك", "أيضاً"], "source_tag": "newsroom_ai_tell"},
+        {"input": "وضع معقّد ومتشابك", "alternatives": ["وضع معقّد"], "source_tag": "newsroom_ai_tell"},
+        {"input": "وضع صعب ومعقّد", "alternatives": ["وضع صعب"], "source_tag": "newsroom_ai_tell"},
+        {"input": "أزمة حادة ومستفحلة", "alternatives": ["أزمة حادة"], "source_tag": "newsroom_ai_tell"},
+        {"input": "حسب ما أفادت مصادر", "alternatives": ["حسب مصادر", ""], "source_tag": "newsroom_ai_tell"},
+        {"input": "قالت مصادر مطلعة", "alternatives": ["حسب مصادر", "حسب مصدر"], "source_tag": "newsroom_ai_tell"},
+        {"input": "الخبراء والمراقبون", "alternatives": ["المراقبون"], "source_tag": "newsroom_ai_tell"},
+        {"input": "المحللون والمراقبون", "alternatives": ["المراقبون"], "source_tag": "newsroom_ai_tell"},
+        {"input": "كثير من الخبراء يرون", "alternatives": ["خبراء يرون", ""], "source_tag": "newsroom_ai_tell"},
+        {"input": "العديد من المراقبين", "alternatives": ["مراقبون", ""], "source_tag": "newsroom_ai_tell"},
+        {"input": "ومن المتوقع أن يَ", "alternatives": ["وقد يَ", "ربما يَ"], "source_tag": "newsroom_ai_tell"},
+        {"input": "كما تَواجه", "alternatives": ["وتواجه"], "source_tag": "newsroom_ai_tell"},
+        {"input": "كما يُتوقع", "alternatives": ["ويُتوقع"], "source_tag": "newsroom_ai_tell"},
+        {"input": "تجدر الإشارة إلى أنّ", "alternatives": ["يُذكر أنّ", "والحقيقة أنّ", ""], "source_tag": "gap_a"},
+        {"input": "تجدر الإشارة إلى أن", "alternatives": ["يُذكر أن", "والحقيقة أن", ""], "source_tag": "gap_a"},
+        {"input": "في هذا الصدد", "alternatives": ["هنا", "بصدد ذلك", ""], "source_tag": "gap_a"},
         {"input": "من هذا المنطلق", "alternatives": ["من هنا", "لذلك"], "source_tag": "gap_a"},
-        {"input": "على هذا الأساس", "alternatives": ["بناء على ذلك", "لذلك"], "source_tag": "gap_a"},
-        {"input": "لا شك أن", "alternatives": ["بلا شك"], "source_tag": "gap_a"},
-        {"input": "من المعروف أن", "alternatives": ["المعروف أن"], "source_tag": "gap_a"},
-        {"input": "كما هو معلوم", "alternatives": ["المعلوم أن"], "source_tag": "gap_a"},
+        {"input": "على هذا الأساس", "alternatives": ["بناءً على ذلك", "لذلك"], "source_tag": "gap_a"},
+        {"input": "لا شك أنّ", "alternatives": ["بلا شك", ""], "source_tag": "gap_a"},
+        {"input": "من المعروف أنّ", "alternatives": ["المعروف أنّ", ""], "source_tag": "gap_a"},
+        {"input": "من المعروف أن", "alternatives": ["المعروف أن", ""], "source_tag": "gap_a"},
+        {"input": "كما هو معلوم", "alternatives": ["المعلوم أنّ", ""], "source_tag": "gap_a"},
         {"input": "في حقيقة الأمر", "alternatives": ["في الحقيقة"], "source_tag": "gap_a"},
-        {"input": "لا يخفى على أحد", "alternatives": ["الواضح أن"], "source_tag": "gap_a"},
-        {"input": "تجدر الإشارة كذلك", "alternatives": ["كذلك", "يضاف"], "source_tag": "gap_a"}
+        {"input": "لا يخفى على أحد", "alternatives": ["الواضح أنّ"], "source_tag": "gap_a"},
+        {"input": "تجدر الإشارة كذلك", "alternatives": ["كذلك", "يُضاف"], "source_tag": "gap_a"}
       ]
     },
     "connectors": {
@@ -64,31 +92,32 @@
         {"input": "وعلاوة على ذلك،", "replacement": "كما أن،"},
         {"input": "ومع ذلك،", "replacement": "لكن،"},
         {"input": "وبالتالي،", "replacement": "لذلك،"},
-        {"input": "وبناء عليه،", "replacement": "لذلك،"},
-        {"input": "على سبيل المثال،", "replacement": "مثلا،"},
+        {"input": "وبناءً عليه،", "replacement": "لذلك،"},
+        {"input": "على سبيل المثال،", "replacement": "مثلاً،"},
         {"input": "في المقابل،", "replacement": "بالمقابل،"},
         {"input": "على العكس من ذلك،", "replacement": "بعكس ذلك،"},
         {"input": "باختصار،", "replacement": "بشكل مختصر،"},
-        {"input": "فضلا عن ذلك،", "replacement": "كذلك،", "source_tag": "gap_b"},
+        {"input": "فضلاً عن ذلك،", "replacement": "كذلك،", "source_tag": "gap_b"},
         {"input": "إضافة إلى ذلك،", "replacement": "كذلك،", "source_tag": "gap_b"},
         {"input": "من جهة أخرى،", "replacement": "بالمقابل،", "source_tag": "gap_b"},
         {"input": "من جانب آخر،", "replacement": "بالمقابل،", "source_tag": "gap_b"},
-        {"input": "بصورة عامة،", "replacement": "عموما،", "source_tag": "gap_b"},
-        {"input": "بشكل عام،", "replacement": "عموما،", "source_tag": "gap_b"},
-        {"input": "بشكل خاص،", "replacement": "خصوصا،", "source_tag": "gap_b"},
-        {"input": "في الواقع،", "replacement": "فعلا،", "source_tag": "gap_b"},
+        {"input": "بصورة عامة،", "replacement": "عموماً،", "source_tag": "gap_b"},
+        {"input": "بشكل عام،", "replacement": "عموماً،", "source_tag": "gap_b"},
+        {"input": "بشكل خاص،", "replacement": "خصوصاً،", "source_tag": "gap_b"},
+        {"input": "في الواقع،", "replacement": "فعلاً،", "source_tag": "gap_b"},
+        {"input": "في حين أنّ", "replacement": "بينما", "source_tag": "gap_b"},
         {"input": "في حين أن", "replacement": "بينما", "source_tag": "gap_b"},
         {"input": "على الرغم من ذلك،", "replacement": "رغم ذلك،", "source_tag": "gap_b"},
         {"input": "نتيجة لذلك،", "replacement": "لذلك،", "source_tag": "gap_b"},
-        {"input": "استنادا إلى ذلك،", "replacement": "بناء عليه،", "source_tag": "gap_b"},
-        {"input": "تبعا لذلك،", "replacement": "لذلك،", "source_tag": "gap_b"}
+        {"input": "استناداً إلى ذلك،", "replacement": "بناءً عليه،", "source_tag": "gap_b"},
+        {"input": "تبعاً لذلك،", "replacement": "لذلك،", "source_tag": "gap_b"}
       ]
     },
     "repetitive_starters": {
       "policy": "consecutive_repeat_trigger",
       "probability": 0.5,
       "policy_notes": "When the same starter recurs across consecutive sentences, replace with one of the pronoun-prefixed alternatives with 50% probability per repeat.",
-      "detectors": ["تعتبر", "يعتبر", "تعد", "يعد", "يمكن", "تستطيع", "نستطيع"],
+      "detectors": ["تعتبر", "تُعتبر", "يُعتبر", "تعد", "يُعد", "تُعد", "يمكن", "تستطيع", "نستطيع", "يعتبر", "يعد"],
       "replacements": ["فهي", "وهي", "إنها", "كما أنها"]
     },
     "fillers": {
@@ -113,44 +142,51 @@
     },
     "quote_verbs": {
       "policy": "rotation_pool",
-      "policy_notes": "News-register only. AI defaults to قال/يقول; rotate from the pool to mimic the natural rotation observed in the news corpus. Rotation is positional (cycle through pool) or random per consumer choice.",
       "register_filter": "news",
+      "policy_notes": "News-register only. AI defaults to قال/يقول; rotate from the pool to mimic the natural rotation observed in the news corpus.",
       "entries": [
-        {"input": "قال", "rotation_pool": ["أكد", "أشار", "أوضح", "أضاف", "صرح", "ذكر", "نوه", "لفت"], "source_tag": "gap_d"},
-        {"input": "يقول", "rotation_pool": ["يرى", "يعتقد", "يزعم", "يقرر", "يؤكد"], "source_tag": "gap_d"},
-        {"input": "ذكر أن", "rotation_pool": ["أفاد بأن", "أشار إلى أن", "لفت إلى أن", "كشف أن"], "source_tag": "gap_d"}
+        {"input": "قال", "rotation_pool": ["أكّد", "أشار", "أوضح", "أضاف", "صرّح", "ذكر", "نوّه", "لفت"], "source_tag": "gap_d"},
+        {"input": "يقول", "rotation_pool": ["يَرى", "يَعتقد", "يَزعم", "يُقرّر", "يُؤكّد"], "source_tag": "gap_d"},
+        {"input": "ذكر أن", "rotation_pool": ["أفاد بأنّ", "أشار إلى أنّ", "لفت إلى أنّ", "كشف أنّ"], "source_tag": "gap_d"},
+        {"input": "ذكر أنّ", "rotation_pool": ["أفاد بأنّ", "أشار إلى أنّ", "لفت إلى أنّ", "كشف أنّ"], "source_tag": "gap_d"}
       ]
     },
-    "templated_starters": {
-      "policy": "advisory_strategy",
-      "policy_notes": "Gap C from corpus mining. Each entry describes a STRATEGY for rephrasing a templated AI opener; not a mechanical substitution. Consumers may implement via LLM rewriting or skip. The asset documents the pattern; it does NOT promise deterministic application.",
+    "structural_openers": {
+      "policy": "regex_capture_substitute",
+      "policy_notes": "NEW in v1.1.0. Replaces v1.0.0's advisory 'templated_starters' with mechanically-applicable regex patterns. Each pattern captures a noun phrase (Arabic letters + spaces, 1-40 chars, lazy) and produces one of N replacements using {0}-style positional substitution. Matched against humanize_v2.py STRUCTURAL_OPENERS_AR (lines 177-188).",
+      "capture_pattern_note": "([ء-ي\\s]{1,40}?) is the canonical capture group: Arabic letters + whitespace, bounded length, lazy. Spans multi-word compounds like 'الذكاء الاصطناعي'.",
       "entries": [
-        {"pattern": "يلعب X دورا", "strategy": "dive directly into the role: 'X يحدد / يشكل / يصنع'", "source_tag": "gap_c"},
-        {"pattern": "يشكل X عاملا", "strategy": "replace with active claim: 'X هو السبب الرئيسي'", "source_tag": "gap_c"},
-        {"pattern": "يمثل X جزءا", "strategy": "'X هو' / 'X يعد'", "source_tag": "gap_c"},
-        {"pattern": "يكمن X في", "strategy": "'السبب: ...' / 'ها هو السبب:'", "source_tag": "gap_c"},
-        {"pattern": "تنبع X من", "strategy": "'يأتي من' / 'أصلها'", "source_tag": "gap_c"},
-        {"pattern": "تتمثل X في", "strategy": "'هي:' / 'تتلخص في'", "source_tag": "gap_c"},
-        {"pattern": "تكتسب X أهمية", "strategy": "'تهم' / 'حاسمة'", "source_tag": "gap_c"},
-        {"pattern": "تواجه X تحديات", "strategy": "'أمام X تحديات' / 'X يتعثر في'", "source_tag": "gap_c"},
-        {"pattern": "تشهد X تطورا", "strategy": "'X يتطور'", "source_tag": "gap_c"},
-        {"pattern": "تسعى X إلى", "strategy": "'X تريد' / 'X تطمح إلى'", "source_tag": "gap_c"}
+        {"pattern": "يلعب ([ء-ي\\s]{1,40}?) دوراً", "replacements": ["{0} يحدّد", "{0} يُشكّل", "{0} يَصنع"], "source_tag": "gap_c"},
+        {"pattern": "يشكّل ([ء-ي\\s]{1,40}?) عاملاً", "replacements": ["{0} هو السبب الرئيسي", "{0} يُحدِّد"], "source_tag": "gap_c"},
+        {"pattern": "يمثّل ([ء-ي\\s]{1,40}?) جزءاً", "replacements": ["{0} هو", "{0} يُعدّ"], "source_tag": "gap_c"},
+        {"pattern": "يكمن ([ء-ي\\s]{1,40}?) في", "replacements": ["السبب", "ها هو السبب"], "source_tag": "gap_c"},
+        {"pattern": "تنبع ([ء-ي\\s]{1,40}?) من", "replacements": ["يَأتي من", "أصلها"], "source_tag": "gap_c"},
+        {"pattern": "تتمثّل ([ء-ي\\s]{1,40}?) في", "replacements": ["هي:", "تَتلخّص في"], "source_tag": "gap_c"},
+        {"pattern": "تكتسب ([ء-ي\\s]{1,40}?) أهمية", "replacements": ["تُهمّ", "حاسمة"], "source_tag": "gap_c"},
+        {"pattern": "تواجه ([ء-ي\\s]{1,40}?) تحديات", "replacements": ["أمام {0} تحديات", "{0} يَتعثّر في"], "source_tag": "gap_c"},
+        {"pattern": "تشهد ([ء-ي\\s]{1,40}?) تطوراً", "replacements": ["{0} يَتطوّر"], "source_tag": "gap_c"},
+        {"pattern": "تسعى ([ء-ي\\s]{1,40}?) إلى", "replacements": ["{0} تُريد", "{0} تَطمح إلى"], "source_tag": "gap_c"}
+      ]
+    },
+    "intensifier_destack": {
+      "policy": "regex_substitute",
+      "policy_notes": "NEW in v1.1.0. Replaces v1.0.0's advisory 'global_policies.intensifier_destacking' with mechanically-applicable patterns. Each entry is (regex, replacement). Catches AI's stacked intensifiers ('في غاية الأهمية البالغة جداً', 'بشكل كبير جداً', 'بصورة ملحوظة وواضحة'). Source: humanize_v2.py INTENSIFIER_DESTACK (lines 199-209), tracking Gap G from references/13.",
+      "entries": [
+        {"pattern": "في غاية الأهمية البالغة(?:\\s+جداً)?", "replacement": "بالغ الأهمية", "source_tag": "gap_g"},
+        {"pattern": "بشكل كبير جداً", "replacement": "كثيراً", "source_tag": "gap_g"},
+        {"pattern": "بصورة ملحوظة وواضحة", "replacement": "بوضوح", "source_tag": "gap_g"},
+        {"pattern": "بشكل واضح وملحوظ", "replacement": "بوضوح", "source_tag": "gap_g"},
+        {"pattern": "بصورة كاملة وشاملة", "replacement": "بشكل كامل", "source_tag": "gap_g"},
+        {"pattern": "بشكل تام ومطلق", "replacement": "تماماً", "source_tag": "gap_g"},
+        {"pattern": "للغاية\\s+جداً", "replacement": "للغاية", "source_tag": "gap_g"},
+        {"pattern": "جداً\\s+جداً", "replacement": "جداً", "source_tag": "gap_g"}
       ]
     }
   },
   "global_policies": {
     "quoted_span_bypass": {
-      "description": "Substitution should be suppressed inside quoted spans (\"...\" and «...»). Source: Gap F in references/13-inherited-lexical-tables.md.",
+      "description": "Substitution should be suppressed inside quoted spans (\"...\" and «...»). Source: Gap F in references/13.",
       "applies_to": ["ai_phrases", "connectors", "numbered_transitions"]
-    },
-    "intensifier_destacking": {
-      "description": "Detect and collapse stacked intensifiers (e.g., 'في غاية الأهمية البالغة جدا'). Humans rarely stack; AI does. Source: Gap G.",
-      "applies_to": ["all"],
-      "examples": [
-        "في غاية الأهمية البالغة جدا → في غاية الأهمية",
-        "بشكل كبير جدا → بشكل كبير",
-        "بصورة ملحوظة وواضحة → بصورة ملحوظة"
-      ]
     },
     "register_gating": {
       "description": "Substitutions should be gated by detected register. Source: Gap E.",
@@ -160,5 +196,25 @@
         "technical": "prefer simpler alternatives in every substitution table"
       }
     }
+  },
+  "v1.1.0_audit_findings": {
+    "summary": "Migrated content in v1.0.0 was derived from references/13-inherited-lexical-tables.md, which lagged the live code in scripts/humanize_v2.py. v1.1.0 brings the asset to parity with the v2.7.0 humanizer code.",
+    "deltas": {
+      "ai_phrases": {
+        "v1.0.0_count": 40,
+        "v1.1.0_count": 67,
+        "added": ["clause-preserving variants (e.g., 'من المهم ملاحظة أن' separate from bare 'من المهم ملاحظة')", "pro-drop deletion entries with '' as a valid alternative", "16 newsroom AI-tells", "4 English-calque pipeline entries (خط أنابيب → مسار عمل)", "tashkeel-bearing variants for Gap A entries"]
+      },
+      "structural_openers": {
+        "v1.0.0_policy": "advisory_strategy (10 documentation-only entries)",
+        "v1.1.0_policy": "regex_capture_substitute (10 mechanically-applicable patterns)"
+      },
+      "intensifier_destack": {
+        "v1.0.0_location": "global_policies advisory note",
+        "v1.1.0_location": "first-class table with 8 regex patterns"
+      },
+      "schema_changes": ["alternatives entries now allow empty strings (minLength: 0) — pro-drop deletion was the missing pattern", "added regex_capture_substitute policy", "added regex_substitute policy"]
+    },
+    "outstanding_for_v1.2.0": "humanizer-cutover validation: after the humanizer's _load_lexical_tables() reads from this asset, run the humanizer's full regression suite (74 Arabic + 33 English) and confirm zero new failures. If failures appear, the divergence is the bug."
   }
 }

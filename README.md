@@ -2,7 +2,7 @@
 
 > Shared Arabic linguistic infrastructure: calque dictionary, corpus stats, register policies, MSA style guide. Consumed by `arabic-ai-text-humanizer`, the upcoming `arabic-corpus-translator`, and the future `arabic-authoring-suite`.
 
-**Status:** v0.7 — Asset C (lexical-tables) migration ships. Six assets now live in this toolkit; three sibling skills consume them (`arabic-ai-text-humanizer` v2.7.0, `arabic-corpus-translator` v0.2.1, `arabic-authoring-suite` v0.1.1).
+**Status:** v0.7.1 — Asset C parity audit ships. v0.7 was migrated from stale docs; v0.7.1 reconciles to the live humanizer code (asset schema v1.1.0). Six assets now live in this toolkit; three sibling skills consume them (`arabic-ai-text-humanizer` v2.7.0, `arabic-corpus-translator` v0.2.1, `arabic-authoring-suite` v0.1.1).
 
 ## Why this exists
 

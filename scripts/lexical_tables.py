@@ -115,8 +115,17 @@ def quote_verb_pool(verb: str) -> Optional[List[str]]:
     return None
 
 
-def templated_starter_strategies() -> List[Dict[str, str]]:
-    return list(get_table("templated_starters")["entries"])
+def structural_opener_patterns() -> List[Dict[str, Any]]:
+    """Return Gap-C regex patterns + replacements (v1.1.0+). Each entry has
+    'pattern' (Python regex) and 'replacements' (list of templates with {0}-style
+    positional substitution for captured groups)."""
+    return list(get_table("structural_openers")["entries"])
+
+
+def intensifier_destack_patterns() -> List[Dict[str, str]]:
+    """Return Gap-G regex de-stacking patterns (v1.1.0+). Each entry has
+    'pattern' (Python regex) and 'replacement' (plain string)."""
+    return list(get_table("intensifier_destack")["entries"])
 
 
 def soft_validate() -> List[str]:
@@ -145,7 +154,8 @@ def soft_validate() -> List[str]:
         "fillers":              "intensity_gated",
         "numbered_transitions": "probabilistic_per_match",
         "quote_verbs":          "rotation_pool",
-        "templated_starters":   "advisory_strategy",
+        "structural_openers":   "regex_capture_substitute",
+        "intensifier_destack":  "regex_substitute",
     }
     tables = data.get("tables", {})
     for name, expected_policy in EXPECTED_POLICIES.items():

@@ -29,7 +29,8 @@ from lexical_tables import (
     filler_entries,
     numbered_transition_replacement,
     quote_verb_pool,
-    templated_starter_strategies,
+    structural_opener_patterns,
+    intensifier_destack_patterns,
     soft_validate,
     stats,
 )
@@ -45,29 +46,30 @@ def main() -> int:
     print("=== Asset C: lexical-tables release gate ===\n")
     failures = 0
 
-    # T1: schema_version
+    # T1: schema_version (bumped to 1.1.0 with parity fix)
     sv = schema_version()
-    if not _assert(sv == "1.0.0", f"schema_version() == '1.0.0' (got {sv!r})"):
+    if not _assert(sv == "1.1.0", f"schema_version() == '1.1.0' (got {sv!r})"):
         failures += 1
 
-    # T2: all seven tables present
+    # T2: all eight tables present (v1.1.0 replaced templated_starters with structural_openers + added intensifier_destack)
     names = table_names()
     expected = ("ai_phrases", "connectors", "repetitive_starters", "fillers",
-                "numbered_transitions", "quote_verbs", "templated_starters")
+                "numbered_transitions", "quote_verbs",
+                "structural_openers", "intensifier_destack")
     if not _assert(set(names) == set(expected),
-                   f"all seven tables present (got {sorted(names)})"):
+                   f"all eight tables present (got {sorted(names)})"):
         failures += 1
 
-    # T3: ai_phrase alternatives — v1 substrate entry
+    # T3: ai_phrase alternatives — v1 substrate entry (humanizer-parity content)
     alts = ai_phrase_alternatives("من المهم ملاحظة")
-    if not _assert(alts == ["للعلم", "من الجدير بالذكر", "تذكر"],
-                   "ai_phrase_alternatives('من المهم ملاحظة') returns v1 alternatives"):
+    if not _assert(alts == ["نشير إلى", "يلزم التنبيه إلى"],
+                   "ai_phrase_alternatives('من المهم ملاحظة') returns humanizer-parity v1 alternatives"):
         failures += 1
 
-    # T4: ai_phrase alternatives — Gap A extension entry
+    # T4: ai_phrase alternatives — Gap A extension entry (with humanizer-parity empty-string alt)
     alts_gap = ai_phrase_alternatives("تجدر الإشارة إلى أن")
-    if not _assert(alts_gap == ["يذكر أن", "والحقيقة أن"],
-                   "ai_phrase_alternatives('تجدر الإشارة إلى أن') returns Gap A alternatives"):
+    if not _assert(alts_gap == ["يُذكر أن", "والحقيقة أن", ""],
+                   "ai_phrase_alternatives('تجدر الإشارة إلى أن') returns Gap A alternatives with pro-drop"):
         failures += 1
 
     # T5: missing phrase returns None
@@ -80,9 +82,9 @@ def main() -> int:
                    "connector_replacement v1 substrate"):
         failures += 1
 
-    # T7: connector_replacement — Gap B extension
-    if not _assert(connector_replacement("فضلا عن ذلك،") == "كذلك،",
-                   "connector_replacement Gap B extension"):
+    # T7: connector_replacement — Gap B extension (humanizer uses فضلاً with tashkeel)
+    if not _assert(connector_replacement("فضلاً عن ذلك،") == "كذلك،",
+                   "connector_replacement Gap B (with tashkeel)"):
         failures += 1
 
     # T8: repetitive starters detection
@@ -110,41 +112,70 @@ def main() -> int:
                    "numbered_transition_replacement('أولا،')"):
         failures += 1
 
-    # T12: quote-verb rotation pool (Gap D)
+    # T12: quote-verb rotation pool (Gap D) — humanizer uses أكّد with tashkeel
     pool = quote_verb_pool("قال")
-    if not _assert(pool is not None and "أكد" in pool and "أوضح" in pool,
-                   "quote_verb_pool('قال') contains أكد and أوضح"):
+    if not _assert(pool is not None and "أكّد" in pool and "أوضح" in pool,
+                   "quote_verb_pool('قال') contains أكّد and أوضح"):
         failures += 1
 
-    # T13: templated starters return as advisory strategies
-    strategies = templated_starter_strategies()
-    if not _assert(len(strategies) == 10 and all("strategy" in s and "pattern" in s for s in strategies),
-                   "templated_starter_strategies() returns 10 advisory entries"):
+    # T13: structural openers (Gap C) — NEW in v1.1.0, mechanically applicable
+    structural = structural_opener_patterns()
+    if not _assert(len(structural) == 10 and all("pattern" in s and "replacements" in s for s in structural),
+                   "structural_opener_patterns() returns 10 regex entries (was advisory in v1.0.0)"):
+        failures += 1
+    # T13b: confirm capture-group pattern is regex-compilable
+    import re as _re
+    try:
+        _re.compile(structural[0]["pattern"])
+        compile_ok = True
+    except Exception:
+        compile_ok = False
+    if not _assert(compile_ok, "structural_openers[0].pattern compiles as a Python regex"):
         failures += 1
 
-    # T14: soft_validate passes on the shipped asset
+    # T14: intensifier de-stack patterns (Gap G) — NEW in v1.1.0, first-class table
+    destack = intensifier_destack_patterns()
+    if not _assert(len(destack) == 8 and all("pattern" in s and "replacement" in s for s in destack),
+                   "intensifier_destack_patterns() returns 8 regex entries"):
+        failures += 1
+
+    # T15: soft_validate passes on the shipped asset
     errs = soft_validate()
     if not _assert(errs == [], f"soft_validate() returns no errors (got: {errs})"):
         failures += 1
 
-    # T15: stats produces a summary
+    # T16: stats produces a summary
     s = stats()
-    if not _assert(s["schema_version"] == "1.0.0" and "tables" in s,
+    if not _assert(s["schema_version"] == "1.1.0" and "tables" in s,
                    "stats() returns versioned summary"):
         failures += 1
 
-    # T16: per-table entry counts match the source-of-truth
-    # ai_phrases: 30 v1 + 10 Gap A = 40
+    # T17: per-table entry counts at v1.1.0 humanizer-parity
+    # ai_phrases: 67 = 6 pro-drop + 1 tautology + 7 clause-preserving + 21 v1 + 4 calque + 16 newsroom + 12 Gap A
     ai_count = len(get_table("ai_phrases")["entries"])
-    if not _assert(ai_count == 40, f"ai_phrases has 40 entries (got {ai_count})"):
+    if not _assert(ai_count == 67, f"ai_phrases has 67 entries at v1.1.0 (got {ai_count})"):
         failures += 1
-    # connectors: 8 v1 + 13 Gap B = 21
+    # connectors: 8 v1 + 14 Gap B (with tashkeel variant of في حين أن) = 22
     conn_count = len(get_table("connectors")["entries"])
-    if not _assert(conn_count == 21, f"connectors has 21 entries (got {conn_count})"):
+    if not _assert(conn_count == 22, f"connectors has 22 entries at v1.1.0 (got {conn_count})"):
         failures += 1
     # numbered_transitions: 5
     nt_count = len(get_table("numbered_transitions")["entries"])
     if not _assert(nt_count == 5, f"numbered_transitions has 5 entries (got {nt_count})"):
+        failures += 1
+    # repetitive starters: 11 (humanizer-parity, includes tashkeel variants)
+    rs_count = len(get_table("repetitive_starters")["detectors"])
+    if not _assert(rs_count == 11, f"repetitive_starters has 11 detectors at v1.1.0 (got {rs_count})"):
+        failures += 1
+    # quote_verbs: 4 (humanizer has separate tashkeel + bare for ذكر أن/أنّ)
+    qv_count = len(get_table("quote_verbs")["entries"])
+    if not _assert(qv_count == 4, f"quote_verbs has 4 entries at v1.1.0 (got {qv_count})"):
+        failures += 1
+
+    # T18: pro-drop empty-string alternative is preserved (schema relaxation)
+    pro_drop = ai_phrase_alternatives("في الواقع")
+    if not _assert(pro_drop is not None and "" in pro_drop,
+                   "ai_phrase_alternatives('في الواقع') includes '' (pro-drop) per humanizer-parity"):
         failures += 1
 
     print()
