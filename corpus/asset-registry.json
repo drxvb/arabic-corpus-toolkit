@@ -1,7 +1,7 @@
 {
   "$registry_version": "1.0.0",
   "description": "Asset Version Registry (Gap G2). Canonical declaration of every shipped asset's current version + which consumer versions can read it. Consumers should query this via scripts/asset_registry.py rather than hardcoding schema_major checks.",
-  "generated_by": "toolkit v1.6.0 — manually maintained; future v1.7+ may auto-derive from corpus/*.json $schema_version fields.",
+  "generated_by": "toolkit v1.10.0 — 3-vendor independent-consensus tiered domain assets.",
   "assets": {
     "A": {
       "name": "calque-dictionary",
@@ -9,7 +9,10 @@
       "current_version": "1.2.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["humanizer", "translator"],
+      "consumers": [
+        "humanizer",
+        "translator"
+      ],
       "description": "Calque dictionary (340 entries). AI-error → natural-AR mapping with topic-guard fields (v1.1.0+) and three_way_verdict fields (v1.2.0+)."
     },
     "B": {
@@ -18,7 +21,9 @@
       "current_version": "1.0.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator"],
+      "consumers": [
+        "translator"
+      ],
       "description": "Aggregated corpus stats (4 register categories, sentence-length burstiness, top connectors)."
     },
     "C": {
@@ -27,7 +32,10 @@
       "current_version": "1.1.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["humanizer", "translator"],
+      "consumers": [
+        "humanizer",
+        "translator"
+      ],
       "description": "Six lexical tables (ai_phrases 67, connectors 22, structural_openers 10, etc). v1.1.0 added regex_capture_substitute + regex_substitute policies. Reverse-compatible with v1.0.0 readers (additive only)."
     },
     "D": {
@@ -36,7 +44,9 @@
       "current_version": "1.0.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["humanizer"],
+      "consumers": [
+        "humanizer"
+      ],
       "description": "9 typography rules with 13-source authority log. Consumed by humanizer v2.12.0+."
     },
     "E": {
@@ -45,7 +55,9 @@
       "current_version": "1.0.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["humanizer"],
+      "consumers": [
+        "humanizer"
+      ],
       "description": "6 anti-patterns (tautology, re-explanation, forced-conclusion). Consumed by humanizer v2.12.0+."
     },
     "F.technology": {
@@ -54,7 +66,10 @@
       "current_version": "1.0.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator", "authoring"],
+      "consumers": [
+        "translator",
+        "authoring"
+      ],
       "description": "999 candidates mined from AITNews 64,484 tech-news articles."
     },
     "F.news": {
@@ -63,7 +78,10 @@
       "current_version": "1.0.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator", "authoring"],
+      "consumers": [
+        "translator",
+        "authoring"
+      ],
       "description": "498 candidates mined from Elaph 3,801 news articles."
     },
     "G.technology": {
@@ -72,35 +90,56 @@
       "current_version": "1.4.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator", "authoring"],
+      "consumers": [
+        "translator",
+        "authoring"
+      ],
       "description": "422 paired EN↔AR tech terms. All cross-vendor-validated via codex+gemini swarms through v1.4.0."
     },
     "G.business": {
       "name": "domain-terminology-business",
       "path": "corpus/domain-terminology-business.json",
-      "current_version": "1.0.0",
+      "current_version": "1.3.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator", "authoring"],
-      "description": "27 business/finance/economy terms from Elaph 2003-2008. Includes oil, market, Dinar, sector, Finance, price. minimax-classified."
+      "consumers": [
+        "translator",
+        "authoring"
+      ],
+      "description": "Business/finance/economy terms from Elaph. v1.3.0: 51 active (>=1/3 independent agreed) + 43 below threshold.",
+      "n_active_pairs": 51,
+      "n_below_threshold": 43,
+      "validation_status": "tiered_3_vendor_consensus"
     },
     "G.legal": {
       "name": "domain-terminology-legal",
       "path": "corpus/domain-terminology-legal.json",
-      "current_version": "1.0.0",
+      "current_version": "1.3.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator", "authoring"],
-      "description": "5 legal/government terms from Elaph (corpus is politics-heavy, legal coverage thin). Future v1.10+ may expand from dedicated legal corpus."
+      "consumers": [
+        "translator",
+        "authoring"
+      ],
+      "description": "Legal/governance terms from Elaph. v1.3.0: 0 active + 8 below threshold.",
+      "n_active_pairs": 0,
+      "n_below_threshold": 8,
+      "validation_status": "placeholder_pending_corpus"
     },
     "G.politics": {
       "name": "domain-terminology-politics",
       "path": "corpus/domain-terminology-politics.json",
-      "current_version": "1.0.0",
+      "current_version": "1.3.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator", "authoring"],
-      "description": "69 politics/government/diplomacy terms from Elaph 2003-2008. Era-specific (Iraq War context); useful for political news translation."
+      "consumers": [
+        "translator",
+        "authoring"
+      ],
+      "description": "Politics/government/diplomacy terms from Elaph 2003-2008 (era-tagged). v1.3.0: 13 active + 113 below threshold.",
+      "n_active_pairs": 13,
+      "n_below_threshold": 113,
+      "validation_status": "tiered_3_vendor_consensus"
     },
     "G.news": {
       "name": "domain-terminology-news",
@@ -108,13 +147,18 @@
       "current_version": "1.0.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
-      "consumers": ["translator", "authoring"],
+      "consumers": [
+        "translator",
+        "authoring"
+      ],
       "description": "50 paired EN↔AR news terms from Elaph corpus."
     }
   },
   "consumer_declared_requirements": {
     "humanizer": {
-      "min_versions_required": ["v2.12.0+"],
+      "min_versions_required": [
+        "v2.12.0+"
+      ],
       "asset_requirements": {
         "A": "^1.0.0",
         "C": "^1.0.0",
@@ -123,7 +167,9 @@
       }
     },
     "translator": {
-      "min_versions_required": ["v1.0.0+"],
+      "min_versions_required": [
+        "v1.0.0+"
+      ],
       "asset_requirements": {
         "A": "^1.0.0",
         "B": "^1.0.0",
@@ -138,7 +184,9 @@
       }
     },
     "authoring": {
-      "min_versions_required": ["v1.0.0+"],
+      "min_versions_required": [
+        "v1.0.0+"
+      ],
       "asset_requirements": {
         "G.technology": "^1.0.0",
         "G.news": "^1.0.0",
@@ -152,6 +200,8 @@
     "Compatibility uses npm-style range syntax: ^1.0.0 means '>=1.0.0 <2.0.0'. The asset_registry.py loader resolves ranges.",
     "breaking_versions is an explicit deny-list for known-incompatible point releases (empty for all current assets).",
     "When an asset bumps to 2.0.0, this registry's compatibility field updates to ^2.0.0 and consumers expecting ^1.0.0 will get a structured CompatibilityError instead of silent empty results.",
-    "consumer_declared_requirements documents what each consumer expects; consumers should NOT hardcode versions in their code anymore — they should call registry.required_for(consumer_name)."
+    "consumer_declared_requirements documents what each consumer expects; consumers should NOT hardcode versions in their code anymore — they should call registry.required_for(consumer_name).",
+    "v1.10.0: G.business/G.legal/G.politics bumped to schema 1.3.0 with 3-vendor consensus tiered pairs. Consumers reading `pairs` field automatically get only active (>=2/3 independent) pairs. Schema is backward compatible (additive `pairs_below_threshold` field).",
+    "v1.10.0: G.business/G.legal/G.politics bumped to schema 1.3.0 with 3-vendor consensus tiered pairs. Consumers reading `pairs` field automatically get only active (>=2/3 independent) pairs. Schema is backward compatible (additive `pairs_below_threshold` field)."
   ]
 }

@@ -5,3 +5,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.bak
+
+# v1.10.1+ staging artifacts (large bilingual corpus dumps, not committed)
+corpus/raw/
