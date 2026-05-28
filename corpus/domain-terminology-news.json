@@ -1,0 +1,473 @@
+{
+  "$schema_version": "1.0.0",
+  "asset_name": "domain-terminology",
+  "domain": "news",
+  "provenance": {
+    "source_candidates_file": "corpus\\terminology-candidates-news.json",
+    "source_candidates_count": 200,
+    "n_articles_processed": 3801,
+    "primary_proxy": "minimax",
+    "primary_model": "MiniMax-M2.7",
+    "confirm_proxy": null,
+    "confirm_model": null,
+    "ngram_filter": "bigram_trigram",
+    "pairing_timestamp": "2026-05-28T21:59:52"
+  },
+  "notes": [
+    "Phase 2 output: LLM-paired EN translations for Phase-1 AR candidates.",
+    "Each pair carries corpus_freq (Phase-1 frequency) + LLM proposer + confidence.",
+    "When --confirm-with is used, pairs also carry cross_llm_agreement and confirmed_by fields."
+  ],
+  "pairs": [
+    {
+      "ar": "صدام حسين",
+      "en": "Saddam Hussein",
+      "domain": "technology",
+      "corpus_freq": 585,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حزب الله",
+      "en": "Hezbollah",
+      "domain": "technology",
+      "corpus_freq": 336,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "كانون الثاني",
+      "en": "January",
+      "domain": "technology",
+      "corpus_freq": 207,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "رئيس مجلس",
+      "en": "Chairman of the board",
+      "domain": "technology",
+      "corpus_freq": 204,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يوم الاثنين",
+      "en": "Monday",
+      "domain": "technology",
+      "corpus_freq": 187,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يوم الخميس",
+      "en": "Thursday",
+      "domain": "technology",
+      "corpus_freq": 184,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "يوم الثلاثاء",
+      "en": "Tuesday",
+      "domain": "technology",
+      "corpus_freq": 175,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المملكة العربية السعودية",
+      "en": "Saudi Arabia",
+      "domain": "technology",
+      "corpus_freq": 170,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "سوق الأسهم",
+      "en": "stock market",
+      "domain": "technology",
+      "corpus_freq": 168,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "السلطة الفلسطينية",
+      "en": "Palestinian Authority",
+      "domain": "technology",
+      "corpus_freq": 156,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الاتحاد الأوروبي",
+      "en": "European Union",
+      "domain": "technology",
+      "corpus_freq": 152,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "اسعار النفط",
+      "en": "oil prices",
+      "domain": "technology",
+      "corpus_freq": 152,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جورج بوش",
+      "en": "George Bush",
+      "domain": "technology",
+      "corpus_freq": 150,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مقتدى الصدر",
+      "en": "Muqtada al-Sadr",
+      "domain": "technology",
+      "corpus_freq": 145,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الإدارة الأمريكية",
+      "en": "American administration",
+      "domain": "technology",
+      "corpus_freq": 145,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تشرين الثاني",
+      "en": "November",
+      "domain": "technology",
+      "corpus_freq": 145,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "النفط الخام",
+      "en": "crude oil",
+      "domain": "technology",
+      "corpus_freq": 145,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حجم التداول",
+      "en": "trading volume",
+      "domain": "technology",
+      "corpus_freq": 110,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "التجارة العالمية",
+      "en": "world trade",
+      "domain": "technology",
+      "corpus_freq": 109,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "للولايات المتحدة",
+      "en": "the United States",
+      "domain": "technology",
+      "corpus_freq": 107,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المنطقة العربية",
+      "en": "the Arab world",
+      "domain": "technology",
+      "corpus_freq": 107,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "هيئة علماء",
+      "en": "Council of Senior Scholars",
+      "domain": "technology",
+      "corpus_freq": 106,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مجلس الأمن",
+      "en": "Security Council",
+      "domain": "technology",
+      "corpus_freq": 105,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "بمقدار نقطة",
+      "en": "by one point",
+      "domain": "technology",
+      "corpus_freq": 105,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "وزير الخارجية",
+      "en": "Foreign Minister",
+      "domain": "technology",
+      "corpus_freq": 104,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحياة السياسية",
+      "en": "political life",
+      "domain": "technology",
+      "corpus_freq": 104,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نائب رئيس",
+      "en": "Vice President",
+      "domain": "technology",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "ناصر العريج",
+      "en": "Nasser Al-Areej",
+      "domain": "technology",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الناتج المحلي",
+      "en": "Gross Domestic Product",
+      "domain": "technology",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "مستوى نقطة",
+      "en": "point level",
+      "domain": "technology",
+      "corpus_freq": 102,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دول مجلس التعاون",
+      "en": "Gulf Cooperation Council countries",
+      "domain": "technology",
+      "corpus_freq": 102,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "المقابر الجماعية",
+      "en": "mass graves",
+      "domain": "technology",
+      "corpus_freq": 101,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبد الناصر",
+      "en": "Abdel Nasser",
+      "domain": "technology",
+      "corpus_freq": 101,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الجامعة العربية",
+      "en": "Arab League",
+      "domain": "technology",
+      "corpus_freq": 100,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبد العزيز",
+      "en": "Abdulaziz",
+      "domain": "technology",
+      "corpus_freq": 100,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرئيس بوش",
+      "en": "President Bush",
+      "domain": "technology",
+      "corpus_freq": 100,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "قناة الجزيرة",
+      "en": "Al Jazeera",
+      "domain": "technology",
+      "corpus_freq": 99,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "اياد علاوي",
+      "en": "Iyad Allawi",
+      "domain": "technology",
+      "corpus_freq": 96,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "النفط والغاز",
+      "en": "oil and gas",
+      "domain": "technology",
+      "corpus_freq": 95,
+      "ngram_size": "bigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "جلال الطالباني",
+      "en": "Jalal Talabani",
+      "domain": "technology",
+      "corpus_freq": 95,
+      "ngram_size": "bigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "تشرين الثاني نوفمبر",
+      "en": "November",
+      "domain": "technology",
+      "corpus_freq": 66,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "منظمة التجارة العالمية",
+      "en": "World Trade Organization",
+      "domain": "technology",
+      "corpus_freq": 62,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نهاية الربع الثالث",
+      "en": "end of the third quarter",
+      "domain": "technology",
+      "corpus_freq": 58,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "حجم التداول الإجمالي",
+      "en": "total trading volume",
+      "domain": "technology",
+      "corpus_freq": 56,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "عبد الكريم قاسم",
+      "en": "Abdul Karim Qasim",
+      "domain": "technology",
+      "corpus_freq": 53,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "دولة الإمارات العربية",
+      "en": "United Arab Emirates",
+      "domain": "technology",
+      "corpus_freq": 52,
+      "ngram_size": "trigram",
+      "confidence": "high",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الحكومة العراقية المؤقتة",
+      "en": "Iraqi Interim Government",
+      "domain": "technology",
+      "corpus_freq": 51,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "نوفمبر تشرين الثاني",
+      "en": "November",
+      "domain": "technology",
+      "corpus_freq": 50,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الرئيس جورج بوش",
+      "en": "President George Bush",
+      "domain": "technology",
+      "corpus_freq": 49,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    },
+    {
+      "ar": "الأشهر التسعة الأولى",
+      "en": "first nine months",
+      "domain": "technology",
+      "corpus_freq": 48,
+      "ngram_size": "trigram",
+      "confidence": "medium",
+      "proposer": "minimax"
+    }
+  ]
+}
