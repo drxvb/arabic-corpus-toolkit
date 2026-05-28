@@ -5,7 +5,7 @@ description: "Shared Arabic-language corpus infrastructure: calque dictionary, c
 
 # arabic-corpus-toolkit — Shared Arabic Linguistic Infrastructure
 
-**Status:** v0.3 — full multi-agent review (Gemini + Kimi + Codex lenses) absorbed.
+**Status:** v0.4 — empirical-patterns read API + first consumer live. Humanizer v2.7.0 now reads the calque dictionary from this toolkit by default; the architectural payoff from the v2.6.0 multi-agent review is shipped end-to-end.
 
 - **v0.2**: assets migrated from `arabic-ai-text-humanizer` (340-entry calque dictionary + 71.28M-token empirical patterns); `scripts/dictionary.py` 6-function read API; `references/02-external-sources.md` from Gemini-style lens.
 - **v0.3 (current)**:

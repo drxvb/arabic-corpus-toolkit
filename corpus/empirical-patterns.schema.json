@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/drxvb/arabic-corpus-toolkit/corpus/empirical-patterns.schema.json",
+  "title": "Arabic Empirical Patterns Schema v1.0.0",
+  "description": "Schema for arabic-corpus-toolkit empirical-patterns.json. Output of a one-time mining run over 100,000 records (1.31M sentences, 71.28M tokens) across 4 corpus categories (quran, classical, news, lexicon). Distinct from the humanizer's register policies — see scripts/corpus_stats.py and references/03-api-design.md.",
+  "type": "object",
+  "required": ["categories"],
+  "properties": {
+    "$schema_version": {
+      "type": "string",
+      "description": "Asset-level SemVer. v1.0.0 = the original mining-run output schema."
+    },
+    "input": {
+      "type": "string",
+      "description": "Description of the source corpus (path or human-readable label). May be redacted for privacy."
+    },
+    "sample_size": {
+      "type": "integer",
+      "description": "Number of records sampled from the source corpus."
+    },
+    "skipped": {
+      "type": "integer",
+      "description": "Records skipped (typically due to encoding errors or zero-content)."
+    },
+    "elapsed_s": {
+      "type": "number",
+      "description": "Wall-clock seconds for the mining run."
+    },
+    "categories": {
+      "type": "object",
+      "description": "Per-corpus-category stats. The 4 categories are fixed by the original mining run.",
+      "patternProperties": {
+        "^(quran|classical|news|lexicon)$": {
+          "$ref": "#/definitions/CategoryStats"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "definitions": {
+    "CategoryStats": {
+      "type": "object",
+      "required": ["n_records", "n_sentences", "n_tokens"],
+      "properties": {
+        "n_records": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Records from this category included in the sample."
+        },
+        "n_sentences": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Sentence count after sentence-splitting."
+        },
+        "n_tokens": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Token count (whitespace-split, Arabic-normalized)."
+        },
+        "mean_sentence_length": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Mean tokens per sentence."
+        },
+        "stddev_sentence_length": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Standard deviation of tokens per sentence — proxy for sentence-length variance."
+        },
+        "burstiness": {
+          "type": "number",
+          "description": "(stddev - mean) / (stddev + mean). Range [-1, 1]. >0 = bursty (varied lengths); <0 = uniform. AI text typically scores closer to 0; human prose often scores 0.5+. Useful as a humanness signal."
+        },
+        "sentence_length_histogram_pct": {
+          "type": "object",
+          "description": "Percentage distribution over length bins. Bins: 1-5, 6-10, 11-15, 16-20, 21-30, 31-50, 51+.",
+          "patternProperties": {
+            "^(1-5|6-10|11-15|16-20|21-30|31-50|51\\+)$": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        },
+        "top_connectors": {
+          "type": "array",
+          "description": "Top connector tokens with raw frequency. Each item is [token, count]. Used by the humanizer's Dim 16 (الفصل والوصل) connector-entropy scoring.",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": [
+              { "type": "string" },
+              { "type": "integer", "minimum": 0 }
+            ]
+          }
+        },
+        "top_sentence_starters": {
+          "type": "array",
+          "description": "Optional — top sentence-initial tokens. Same shape as top_connectors.",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": [
+              { "type": "string" },
+              { "type": "integer", "minimum": 0 }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

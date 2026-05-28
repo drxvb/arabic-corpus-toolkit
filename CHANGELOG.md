@@ -2,6 +2,25 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v0.4 — Empirical-patterns API + formal schema + first live consumer
+
+**Released:** 2026-05-28
+
+- **`scripts/corpus_stats.py`** — 10-function read API for `empirical-patterns.json`. Functions: `metadata`, `category_stats`, `token_count`, `sentence_count`, `mean_sentence_length`, `sentence_length_burstiness`, `sentence_length_histogram`, `top_connectors`, `connector_distribution`, `category_compare`. Pure stdlib. Mtime-aware caching shared with the rest of the toolkit pattern.
+- **`corpus/empirical-patterns.schema.json`** — JSON Schema draft-07 for the mining-run output. Documents the 4 corpus categories (`quran`/`classical`/`news`/`lexicon`) and clarifies they are **distinct from the humanizer's register policies** (which live in `scripts/register.py`).
+- **Architectural milestone**: `arabic-ai-text-humanizer` **v2.7.0** ships concurrently, switching its `_load_calque_dictionary()` to read from this toolkit by default. The vendored copy remains in the humanizer through v2.7.x as a fallback shim. Two-tier resolution: toolkit first, vendored copy as fallback.
+
+### Asset version state at end of v0.4
+
+| Asset | Schema version | Notes |
+|---|---|---|
+| `corpus/calque-dictionary.json` | **v1.2.0** | unchanged from v0.3 |
+| `corpus/empirical-patterns.json` | **v1.0.0** | formal schema now in place; data unchanged |
+| `scripts/dictionary.py` | n/a — API | unchanged |
+| `scripts/corpus_stats.py` | n/a — API | **NEW** in v0.4 |
+| `scripts/register.py` | n/a — API | unchanged |
+| `scripts/validate.py` | n/a — API | unchanged |
+
 ## v0.3 — Schema validator + read API trio + asset-level SemVer
 
 **Released:** 2026-05-28
