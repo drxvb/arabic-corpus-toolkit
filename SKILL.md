@@ -28,14 +28,31 @@ If each sibling vendors its own copy of the calque dictionary, **a single bad en
 
 ## What this skill owns
 
-| Asset | Toolkit path | Schema version | Migrated in |
+12 assets, canonical state per `corpus/asset-registry.json`. Per-asset SemVer; consumers query the registry for compat ranges rather than hardcoding versions.
+
+| Asset | Toolkit path | Current schema | Notes |
 |---|---|---|---|
-| **A** — calque-dictionary | `corpus/calque-dictionary.json` (340 entries, v2.6.0 triaged) | 1.2.0 | v0.2 |
-| **B** — empirical-patterns | `corpus/empirical-patterns.json` (100K-record mining output) | 1.0.0 | v0.2 |
-| **B'** — register policies | `scripts/register.py` (encoded in code per Codex-style API) | code-versioned | v0.3 |
-| **D** — typography-rules | `corpus/typography-rules.json` (9 rules + 13-source authority log) | 1.0.0 | v0.5 |
-| **E** — reader-respect-patterns | `corpus/reader-respect-patterns.json` (6 inverse-scored anti-patterns) | 1.0.0 | v0.5 |
-| **C** — lexical-tables | `corpus/lexical-tables.json` (5 v1 tables + Gap A/B/C/D extensions + per-table policies) | 1.0.0 | **v0.7 (this release)** |
+| **A** — calque-dictionary | `corpus/calque-dictionary.json` | 1.2.0 | 340 entries; v2.6.0 triaged with topic-guards + three_way_verdict fields |
+| **B** — empirical-patterns | `corpus/empirical-patterns.json` | 1.0.0 | 100K-record mining; 4 register categories, sentence-length burstiness |
+| **B'** — register policies | `scripts/register.py` | code-versioned | Per Codex-style API: encoded in code, not JSON |
+| **C** — lexical-tables | `corpus/lexical-tables.json` | 1.1.0 | 67 ai_phrases + 22 connectors + 11 starters + intensifier-destack regex; v1.1.0 added regex_capture_substitute policy |
+| **D** — typography-rules | `corpus/typography-rules.json` | 1.0.0 | 9 rules + 13-source authority log; consumed by humanizer v2.12.0+ |
+| **E** — reader-respect-patterns | `corpus/reader-respect-patterns.json` | 1.0.0 | 6 anti-patterns (tautology, re-explanation, forced-conclusion) |
+| **F.technology** | `corpus/terminology-candidates-technology.json` | 1.0.0 | 999 candidates from AITNews 64,484 articles |
+| **F.news** | `corpus/terminology-candidates-news.json` | 1.0.0 | 498 candidates from Elaph 3,801 articles |
+| **G.technology** | `corpus/domain-terminology.json` | 1.4.0 | 422 paired EN↔AR tech terms; all cross-vendor-validated through v1.4.0 |
+| **G.news** | `corpus/domain-terminology-news.json` | 1.0.0 | 50 paired EN↔AR news terms |
+| **G.business** | `corpus/domain-terminology-business.json` | 1.4.0 | 69 active pairs (multi-corpus: Elaph 2003-2008 + SPA 2024); 3-vendor consensus tiered |
+| **G.legal** | `corpus/domain-terminology-legal.json` | 1.4.0 | 23 active pairs from SPA 2024 governance/audit content; placeholder status DROPPED in v1.11.0 |
+| **G.politics** | `corpus/domain-terminology-politics.json` | **1.5.0** | 14 active pairs; v1.5.0 added `era_locked` + `era_locked_reason` on 7 Iraq War-era proper nouns (Codex A5 P0) |
+
+Plus four foundational contract scripts (Gaps G1-G4):
+- `scripts/arabic_normalize.py` (G1, v1.5.0) — light/medium/aggressive normalization, verified idempotent + monotone
+- `scripts/asset_registry.py` (G2, v1.6.0) — npm-range parser + `check_consumer()` compat reports
+- `scripts/influence_telemetry.py` (G3, v1.7.0) — `InfluenceTrace` append-only causal record with 11+1 triggers
+- `install_family.py` (G4, v1.8.0) — cross-platform installer at repo root (acquire + verify phases)
+
+Conformance gate: `evals/contract_conformance.py` (v1.10.1, 56 assertions) verifies every consumer adopts G1-G4 + schema-1.3.0+ tier conformance + min_consensus API. Golden e2e: `evals/golden_e2e_test.py` (40 assertions).
 
 ## What this skill does NOT own
 
@@ -75,14 +92,37 @@ Each helper is pure Python 3 stdlib — no SQLite, no FAISS, no LLM call. Modifi
 
 ## Roadmap
 
+**Current state**: v1.12.1 (toolkit) + v2.16.0 (humanizer) + v1.8.0 (translator) + v1.6.0 (authoring). All four foundational contracts G1-G4 shipped + adopted across 12/12 cells (verified by `evals/contract_conformance.py`).
+
+### Shipped milestones
+
 | Version | Ships | Status |
 |---|---|---|
-| **v0.1** | Scaffold (this release): SKILL.md, README, LICENSE, directory structure, intent docs | ✅ Current |
-| **v0.2** | Migrate `calque-dictionary.json` + `empirical-patterns.json`; `arabic-ai-text-humanizer` v2.7.0 reads from here | Pending humanizer v2.7.0 |
-| **v0.3** | Migrate register policies + connector tables + MSA style guide | Pending humanizer v2.7.0 |
-| **v0.4** | Add `arabic-corpus-translator` integration layer (the read API translator needs) | Pending translator scaffold |
-| **v0.5** | Add `arabic-authoring-suite` integration layer (fact-pack schema, outline discipline) | Pending authoring scaffold |
-| **v1.0** | All three consumers stable on toolkit ≥ v0.5; semantic versioning enforced for breaking changes | Q2 2027 |
+| v0.2–v0.7 | Asset A/B/C/D/E migration from humanizer | ✅ |
+| v0.8–v0.10 | Asset F mining (AITNews 64K + Elaph 3.8K) + Asset G pairing + cross-LLM swarm validation | ✅ |
+| v1.0.0 — v1.4.2 | Stable freeze; consumers adopt domain-keyed loaders; family pipeline integration | ✅ |
+| **v1.5.0** | **G1**: `arabic_normalize.py` canonical contract — light/medium/aggressive levels, idempotent + monotone | ✅ |
+| **v1.6.0** | **G2**: `asset_registry.py` + JSON — npm-range parsing, `check_consumer()` reports | ✅ |
+| **v1.7.0** | **G3**: `influence_telemetry.py` — `InfluenceTrace` append-only causal record, 11+1 triggers | ✅ |
+| **v1.8.0** | **G4**: `install_family.py` — cross-platform acquire + verify phases | ✅ |
+| v1.9.0 | Domain expansion (G.business 27 / G.legal 5 / G.politics 69 via single-pass classify+pair from Elaph) | ✅ |
+| **v1.10.0** | 4-vendor consensus tiered prune (Sonnet/Codex/Kimi/Gemini/MiniMax A5 audit prescribed) | ✅ |
+| **v1.10.1** | Inter-sibling contract conformance suite (3-of-4 A5 vendor flag) + SPA bilingual corpus ingestion (77K folders walked) | ✅ |
+| **v1.11.0** | SPA-2024 mining: **G.legal escapes placeholder** (0→23 active), G.business 51→69, G.politics 13→14; multi-corpus heritage | ✅ |
+| **v1.12.0** | G.politics era_locked metadata on 7 Iraq War-era proper nouns (Codex A5 P0) | ✅ |
+| **v1.12.1** | `references/07-mined-pair-acceptance-criteria.md` formalizes the 5-stage pair lifecycle gate (Minimax + Kimi missing-item) | ✅ |
+
+### Deferred work (post-A5 panel verdict)
+
+| Item | Why deferred | Source |
+|---|---|---|
+| Usage telemetry dashboard | Requires real infrastructure (per-consumer metrics, daily/weekly aggregation); genuinely P2 | Gemini A5 #1 leverage pick |
+| Audit variance root cause analysis | Research task — why MiniMax 89 vs Gemini 94 on identical data; for a future A6 audit | Minimax + Gemini A5 |
+| G.health / G.science / G.tech-startups domains | Wait for dedicated corpora; SPA general bucket already saturated for governance | A5 panel P3 |
+| Aho-Corasick consumer integration | Current Python lookup adequate; YAGNI per all 4 vendors | A5 panel rejected |
+| 5th sibling: arabic-validator | Premature extraction; no consumers have requested it | A5 panel rejected |
+
+Future v1.13+ would either (a) ingest a new bilingual corpus that surfaces healthcare/science terminology, (b) wire telemetry once a real consumer asks for the dashboard, or (c) run an A6 audit cycle and process whatever the panel converges on next.
 
 ## Constraints
 

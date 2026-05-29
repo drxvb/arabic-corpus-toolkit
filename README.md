@@ -2,7 +2,7 @@
 
 > Shared Arabic linguistic infrastructure: calque dictionary, corpus stats, register policies, MSA style guide. Consumed by `arabic-ai-text-humanizer`, the upcoming `arabic-corpus-translator`, and the future `arabic-authoring-suite`.
 
-**Status:** v0.7.1 — Asset C parity audit ships. v0.7 was migrated from stale docs; v0.7.1 reconciles to the live humanizer code (asset schema v1.1.0). Six assets now live in this toolkit; three sibling skills consume them (`arabic-ai-text-humanizer` v2.7.0, `arabic-corpus-translator` v0.2.1, `arabic-authoring-suite` v0.1.1).
+**Status:** **v1.12.1 — stable.** 13 assets (A/B/B'/C/D/E + F.technology/F.news + G.technology/G.news/G.business/G.legal/G.politics) plus four foundational contract scripts (G1 arabic_normalize / G2 asset_registry / G3 influence_telemetry / G4 install_family). All three consumer siblings live and pinned to per-asset SemVer: `arabic-ai-text-humanizer` v2.16.0, `arabic-corpus-translator` v1.8.0, `arabic-authoring-suite` v1.6.0. Inter-sibling contract conformance: 56/56 PASS. Golden e2e: 40/40 PASS.
 
 ## Why this exists
 
@@ -13,40 +13,47 @@ Architecturally validated by the multi-agent review documented at `M:\Main\AI\Co
 ## Family map
 
 ```
-                              ┌─────────────────────────────┐
-                              │  arabic-corpus-toolkit      │
-                              │  (this repo — shared infra) │
-                              │  · calque-dictionary.json   │
-                              │  · empirical-patterns.json  │
-                              │  · register policies        │
-                              │  · MSA style guide          │
-                              │  · connector tables         │
-                              └──────────────┬──────────────┘
-                                             │ read-only consumption
-                  ┌──────────────────────────┼──────────────────────────┐
-                  ▼                          ▼                          ▼
-   ┌──────────────────────┐  ┌──────────────────────┐  ┌──────────────────────┐
-   │ arabic-ai-text-      │  │ arabic-corpus-       │  │ arabic-authoring-    │
-   │ humanizer            │  │ translator           │  │ suite                │
-   │ (v2.6.0 — live)      │  │ (v0.1 — planned)     │  │ (Q1 2027 — planned)  │
-   │ humanize prose       │  │ EN↔AR translation    │  │ books/articles/      │
-   │                      │  │                      │  │ courses/news         │
-   └──────────────────────┘  └──────────────────────┘  └──────────────────────┘
+                              ┌──────────────────────────────────────────┐
+                              │  arabic-corpus-toolkit  (v1.12.1)        │
+                              │  · 13 assets (A/B/B'/C/D/E/F.*/G.*)      │
+                              │  · 4 contracts (G1-G4: normalize,        │
+                              │    registry, telemetry, install)         │
+                              │  · 56-assert conformance gate            │
+                              │  · 40-assert golden e2e gate             │
+                              └────────────────────┬─────────────────────┘
+                                                   │ read-only consumption
+                  ┌────────────────────────────────┼────────────────────────────────┐
+                  ▼                                ▼                                ▼
+   ┌──────────────────────┐    ┌──────────────────────┐    ┌──────────────────────┐
+   │ arabic-ai-text-      │    │ arabic-corpus-       │    │ arabic-authoring-    │
+   │ humanizer  (v2.16.0) │    │ translator (v1.8.0)  │    │ suite     (v1.6.0)   │
+   │                      │    │                      │    │                      │
+   │ humanize prose       │    │ EN↔AR translation    │    │ books/articles/      │
+   │ 16-dim Arabic +      │    │ 4-stage pipeline +   │    │ courses/news with    │
+   │ 5-axis English       │    │ Stage E cross-vendor │    │ fact-pack discipline │
+   │                      │    │ review               │    │                      │
+   └──────────────────────┘    └──────────────────────┘    └──────────────────────┘
 ```
 
-## Roadmap
+All four siblings hard-depend on toolkit ≥ v1.5.0 for the G1-G4 contracts. Per-asset SemVer means schema bumps within v1.x are additive; consumers query `asset_registry.is_compatible(asset_id, observed)` rather than hardcoding versions.
 
-| Version | Ships | Status |
+## Roadmap (current)
+
+See `SKILL.md` Roadmap section and `CHANGELOG.md` for full per-release detail. Highlights:
+
+| Phase | Ships | Status |
 |---|---|---|
-| **v0.1** | Scaffold (SKILL.md, README, LICENSE, directory tree) | ✅ Done |
-| **v0.2** | Asset A (calque-dictionary) + Asset B (empirical-patterns) + `dictionary.py` read API | ✅ Done |
-| **v0.3** | `validate.py` SchemaReport + `register.py` policy lookup + schema files + CHANGELOG | ✅ Done |
-| **v0.4** | `corpus_stats.py` 10-function read API for translator | ✅ Done |
-| **v0.5** | Asset D (typography-rules) + Asset E (reader-respect-patterns) + `diff_schema.py` CLI | ✅ Done |
-| **v0.6** | `export_consumer_view.py` (3 view modes × 3 formats) | ✅ Done |
-| **v0.7** | **Asset C (lexical-tables): 40 ai-phrases + 21 connectors + 5 numbered + 4 fillers + 7 repetitive starters + 3 quote-verb pools + 10 advisory templated starters; per-table substitution policies in data; `lexical_tables.py` 13-function read API + soft-validate + stats** | ✅ **This release** |
-| v0.8+ | Aho-Corasick matcher for dictionary; humanizer cutover to read Asset C from toolkit | Pending |
-| v1.0 | All consumers pinned to stable schemas; per-asset SemVer enforced | Q2 2027 |
+| v0.2 – v0.7.1 | Asset migration (A/B/B'/C/D/E) from humanizer | ✅ |
+| v0.8 – v0.10 | Asset F mining + Asset G pairing + cross-LLM swarm validation | ✅ |
+| v1.0 – v1.4.2 | Stable freeze; consumer family integrated; domain-keyed loaders | ✅ |
+| **v1.5.0 – v1.8.0** | **Foundational contracts**: G1 arabic_normalize / G2 asset_registry / G3 influence_telemetry / G4 install_family | ✅ |
+| **v1.9.0** | Domain expansion via single-pass classify+pair (G.business/G.legal/G.politics from Elaph) | ✅ |
+| **v1.10.0 – v1.10.1** | 4-vendor consensus tier prune + inter-sibling conformance suite + SPA corpus ingestion | ✅ |
+| **v1.11.0** | SPA-2024 mining: G.legal escapes placeholder (0→23 active), G.business 51→69, multi-corpus heritage | ✅ |
+| **v1.12.0 + v1.12.1** | G.politics era-locked metadata + mined-pair acceptance criteria formalized | ✅ |
+| v1.13+ | Either ingest new bilingual corpus for healthcare/science terminology, or wire usage telemetry when a real consumer asks, or run A6 audit cycle | Pending demand signal |
+
+Items explicitly deferred per A5 panel verdict: usage telemetry dashboard (P2, requires infra), audit variance root cause (research for A6), Aho-Corasick consumer integration (YAGNI), 5th sibling extraction (premature). See `SKILL.md` Roadmap section for the full deferral rationale.
 
 ## License
 
