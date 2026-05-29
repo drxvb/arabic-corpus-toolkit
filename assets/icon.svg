@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Arabic Corpus Toolkit">
+  <title>Arabic Corpus Toolkit</title>
+  <desc>Deep teal rounded square with the Arabic glyph “مَرْجِع” at center and a ring of 13 gold markers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e5263"/>
+      <stop offset="1" stop-color="#0a3a47"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e8c170" stop-opacity="0.18"/>
+      <stop offset="0.7" stop-color="#e8c170" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#e8c170" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="1024" height="1024" rx="180" ry="180" fill="url(#bg)"/>
+  <circle cx="512" cy="512" r="420" fill="url(#halo)"/>
+  <g fill="#e8c170" aria-hidden="true">
+    <circle cx="512.0" cy="132.0" r="18"/>
+    <circle cx="688.6" cy="175.5" r="18"/>
+    <circle cx="824.7" cy="296.1" r="18"/>
+    <circle cx="889.2" cy="466.2" r="18"/>
+    <circle cx="867.3" cy="646.7" r="18"/>
+    <circle cx="764.0" cy="796.4" r="18"/>
+    <circle cx="602.9" cy="881.0" r="18"/>
+    <circle cx="421.1" cy="881.0" r="18"/>
+    <circle cx="260.0" cy="796.4" r="18"/>
+    <circle cx="156.7" cy="646.7" r="18"/>
+    <circle cx="134.8" cy="466.2" r="18"/>
+    <circle cx="199.3" cy="296.1" r="18"/>
+    <circle cx="335.4" cy="175.5" r="18"/>
+  </g>
+  <circle cx="512" cy="512" r="300" fill="none" stroke="#e8c170" stroke-width="3" stroke-opacity="0.35"/>
+  <text x="512" y="609" font-family="'Amiri','Scheherazade New','Noto Naskh Arabic','Traditional Arabic',serif" font-size="360" font-weight="700"
+        text-anchor="middle" fill="#f5efe0" direction="rtl">مَرْجِع</text>
+  <text x="512" y="800" font-family="'SF Mono','Consolas','Roboto Mono',monospace" font-size="52" font-weight="600" letter-spacing="5"
+        text-anchor="middle" fill="#e8c170" fill-opacity="0.85">13 ASSETS · AR</text>
+</svg>
