@@ -1,5 +1,5 @@
 {
-  "$schema_version": "1.4.0",
+  "$schema_version": "1.5.0",
   "asset_name": "domain-terminology",
   "domain": "politics",
   "provenance": {
@@ -29,13 +29,17 @@
       "majority_2of3": 0,
       "single_vendor_1of3": 14,
       "legacy_no_consensus_field": 0
-    }
+    },
+    "v1_5_era_tags_added": 7,
+    "v1_5_timestamp": "2026-05-29T05:23:07",
+    "v1_5_era_lock_policy": "Tag-don't-delete: pairs whose meaning is tied to a specific historical moment (deposed leaders, dissolved bodies, deceased officials) get era_locked + era_locked_reason metadata. Consumers can filter by era_locked field for current-only terminology; historical-content translation still benefits from the tagged pairs."
   },
   "notes": [
     "v1.9.0 domain expansion: minimax-classified pairs from Elaph news corpus.",
     "Domain 'politics' selected; geographic + other dropped.",
     "v1.3.0: 4-vendor confirm + 3-vendor independent tier. Active: 13 (3/3:0 2/3:0 1/3:13). Below: 113.",
-    "v1.4.0: SPA-news-2024 mining added 1 new active pairs (existing 13 v1.10.0 preserved). Total active: 14 (3/3:0 2/3:0 1/3:14 legacy:0). Below: 148."
+    "v1.4.0: SPA-news-2024 mining added 1 new active pairs (existing 13 v1.10.0 preserved). Total active: 14 (3/3:0 2/3:0 1/3:14 legacy:0). Below: 148.",
+    "v1.5.0: era-tagged 7 Iraq War-era proper nouns per Codex A5 P0 finding. Tag, don't delete — consumers filter era_locked field for current-only."
   ],
   "pairs": [
     {
@@ -76,7 +80,9 @@
       "minimax_alt": "",
       "n_vendors_agree": 1,
       "n_independent_agree": 1,
-      "vendor_consensus": "single_vendor"
+      "vendor_consensus": "single_vendor",
+      "era_locked": "iraq-2003-2004-transition",
+      "era_locked_reason": "Iraq Governing Council — dissolved June 2004 when CPA transferred sovereignty"
     },
     {
       "ar": "مجلس الأمن",
@@ -156,7 +162,9 @@
       "minimax_alt": "",
       "n_vendors_agree": 1,
       "n_independent_agree": 1,
-      "vendor_consensus": "single_vendor"
+      "vendor_consensus": "single_vendor",
+      "era_locked": "usa-2001-2009",
+      "era_locked_reason": "President Bush — refers to George W. Bush term; current is contextual"
     },
     {
       "ar": "جلال الطالباني",
@@ -176,7 +184,9 @@
       "minimax_alt": null,
       "n_vendors_agree": 2,
       "n_independent_agree": 1,
-      "vendor_consensus": "single_vendor"
+      "vendor_consensus": "single_vendor",
+      "era_locked": "iraq-2005-2014",
+      "era_locked_reason": "Iraqi President 2005-2014 (deceased 2017); referent obsolete for 2025+ content"
     },
     {
       "ar": "السيد جلال الطالباني",
@@ -196,7 +206,9 @@
       "minimax_alt": null,
       "n_vendors_agree": 2,
       "n_independent_agree": 1,
-      "vendor_consensus": "single_vendor"
+      "vendor_consensus": "single_vendor",
+      "era_locked": "iraq-2005-2014",
+      "era_locked_reason": "honorific variant of the above; same era constraint"
     },
     {
       "ar": "الدكتور أياد علاوي",
@@ -216,7 +228,9 @@
       "minimax_alt": "",
       "n_vendors_agree": 1,
       "n_independent_agree": 1,
-      "vendor_consensus": "single_vendor"
+      "vendor_consensus": "single_vendor",
+      "era_locked": "iraq-2004-2005",
+      "era_locked_reason": "Iraqi interim Prime Minister 2004-2005; not current"
     },
     {
       "ar": "رئيس الوزراء العراقي",
@@ -236,7 +250,9 @@
       "minimax_alt": "",
       "n_vendors_agree": 1,
       "n_independent_agree": 1,
-      "vendor_consensus": "single_vendor"
+      "vendor_consensus": "single_vendor",
+      "era_locked": "iraq-elaph-era",
+      "era_locked_reason": "specific historical referent in Elaph corpus; modern usage is contextual"
     },
     {
       "ar": "لدول مجلس التعاون",
@@ -276,7 +292,9 @@
       "minimax_alt": "",
       "n_vendors_agree": 1,
       "n_independent_agree": 1,
-      "vendor_consensus": "single_vendor"
+      "vendor_consensus": "single_vendor",
+      "era_locked": "lebanon-1992-2024",
+      "era_locked_reason": "Hezbollah Secretary-General 1992-2024; killed Sept 2024 — era-locked for post-2024 translation"
     },
     {
       "ar": "الشرطة والحرس الوطني",

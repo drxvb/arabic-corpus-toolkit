@@ -2,6 +2,81 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.12.1 — Mined-pair acceptance criteria formalized (references/07)
+
+**Released:** 2026-05-29
+
+Closes the convergent missing-item that Minimax + Kimi A5 critiques both flagged: "mined-pair quality gate / acceptance criteria — the roadmap sets numeric targets but does not define what qualifies a mined pair as active, consensus-worthy, non-duplicative, modern, and safe for consumers. Without this, the counts are vanity metrics that invite garbage-data bloat."
+
+`references/07-mined-pair-acceptance-criteria.md` codifies the 5-stage pair lifecycle that's been operating informally since v1.10.0:
+
+1. **Candidate** — output of mine_terminology.py / equivalent. Stopword-filtered, ≥3 char, freq-passed, top-N capped.
+2. **Paired candidate** — LLM proposes EN. confidence != low, en non-empty.
+3. **Cross-vendor confirmed** — codex + gemini + kimi independent vote; minimax informational (proposer self-bias excluded).
+4. **Tier classified** — n_independent_agree gates: 3/3 strong, 2/3 strong (bucket reserved for future split), 1/3 single_vendor, 0/3 → pairs_below_threshold.
+5. **Era / source stamped** — source_corpus + era_locked metadata (v1.4.0+ / v1.5.0+).
+
+Consumer access patterns documented: default (pairs[]), strict (min_consensus=2 via translator v1.8.0 / authoring v1.6.0), era-filter, combined.
+
+Release gates explicit:
+- evals/contract_conformance.py (56+ assertions)
+- evals/golden_e2e_test.py (40 assertions)
+- asset-registry.json sync (current_version + n_active_pairs + n_below_threshold)
+- CHANGELOG.md per-vendor agreement matrix for new-mined releases
+
+Explicit non-enforcements:
+- Per-vendor bias normalization (codex's politics-rejection-tendency stays raw; transparency via CHANGELOG)
+- Embedding-based dedup (same EN, different AR variants both kept)
+- BLEU / held-out human gold (multi-vendor swarm IS the proxy for human consensus by design)
+
+This is the binding spec for future domain additions (G.health, G.science, etc.) — what "active" means for any new G.* asset is defined here.
+
+## v1.12.0 — G.politics era-locked metadata (Codex A5 P0 finding)
+
+**Released:** 2026-05-29
+
+Closes Codex's A5 P0 finding: Iraq War-era proper nouns in G.politics create visible bad recommendations and pollute trust if presented as current terminology. Codex specifically prescribed tag-don't-delete: add metadata so consumers can filter for current-only, while preserving the pairs for historical-content translation use cases.
+
+### Pairs tagged (7 of 14 active)
+
+| ar | en | era | reason |
+|---|---|---|---|
+| مجلس الحكم | Governing Council | iraq-2003-2004-transition | Dissolved June 2004 when CPA transferred sovereignty |
+| الرئيس بوش | President Bush | usa-2001-2009 | Refers to George W. Bush term |
+| جلال الطالباني | Jalal Talabani | iraq-2005-2014 | Iraqi President 2005-2014, deceased 2017 |
+| السيد جلال الطالباني | Mr. Jalal Talabani | iraq-2005-2014 | Honorific variant of above |
+| الدكتور أياد علاوي | Dr. Ayad Allawi | iraq-2004-2005 | Iraqi interim Prime Minister 2004-2005 |
+| حسن نصر الله | Hassan Nasrallah | lebanon-1992-2024 | Hezbollah Sec-Gen 1992-2024, killed Sept 2024 |
+| رئيس الوزراء العراقي | Iraqi Prime Minister | iraq-elaph-era | Specific historical referent in Elaph; modern usage contextual |
+
+### Untagged (still-current)
+
+7 pairs remain untagged: مجلس التعاون الخليجي (GCC), مجلس الأمن (UN Security Council), الجامعة العربية (Arab League), عبد العزيز (ambiguous referent), لدول مجلس التعاون, الشرطة والحرس الوطني, واس (SPA).
+
+### Schema 1.4.x → 1.5.0 (MINOR additive)
+
+New per-pair fields:
+- `era_locked: str` — era identifier (e.g. "iraq-2003-2004-transition")
+- `era_locked_reason: str` — human-readable rationale
+
+Backward compatible — pairs without the field treated as not-era-locked. Consumers can opt-in to filtering:
+
+```python
+data = _load_domain_terminology("politics")
+current_pairs = [p for p in data["pairs"] if not p.get("era_locked")]
+```
+
+### Why tag, not delete
+
+Codex's exact words: "Tagging as era_locked rather than deleting preserves historical translation utility while preventing the bad-recommendation hazard for current content." Two distinct user populations:
+- **Current-news translator user**: filters `era_locked`, gets only modern terminology
+- **Historical archive translator user**: includes era_locked pairs, gets contextually accurate translations of 2003-2008 articles
+
+### Verification
+
+- Inter-sibling contract conformance: 56/56 PASS (era_locked field is additive — existing assertions unchanged)
+- Golden e2e: 40/40 PASS
+
 ## v1.11.0 — SPA mining lands → G.legal escapes placeholder, +66% active pairs
 
 **Released:** 2026-05-29

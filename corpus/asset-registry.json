@@ -1,7 +1,7 @@
 {
   "$registry_version": "1.0.0",
   "description": "Asset Version Registry (Gap G2). Canonical declaration of every shipped asset's current version + which consumer versions can read it. Consumers should query this via scripts/asset_registry.py rather than hardcoding schema_major checks.",
-  "generated_by": "toolkit v1.11.0 — SPA-news-2024 mining merged with v1.10.0 tiered actives.",
+  "generated_by": "toolkit v1.12.0 — era-locked metadata on politics proper nouns.",
   "assets": {
     "A": {
       "name": "calque-dictionary",
@@ -129,14 +129,14 @@
     "G.politics": {
       "name": "domain-terminology-politics",
       "path": "corpus/domain-terminology-politics.json",
-      "current_version": "1.4.0",
+      "current_version": "1.5.0",
       "compatibility": "^1.0.0",
       "breaking_versions": [],
       "consumers": [
         "translator",
         "authoring"
       ],
-      "description": "Politics terms (multi-corpus: Elaph 2003-2008 + SPA 2024). v1.4.0: 14 active + 148 below threshold.",
+      "description": "Politics terms (multi-corpus: Elaph 2003-2008 + SPA 2024). v1.4.0: 14 active + 148 below threshold. v1.5.0: era_locked metadata on Iraq War proper nouns.",
       "n_active_pairs": 14,
       "n_below_threshold": 148,
       "validation_status": "tiered_3_vendor_consensus"
@@ -203,6 +203,7 @@
     "consumer_declared_requirements documents what each consumer expects; consumers should NOT hardcode versions in their code anymore — they should call registry.required_for(consumer_name).",
     "v1.10.0: G.business/G.legal/G.politics bumped to schema 1.3.0 with 3-vendor consensus tiered pairs. Consumers reading `pairs` field automatically get only active (>=2/3 independent) pairs. Schema is backward compatible (additive `pairs_below_threshold` field).",
     "v1.10.0: G.business/G.legal/G.politics bumped to schema 1.3.0 with 3-vendor consensus tiered pairs. Consumers reading `pairs` field automatically get only active (>=2/3 independent) pairs. Schema is backward compatible (additive `pairs_below_threshold` field).",
-    "v1.11.0: G.business/G.legal/G.politics expanded via SPA-news-2024 corpus mining. Schema 1.4.0 (additive provenance.v1_4_* fields). Pairs gain source_corpus field."
+    "v1.11.0: G.business/G.legal/G.politics expanded via SPA-news-2024 corpus mining. Schema 1.4.0 (additive provenance.v1_4_* fields). Pairs gain source_corpus field.",
+    "v1.12.0: G.politics schema 1.5.0 adds era_locked + era_locked_reason fields. Backward compatible — pairs without the field treated as not-era-locked."
   ]
 }
