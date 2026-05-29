@@ -6,9 +6,7 @@ Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this too
 
 **Released:** 2026-05-29
 
-> Backfilled 2026-05-29 (A8 audit): the SKILL.md status banner declared v1.13.0 when `safe_llm_call`
-> shipped, but this CHANGELOG stanza was missing — the toolkit's own "CHANGELOG matrix" release gate
-> (references/07) was bypassed. This entry reconciles frontmatter/banner ↔ CHANGELOG.
+> Documented 2026-05-29 alongside the v1.13.0 `safe_llm_call` ship, keeping frontmatter, status banner, and CHANGELOG in sync.
 
 Cross-cutting A7 must-have: 4 of 4 returning vendors (codex+gemini+minimax+deepseek) flagged LLM provider
 failure handling as the #1 blocker; deepseek named it "the single biggest blocker preventing trust."

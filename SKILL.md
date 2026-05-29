@@ -92,7 +92,7 @@ Each helper is pure Python 3 stdlib — no SQLite, no FAISS, no LLM call. Modifi
 
 ## Roadmap
 
-**Current state**: v1.12.1 (toolkit) + v2.16.0 (humanizer) + v1.8.0 (translator) + v1.6.0 (authoring). All four foundational contracts G1-G4 shipped + adopted across 12/12 cells (verified by `evals/contract_conformance.py`).
+**Current state**: v1.13.0 (toolkit) + v2.17.0 (humanizer) + v1.9.0 (translator) + v1.8.0 (authoring). All four foundational contracts G1-G4 shipped + adopted across 12/12 cells, plus the cross-cutting `safe_llm_call` resilience contract (v1.13.0) adopted at runtime by all three LLM-calling consumers (verified by `evals/contract_conformance.py`).
 
 ### Shipped milestones
 
@@ -111,6 +111,7 @@ Each helper is pure Python 3 stdlib — no SQLite, no FAISS, no LLM call. Modifi
 | **v1.11.0** | SPA-2024 mining: **G.legal escapes placeholder** (0→23 active), G.business 51→69, G.politics 13→14; multi-corpus heritage | ✅ |
 | **v1.12.0** | G.politics era_locked metadata on 7 Iraq War-era proper nouns (Codex A5 P0) | ✅ |
 | **v1.12.1** | `references/07-mined-pair-acceptance-criteria.md` formalizes the 5-stage pair lifecycle gate (Minimax + Kimi missing-item) | ✅ |
+| **v1.13.0** | Shared `safe_llm_call` LLM-proxy resilience contract — retries + per-vendor circuit breaker + structured failure envelope; adopted by translator/humanizer/authoring (cross-cutting A7 must-have) | ✅ |
 
 ### Deferred work (post-A5 panel verdict)
 
@@ -122,7 +123,7 @@ Each helper is pure Python 3 stdlib — no SQLite, no FAISS, no LLM call. Modifi
 | Aho-Corasick consumer integration | Current Python lookup adequate; YAGNI per all 4 vendors | A5 panel rejected |
 | 5th sibling: arabic-validator | Premature extraction; no consumers have requested it | A5 panel rejected |
 
-Future v1.13+ would either (a) ingest a new bilingual corpus that surfaces healthcare/science terminology, (b) wire telemetry once a real consumer asks for the dashboard, or (c) run an A6 audit cycle and process whatever the panel converges on next.
+Future v1.14+ would either (a) ingest a new bilingual corpus that surfaces healthcare/science terminology, (b) wire telemetry once a real consumer asks for the dashboard, or (c) process whatever the next multi-vendor audit panel converges on.
 
 ## Constraints
 
