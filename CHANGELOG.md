@@ -2,6 +2,32 @@
 
 Per the Kimi-style asset-promotion lens of the v0.2 multi-agent review, this toolkit uses **per-asset SemVer with a registry** rather than monolithic versions. The toolkit release version (v0.3, etc.) coordinates ship cadence; the schema version of each data file lives **inside** the file under `$schema_version` and follows independent SemVer.
 
+## v1.13.0 — Shared LLM proxy failure-resilience contract (`safe_llm_call`)
+
+**Released:** 2026-05-29
+
+> Backfilled 2026-05-29 (A8 audit): the SKILL.md status banner declared v1.13.0 when `safe_llm_call`
+> shipped, but this CHANGELOG stanza was missing — the toolkit's own "CHANGELOG matrix" release gate
+> (references/07) was bypassed. This entry reconciles frontmatter/banner ↔ CHANGELOG.
+
+Cross-cutting A7 must-have: 4 of 4 returning vendors (codex+gemini+minimax+deepseek) flagged LLM provider
+failure handling as the #1 blocker; deepseek named it "the single biggest blocker preventing trust."
+
+`scripts/safe_llm_call.py` ships:
+
+- `safe_llm_call(vendor_url, api_key, payload, timeout=60.0, max_retries=2, retry_backoff_s=2.0, path="/v1/chat/completions") → LLMCallResult` — **never raises**; callers check `.ok`.
+- `LLMCallResult` dataclass: `ok`, `payload`, `error_class`, `error_detail`, `latency_ms`, `attempts`, `circuit_open`, `http_status`; `__bool__` returns `.ok`.
+- Error classes: `timeout`, `http_5xx`, `http_4xx`, `auth`, `network`, `json_decode`, `schema_mismatch`, `empty_response`, `circuit_open`, `payload_encode`, `unknown`.
+- Per-vendor circuit breaker (3 consecutive failures → 60s open); `reset_circuit(vendor_url=None)`.
+- Exponential-backoff retries bounded; deterministic-failure classes (4xx/json_decode/schema_mismatch/empty) do NOT retry.
+- `safe_llm_call_with_fallback(primary, fallback, payload)` for primary→fallback vendor chains.
+
+**Adopted at runtime by:** translator v1.9.0 (Stage C draft), humanizer v2.17.0 (`score_text_deep`),
+authoring v1.8.0 (via humanizer dependency). Consumers on pre-v1.13.0 toolkit fall back to legacy inline urllib.
+
+**Tests:** `evals/test_safe_llm_call.py` — 12/12 PASS (unreachable endpoint never raises, circuit-breaker
+open/reset, retry-bound, unencodable-payload envelope). Conformance 56/56 + golden e2e 40/40 unaffected.
+
 ## v1.12.1 — Mined-pair acceptance criteria formalized (references/07)
 
 **Released:** 2026-05-29
